@@ -30,4 +30,4 @@ Clone the project and open it in your favorite editor:
 
 ```bash
 git clone https://github.com/Daksh-3883/Kode-Developers.git
-cd kode-developers-website
+cd Kode-Developers
