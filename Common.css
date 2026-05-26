@@ -1,0 +1,308 @@
+/* ======================================================
+   COMMON.CSS
+   Shared Global Styles
+====================================================== */
+
+
+/* ================= ROOT VARIABLES ================= */
+body.light-theme{
+  --bg-color:#f8fafc;
+  --text-color:#0f172a;
+  --text-muted:#475569;
+
+  --nav-bg:rgba(255,255,255,0.72);
+  --nav-border:rgba(15,23,42,0.08);
+
+  --card-bg:rgba(255,255,255,0.72);
+  --card-border:rgb(15, 23, 42);
+  --card-shadow:rgba(15, 23, 42, 0.18);
+
+  --primary:#14b8a6;
+  --primary-soft:rgba(20,184,166,0.18);
+
+  --section-line:rgba(15,23,42,0.06);
+
+  --overlay:rgba(255,255,255,0.10);
+}
+
+body.light-theme .glass-card:hover {
+  box-shadow:
+    0 20px 40px rgba(15,23,42,0.16),
+    0 0 18px rgba(20,184,166,0.08);
+}
+
+
+/* ================= DARK THEME ================= */
+body.dark-theme{
+  --bg-color:#000000;
+  --text-color:#f8fafc;
+  --text-muted:#94a3b8;
+
+  --nav-bg:rgba(2,6,23,0.55);
+  --nav-border:rgba(148,163,184,0.14);
+
+  --card-bg:rgba(15,23,42,0.32);
+  --card-border:rgba(94,234,212,0.10);
+  --card-shadow:rgba(0,0,0,0.32);
+
+  --primary:#5eead4;
+  --primary-soft:rgba(94,234,212,0.16);
+
+  --section-line:rgba(255,255,255,0.05);
+
+  --overlay:rgba(0,0,0,0.28);
+}
+
+
+/* ================= BASE ================= */
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+
+/* ================= BACKGROUND ================= */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ================= LOADER ================= */
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#020617;
+  color:#ffffff;
+  transition:opacity .45s ease, visibility .45s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+
+/* ================= NAVBAR ================= */
+#navbar{
+  background:var(--nav-bg);
+  border:1px solid var(--nav-border);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  transition:all .35s ease;
+}
+
+/* Ensure navbar shadow matches theme glass look and overrides utility shadows */
+#navbar{
+  box-shadow: 0 12px 30px var(--card-shadow);
+}
+
+
+/* ================= LINKS ================= */
+.nav-link{
+  position:relative;
+  transition:color .25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active{
+  color:var(--primary);
+}
+
+.nav-link.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height:2px;
+  border-radius:20px;
+  background:var(--primary);
+}
+
+
+/* ================= MOBILE MENU ================= */
+#mobile-menu{
+  background:var(--nav-bg);
+  border:1px solid var(--nav-border);
+}
+
+
+/* ================= GLASS CARDS ================= */
+/* Theme-matching cards (light = white glass, dark = dark glass) */
+.glass-card{
+  position:relative;
+  overflow:hidden;
+
+  background:var(--card-bg);
+  border:2px solid var(--card-border);
+  border-radius:1rem;
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:0 12px 32px var(--card-shadow);
+
+  transition:
+    transform .30s ease,
+    background .35s ease,
+    box-shadow .35s ease;
+}
+
+body:not(.battlewaale-page) .glass-card {
+  border: 2px solid transparent;
+  background: var(--card-bg);
+}
+
+
+
+.glass-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-140%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.22),
+    transparent
+  );
+  transform:skewX(-24deg);
+  transition:left .7s ease;
+}
+
+.glass-card:hover::before{
+  left:150%;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+  0 20px 45px rgba(20,184,166,0.18),
+  0 0 18px rgba(94,234,212,0.08);
+}
+
+
+/* ================= TYPOGRAPHY ================= */
+h1,h2,h3,h4,h5,h6{
+  color:var(--text-color);
+  margin-top:0;
+}
+
+p,li,span{
+  color:var(--text-muted);
+}
+
+strong,b{
+  color:var(--text-color);
+}
+
+.text-accent{
+  color:var(--primary);
+}
+
+.glow-text{
+  text-shadow:0 0 18px var(--primary-soft);
+}
+
+
+/* ================= SECTIONS ================= */
+section{
+  position:relative;
+  border-bottom:1px solid var(--section-line);
+}
+
+
+/* ================= FADE UP ================= */
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:all .75s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.delay-1{transition-delay:.15s;}
+.delay-2{transition-delay:.30s;}
+.delay-3{transition-delay:.45s;}
+.delay-4{transition-delay:.60s;}
+
+
+/* ================= BUTTON HELPERS ================= */
+.btn-glow:hover{
+  box-shadow:0 0 22px var(--primary-soft);
+}
+
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--card-bg);
+  border-top:1px solid rgba(148,163,184,0.14);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  color:var(--text-color);
+  transition:
+    background .35s ease,
+    border-color .35s ease;
+}
+
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#14b8a6,#06b6d4);
+  border-radius:12px;
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+
+  .glass-card:hover{
+    transform:none;
+  }
+
+  .nav-link.active::after{
+    display:none;
+  }
+
+}

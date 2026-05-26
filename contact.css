@@ -1,0 +1,66 @@
+/* ======================================================
+   CONTACT.CSS
+   Page-specific styles only
+   Shared styles are handled by common.css
+====================================================== */
+
+/* ===================== CONTACT SECTION ===================== */
+#contact {
+  position: relative;
+}
+
+/* Add extra top spacing so fixed navbar doesn't overlap the first card */
+#contact .glass-card:first-child {
+  margin-top: 6rem;
+}
+
+#contact h2 {
+  line-height: 1.1;
+}
+
+#contact .glass-card {
+  min-height: auto;
+}
+
+/* ===================== SOCIAL ICONS ===================== */
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
+}
+
+/* Force SVG icons to use theme color (overrides utility classes) */
+.social-icon svg{
+  color:var(--text-color);
+  fill:currentColor;
+}
+
+.social-icon:hover {
+  animation: pulse-hover 0.6s ease-in-out forwards;
+  color: var(--primary);
+}
+
+@keyframes pulse-hover {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ===================== GOOGLE FORM CARD ===================== */
+#contact .glass-card:last-child {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact .glass-card:last-child:hover {
+  transform: translateY(-5px);
+}
+
+#contact .glass-card:last-child iframe {
+  min-height: 600px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  #contact .glass-card:last-child iframe {
+    min-height: 400px;
+  }
+}
