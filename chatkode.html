@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic Meta Setup -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- Page Title -->
-  <title>ChatKode – Know More</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="ChatKode – AI-powered coding assistant for faster, smarter development. Chat, generate images, and boost productivity.">
-  <meta name="keywords" content="ChatKode, AI assistant, coding help, image generation, productivity, Kode Developers">
-
-  <!-- Tailwind CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Kode Developers</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="chatkode.css">
   <link rel="stylesheet" href="Common.css">
+  <link rel="stylesheet" href="contact.css">
 </head>
+<body class="font-sans overflow-x-hidden dark-theme">
 
-<body class="font-sans overflow-x-hidden">
+  <!-- Loader -->
+  <div id="loader">
+    <h1>Kode Developers</h1>
+  </div>
 
   <!-- Navigation Bar -->
-  <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-xl rounded-full shadow-md border px-6 py-3 w-[90%] max-w-5xl z-50 transition-all duration-500">
-    
+  <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-xl rounded-full px-6 py-3 w-[90%] max-w-5xl z-50 transition-all duration-500">
     <div class="flex justify-between items-center">
-
       <!-- Logo / Brand Name -->
       <h1 class="text-lg md:text-xl font-bold text-teal-400 hover:scale-110 transition cursor-pointer glow-text" onclick="window.location='index.html'">
         Kode Developers
@@ -34,22 +25,21 @@
 
       <!-- Desktop Navigation Links -->
       <ul class="hidden md:flex gap-8 font-medium">
-        <li><a href="index.html" class="nav-link active hover:text-teal-300 transition">Home</a></li>
-        <li><a href="#features" class="nav-link hover:text-teal-300 transition">Features</a></li>
-        <li><a href="#overview" class="nav-link hover:text-teal-300 transition">Overview</a></li>
-        <li><a href="#premium" class="nav-link hover:text-teal-300 transition">Premium</a></li>
-        <li><a href="contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
+        <li><a href="index.html" class="nav-link hover:text-teal-300 transition">Home</a></li>
+        <li><a href="index.html#about" class="nav-link hover:text-teal-300 transition">About</a></li>
+        <li><a href="index.html#services" class="nav-link hover:text-teal-300 transition">Services</a></li>
+        <li><a href="index.html#projects" class="nav-link hover:text-teal-300 transition">Projects</a></li>
+        <li><a href="contact.html" class="nav-link active hover:text-teal-300 transition">Contact</a></li>
       </ul>
 
-      <!-- Right Controls (Theme + Mobile Menu) -->
+      <!-- Right Side Controls -->
       <div class="flex items-center gap-4">
-
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" class="p-2 rounded-full border border-gray-500 hover:scale-110 transition-transform focus:outline-none">
           🌙
         </button>
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Button (Hamburger) -->
         <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] focus:outline-none">
           <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
           <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
@@ -61,157 +51,49 @@
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
       <a href="index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
-      <a href="#features" class="nav-link py-2 hover:text-teal-300 transition">Features</a>
-      <a href="#overview" class="nav-link py-2 hover:text-teal-300 transition">Overview</a>
-      <a href="#premium" class="nav-link py-2 hover:text-teal-300 transition">Premium</a>
+      <a href="index.html#about" class="nav-link py-2 hover:text-teal-300 transition">About</a>
+      <a href="index.html#services" class="nav-link py-2 hover:text-teal-300 transition">Services</a>
+      <a href="index.html#projects" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
       <a href="contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero" class="h-screen flex flex-col justify-center items-center text-center px-6">
-    
-    <!-- Main Heading -->
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 fade-up delay-1">
-      Meet <span class="text-teal-400 glow-text">ChatKode</span>
-    </h1>
+<!-- Contact Section -->
+  <section id="contact" class="min-h-screen flex flex-col items-center justify-center py-20 px-6 md:px-12 space-y-12">
 
-    <!-- Description -->
-    <p class="text-lg md:text-xl max-w-2xl mb-8 fade-up delay-2">
-      Your AI-powered coding buddy: chat, generate images, and build smarter apps with ease.
-    </p>
-
-    <!-- CTA Button -->
-    <a href="#features" class="px-8 py-4 border-2 border-teal-500 text-teal-500 bg-transparent rounded-xl font-bold shadow-lg text-lg transform transition-colors transition-transform duration-300 ease-out hover:-translate-y-1 hover:bg-teal-500 hover:text-white fade-up delay-3">
-      Explore Features
-    </a>
-  </section>
-
-  <!-- Overview Section -->
-  <section id="overview" class="py-16 md:py-20 px-6 max-w-5xl mx-auto fade-up">
-    
-    <h2 class="text-4xl font-bold mb-6 text-teal-400 text-center">ChatKode – Your AI Assistant</h2>
-
-    <!-- Description Paragraphs -->
-    <p class="leading-relaxed mb-6">
-      ChatKode is your <b>all-in-one AI assistant</b>, combining the powers of a coding partner, a smart chatbot, and a personal productivity tool.
-    </p>
-
-    <p class="leading-relaxed mb-6">
-      As a <b>coding partner</b>, ChatKode offers real-time code suggestions, identifies errors instantly, explains best practices, and supports <b>all major programming languages</b>.
-    </p>
-
-    <p class="leading-relaxed mb-6">
-      ChatKode also works as a <b>conversational AI chatbot</b>, similar to ChatGPT or Gemini.
-    </p>
-
-    <p class="leading-relaxed mb-6">
-      Beyond coding, it serves as a <b>learning companion</b>. New developers can understand complex programming concepts in plain English.
-    </p>
-
-    <p class="leading-relaxed mb-6">
-      ChatKode also boosts <b>productivity</b> by automating repetitive coding tasks.
-    </p>
-
-    <p class="leading-relaxed mb-6">
-      Designed for <b>students, developers, and hobbyists</b>, ChatKode makes your workflow faster, smarter, and more enjoyable.
-    </p>
-  </section>
-  
-  <!-- Highlights Section -->
-  <section id="highlights" class="px-6 max-w-5xl mx-auto fade-up">
-    <div class="grid md:grid-cols-2 gap-6 mt-8">
-
-      <!-- Key Highlights List -->
-      <div class="glass-card p-6">
-        <h3 class="text-2xl font-semibold text-teal-400 mb-3">Key Highlights</h3>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Chat-based coding assistance</li>
-          <li>Supports all languages & frameworks</li>
-          <li>Real-time bug fixes & suggestions</li>
-          <li>Explains concepts for easier learning</li>
-          <li>Boosts productivity with automation</li>
-        </ul>
-      </div>
-
-      <!-- Supporting Info -->
-      <div class="glass-card p-6">
-        <h3 class="text-2xl font-semibold text-teal-400 mb-3">Build Smarter Apps</h3>
-        <p>
-          ChatKode helps you move from idea → code faster. Think of it as a mentor, teammate, and tool in one platform.
-        </p>
-      </div>
+  <!-- Contact Info Card -->
+  <div class="glass-card mt-24 flex flex-col items-center text-center space-y-6 p-8 fade-up delay-1">
+    <h2 class="text-4xl md:text-5xl font-extrabold fade-up delay-2">Get in Touch</h2>
+    <p class="fade-up delay-3">Reach us via the form below or through email and social media.</p>
+    <div class="flex items-center gap-3 fade-up delay-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <a href="mailto:ceo@kodedevelopers.org" class="hover:text-teal-300 transition">ceo@kodedevelopers.org</a>
     </div>
-  </section>
 
-  <!-- Features Section -->
-  <section id="features" class="py-16 md:py-20 px-6 fade-up">
-    
-    <h3 class="text-3xl font-bold text-center mb-12">Core Features</h3>
-
-    <!-- Features Grid -->
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-      <div class="glass-card p-6 hover:scale-105">
-        <h4 class="text-xl font-semibold mb-3 text-teal-400">AI Chat</h4>
-        <p>Real-time coding answers powered by GPT.</p>
-      </div>
-
-      <div class="glass-card p-6 hover:scale-105">
-        <h4 class="text-xl font-semibold mb-3 text-teal-400">Image Generation</h4>
-        <p>Generate images instantly with <code>/image</code> prompts.</p>
-      </div>
-
-      <div class="glass-card p-6 hover:scale-105">
-        <h4 class="text-xl font-semibold mb-3 text-teal-400">Smart Storage</h4>
-        <p>Save chat history and manage sessions securely.</p>
-      </div>
+    <!-- Social Icons -->
+    <div class="flex items-center gap-4 mt-4 fade-up delay-5">
+      <a href="#" class="social-icon" aria-label="Twitter">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-9-5.5z"/></svg>
+      </a>
+      <a href="#" class="social-icon" aria-label="LinkedIn">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" class="social-icon" aria-label="GitHub">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
     </div>
-  </section>
+  </div>
 
-  <!-- Use Cases Section -->
-  <section id="use-cases" class="py-16 md:py-20 px-6 max-w-5xl mx-auto fade-up">
-    
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-teal-400 text-center">How ChatKode Helps You</h2>
+  <!-- Google Form Card -->
+  <div class="glass-card w-full max-w-3xl p-6 fade-up delay-6">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScORZjd4WH-oeUJ7bxB7uLqxcjX06RbojgIORBHoOIxoTtHaA/viewform?embedded=true" width="650" height="750" class="rounded-xl w-full border border-gray-700/40" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
 
-    <p class="leading-relaxed mb-4">
-      ChatKode adapts to your goals and workflow.
-    </p>
+</section>
 
-    <!-- Use Cases List -->
-    <ul class="list-disc list-inside leading-relaxed space-y-2">
-      <li><b>Students:</b> Learn coding concepts interactively.</li>
-      <li><b>Developers:</b> Speed up development with smart suggestions.</li>
-      <li><b>Hobbyists & Creators:</b> Experiment with new ideas.</li>
-      <li><b>AI Chat Enthusiasts:</b> ChatKode helps brainstorm projects like a true AI companion.</li>
-    </ul>
-  </section>
-
-  <!-- Premium Section -->
-  <section id="premium" class="py-16 md:py-20 px-6 max-w-5xl mx-auto fade-up">
-    
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-teal-400 text-center">Premium Features</h2>
-
-    <p class="leading-relaxed mb-6">
-     Upgrade to ChatKode Premium and unlock the full power of AI coding.
-    </p>
-
-    <!-- Premium Features List -->
-    <ul class="list-disc list-inside leading-relaxed space-y-2 mb-6">
-      <li><b>Advanced AI Suggestions:</b> Get smarter code completions.</li>
-      <li><b>Priority Debugging:</b> Identify and fix errors faster.</li>
-      <li><b>Faster Responses:</b> Premium users enjoy quicker processing.</li>
-    </ul>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center p-6 border-t border-gray-700 text-sm text-gray-400">
-    <p>Built with passion by Kode Developers</p>
-    <p class="mt-1">ChatKode © 2026. All rights reserved.</p>
-  </footer>
-
-  <!-- Custom JavaScript -->
-  <script src="chatkode.js"></script>
-  <script src="Common.js"></script>
+<script src="Common.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>
