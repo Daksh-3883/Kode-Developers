@@ -176,7 +176,7 @@ button{
     box-shadow .35s ease;
 }
 
-body:not(.battlewaale-page) .glass-card {
+.glass-card {
   border: 2px solid transparent;
   background: var(--card-bg);
 }
