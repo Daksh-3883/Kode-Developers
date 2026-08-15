@@ -16,10 +16,10 @@
   inset:0;
   background:
     radial-gradient(circle at top left,
-    rgba(94,234,212,.08),
+    var(--color-accent-subtle),
     transparent 35%),
     radial-gradient(circle at bottom right,
-    rgba(6,182,212,.08),
+    var(--color-accent-subtle),
     transparent 35%);
   pointer-events:none;
 }
@@ -48,13 +48,13 @@
 
 #home a:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 28px rgba(94,234,212,.18);
+  box-shadow:0 10px 28px var(--color-accent-soft);
 }
 
 /* ===================== LOGO SECTION ===================== */
 #logo img{
   margin:auto;
-  filter:drop-shadow(0 0 22px rgba(94,234,212,.28));
+  filter:drop-shadow(0 0 22px var(--color-border-strong));
   animation:
     logoEnter 1.2s ease forwards,
     logoFloat 5s ease-in-out infinite 1.2s;

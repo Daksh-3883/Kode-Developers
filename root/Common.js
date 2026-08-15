@@ -10,6 +10,8 @@
 // FLOWING RGB HEXAGON ENGINE
 // ======================================================
 
+window.kodeCommonLoaded = true;
+
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= THEME ================= */
@@ -127,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const y = window.scrollY;
 
     if(y > 30){
-      navbar.style.boxShadow = "0 12px 28px rgba(0,0,0,.14)";
+      navbar.style.boxShadow = "0 12px 28px var(--color-shadow)";
       navbar.classList.add("scale-95");
     }else{
       navbar.style.boxShadow = "none";
@@ -204,7 +206,20 @@ const ctx = canvas.getContext('2d');
 
 let width, height;
 const hexSize = 35; // Size of hexagons
-const colors = ['#ff4d4d', '#00f2ff', '#ff944d', '#ffe600', '#bc00ff', '#0070ff']; // Red, Cyan, Orange, Yellow, Purple, Blue
+const fallbackFlowColors = ['#0f9f9b', '#12c8c4', '#2dded8'];
+
+function readHexToken(name, fallback) {
+  const value = getComputedStyle(document.body).getPropertyValue(name).trim();
+  return /^#[0-9a-f]{6}$/i.test(value) ? value : fallback;
+}
+
+function getFlowPalette() {
+  return [
+    readHexToken('--color-accent-active', fallbackFlowColors[0]),
+    readHexToken('--color-accent-primary', fallbackFlowColors[1]),
+    readHexToken('--color-accent-hover', fallbackFlowColors[2])
+  ];
+}
 
 function initCanvas() {
   width = canvas.width = window.innerWidth;
@@ -226,6 +241,7 @@ function interpolateColor(color1, color2, factor) {
 
 // Calculates the "waterfall" color effect based on vertical position
 function getFlowColor(y, time) {
+  const colors = getFlowPalette();
   const flowSpeed = 0.08; 
   const flowLength = height * 1.5; 
   
