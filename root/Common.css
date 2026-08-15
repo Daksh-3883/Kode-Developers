@@ -78,6 +78,16 @@ button{
   cursor:pointer;
 }
 
+body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+  font-family:'Inter',sans-serif;
+  background:var(--bg-color);
+  color:var(--text-color);
+  transition:background .35s ease,color .35s ease;
+}
+
 
 /* ================= BACKGROUND ================= */
 #bg-canvas {
