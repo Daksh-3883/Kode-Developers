@@ -40,9 +40,11 @@
       <!-- Desktop Navigation Links -->
       <ul class="hidden md:flex gap-8 font-medium">
         <li><a href="index.html" class="nav-link active hover:text-teal-300 transition">Home</a></li>
-        <li><a href="#about" class="nav-link hover:text-teal-300 transition">About</a></li>
-        <li><a href="#services" class="nav-link hover:text-teal-300 transition">Services</a></li>
-        <li><a href="#projects" class="nav-link hover:text-teal-300 transition">Projects</a></li>
+        <li><a href="root/products.html" class="nav-link hover:text-teal-300 transition">Products</a></li>
+        <li><a href="root/projects.html" class="nav-link hover:text-teal-300 transition">Projects</a></li>
+        <li><a href="root/ai.html" class="nav-link hover:text-teal-300 transition">AI & Research</a></li>
+        <li><a href="root/about.html" class="nav-link hover:text-teal-300 transition">About</a></li>
+        <li><a href="root/updates.html" class="nav-link hover:text-teal-300 transition">Updates</a></li>
         <li><a href="root/contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
       </ul>
 
@@ -66,9 +68,11 @@
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
       <a href="index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
-      <a href="#about" class="nav-link py-2 hover:text-teal-300 transition">About</a>
-      <a href="#services" class="nav-link py-2 hover:text-teal-300 transition">Services</a>
-      <a href="#projects" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
+      <a href="root/products.html" class="nav-link py-2 hover:text-teal-300 transition">Products</a>
+      <a href="root/projects.html" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
+      <a href="root/ai.html" class="nav-link py-2 hover:text-teal-300 transition">AI & Research</a>
+      <a href="root/about.html" class="nav-link py-2 hover:text-teal-300 transition">About</a>
+      <a href="root/updates.html" class="nav-link py-2 hover:text-teal-300 transition">Updates</a>
       <a href="root/contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
     </div>
   </nav>
@@ -88,8 +92,8 @@
 
     <!-- Call-to-Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 fade-up delay-3">
-      <a href="#contact" class="px-8 py-4 border-2 border-teal-500 text-teal-500 bg-transparent rounded-xl font-bold shadow-lg text-lg transform transition-colors transition-transform duration-300 ease-out hover:-translate-y-1 hover:bg-teal-500 hover:text-white">Get a Quote</a>
-      <a href="#projects" class="px-8 py-4 border-2 border-teal-500 text-teal-500 bg-transparent rounded-xl font-bold shadow-lg text-lg transform transition-colors transition-transform duration-300 ease-out hover:-translate-y-1 hover:bg-teal-500 hover:text-white">See Our Work</a>
+      <a href="root/contact.html" class="px-8 py-4 border-2 border-teal-500 text-teal-500 bg-transparent rounded-xl font-bold shadow-lg text-lg transform transition-colors transition-transform duration-300 ease-out hover:-translate-y-1 hover:bg-teal-500 hover:text-white">Get a Quote</a>
+      <a href="root/products.html" class="px-8 py-4 border-2 border-teal-500 text-teal-500 bg-transparent rounded-xl font-bold shadow-lg text-lg transform transition-colors transition-transform duration-300 ease-out hover:-translate-y-1 hover:bg-teal-500 hover:text-white">See Our Products</a>
     </div>
   </section>
 
@@ -189,9 +193,46 @@
   </div>
 
   <!-- Footer -->
-  <footer class="text-center p-6 border-t border-gray-700 text-sm text-gray-400">
-    <p>Built with passion by Kode Developers</p>
-    <p class="mt-1">KodeDevelopers © 2026. All rights reserved.</p>
+  <footer class="py-12 px-6 border-t border-gray-700 fade-up">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 mb-8">
+      <!-- Branding -->
+      <div>
+        <h3 class="text-lg font-bold text-teal-400 mb-4">Kode Developers</h3>
+        <p class="text-sm text-gray-400">Building digital solutions with precision and passion.</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-semibold mb-4">Company</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="index.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+          <li><a href="root/about.html" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
+          <li><a href="root/updates.html" class="text-gray-400 hover:text-teal-400 transition">Updates</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="font-semibold mb-4">Resources</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="root/products.html" class="text-gray-400 hover:text-teal-400 transition">Products</a></li>
+          <li><a href="root/projects.html" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
+          <li><a href="root/ai.html" class="text-gray-400 hover:text-teal-400 transition">AI & Research</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold mb-4">Contact</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="root/contact.html" class="text-gray-400 hover:text-teal-400 transition">Get in Touch</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
+      <p>&copy; 2024 Kode Developers. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Custom JavaScript -->

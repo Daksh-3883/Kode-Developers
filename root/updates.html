@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Updates | Kode Developers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="Common.css">
+  <link rel="stylesheet" href="updates.css">
+</head>
+<body class="font-sans overflow-x-hidden dark-theme">
+
+  <!-- Loader -->
+  <div id="loader">
+    <h1>Kode Developers</h1>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-xl rounded-full px-6 py-3 w-[90%] max-w-5xl z-50 transition-all duration-500">
+    <div class="flex justify-between items-center">
+      <!-- Logo / Brand Name -->
+      <h1 class="text-lg md:text-xl font-bold text-teal-400 hover:scale-110 transition cursor-pointer glow-text" onclick="window.location='../index.html'">
+        Kode Developers
+      </h1>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="hidden md:flex gap-8 font-medium">
+        <li><a href="../index.html" class="nav-link hover:text-teal-300 transition">Home</a></li>
+        <li><a href="products.html" class="nav-link hover:text-teal-300 transition">Products</a></li>
+        <li><a href="projects.html" class="nav-link hover:text-teal-300 transition">Projects</a></li>
+        <li><a href="ai.html" class="nav-link hover:text-teal-300 transition">AI & Research</a></li>
+        <li><a href="about.html" class="nav-link hover:text-teal-300 transition">About</a></li>
+        <li><a href="updates.html" class="nav-link active hover:text-teal-300 transition">Updates</a></li>
+        <li><a href="contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
+      </ul>
+
+      <!-- Right Side Controls -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="p-2 rounded-full border border-gray-500 hover:scale-110 transition-transform focus:outline-none">
+          🌙
+        </button>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] focus:outline-none">
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
+      <a href="../index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
+      <a href="products.html" class="nav-link py-2 hover:text-teal-300 transition">Products</a>
+      <a href="projects.html" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
+      <a href="ai.html" class="nav-link py-2 hover:text-teal-300 transition">AI & Research</a>
+      <a href="about.html" class="nav-link py-2 hover:text-teal-300 transition">About</a>
+      <a href="updates.html" class="nav-link py-2 hover:text-teal-300 transition">Updates</a>
+      <a href="contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-24">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 glow-text leading-tight">
+      Updates
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl leading-relaxed">
+      Latest news and announcements from Kode Developers
+    </p>
+  </section>
+
+  <!-- Updates Section -->
+  <section class="py-16 md:py-20 px-6 fade-up">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Latest Updates</h2>
+
+      <!-- Updates List -->
+      <div class="space-y-8">
+        <!-- Placeholder for updates -->
+        <div class="glass-card p-8 text-center">
+          <p class="text-gray-400">
+            Updates about new features, releases, and company news will be posted here.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-700 mt-20 fade-up">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+      <!-- Branding -->
+      <div>
+        <h3 class="text-lg font-bold text-teal-400 mb-4">Kode Developers</h3>
+        <p class="text-sm text-gray-400">Building digital solutions with precision and passion.</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-semibold mb-4">Company</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="../index.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+          <li><a href="about.html" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
+          <li><a href="updates.html" class="text-gray-400 hover:text-teal-400 transition">Updates</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="font-semibold mb-4">Resources</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="products.html" class="text-gray-400 hover:text-teal-400 transition">Products</a></li>
+          <li><a href="projects.html" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
+          <li><a href="ai.html" class="text-gray-400 hover:text-teal-400 transition">AI & Research</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold mb-4">Contact</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="contact.html" class="text-gray-400 hover:text-teal-400 transition">Get in Touch</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+      <p>&copy; 2024 Kode Developers. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Common.js"></script>
+</body>
+</html>

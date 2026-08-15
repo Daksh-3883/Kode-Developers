@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Kode Developers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="Common.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body class="font-sans overflow-x-hidden dark-theme">
+
+  <!-- Loader -->
+  <div id="loader">
+    <h1>Kode Developers</h1>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-xl rounded-full px-6 py-3 w-[90%] max-w-5xl z-50 transition-all duration-500">
+    <div class="flex justify-between items-center">
+      <!-- Logo / Brand Name -->
+      <h1 class="text-lg md:text-xl font-bold text-teal-400 hover:scale-110 transition cursor-pointer glow-text" onclick="window.location='../index.html'">
+        Kode Developers
+      </h1>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="hidden md:flex gap-8 font-medium">
+        <li><a href="../index.html" class="nav-link hover:text-teal-300 transition">Home</a></li>
+        <li><a href="products.html" class="nav-link hover:text-teal-300 transition">Products</a></li>
+        <li><a href="projects.html" class="nav-link hover:text-teal-300 transition">Projects</a></li>
+        <li><a href="ai.html" class="nav-link hover:text-teal-300 transition">AI & Research</a></li>
+        <li><a href="about.html" class="nav-link active hover:text-teal-300 transition">About</a></li>
+        <li><a href="updates.html" class="nav-link hover:text-teal-300 transition">Updates</a></li>
+        <li><a href="contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
+      </ul>
+
+      <!-- Right Side Controls -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="p-2 rounded-full border border-gray-500 hover:scale-110 transition-transform focus:outline-none">
+          🌙
+        </button>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] focus:outline-none">
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
+      <a href="../index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
+      <a href="products.html" class="nav-link py-2 hover:text-teal-300 transition">Products</a>
+      <a href="projects.html" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
+      <a href="ai.html" class="nav-link py-2 hover:text-teal-300 transition">AI & Research</a>
+      <a href="about.html" class="nav-link py-2 hover:text-teal-300 transition">About</a>
+      <a href="updates.html" class="nav-link py-2 hover:text-teal-300 transition">Updates</a>
+      <a href="contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-24">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 glow-text leading-tight">
+      About Kode Developers
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl leading-relaxed">
+      Who we are and what drives us
+    </p>
+  </section>
+
+  <!-- About Content -->
+  <section class="py-16 md:py-20 px-6 fade-up">
+    <div class="max-w-4xl mx-auto">
+      <!-- Who We Are -->
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
+        <p class="text-lg leading-relaxed mb-4 text-gray-300">
+          Kode Developers is a team of builders focused on creating digital solutions that matter. 
+          We work with modern technologies and a forward-thinking mindset to solve real problems.
+        </p>
+      </div>
+
+      <!-- What We Do -->
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">What We Do</h2>
+        <p class="text-lg leading-relaxed mb-4 text-gray-300">
+          We design and develop applications, products, and systems that bring ideas to life. 
+          From AI-powered tools to web and mobile applications, we're committed to clean design, 
+          smart architecture, and technology that works.
+        </p>
+      </div>
+
+      <!-- Our Approach -->
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Approach</h2>
+        <p class="text-lg leading-relaxed mb-4 text-gray-300">
+          We believe in innovation with intention. Every project is built with precision, 
+          every decision grounded in purpose, and every solution designed to deliver real value. 
+          We stay current, stay focused, and ship with confidence.
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="glass-card p-8">
+        <h3 class="text-2xl font-bold text-teal-400 mb-4">Our Mission</h3>
+        <p class="text-lg leading-relaxed text-gray-300">
+          To make technology accessible and impactful. We build tools and solutions that empower 
+          creators, developers, and teams to move faster and think bigger.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-700 mt-20 fade-up">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+      <!-- Branding -->
+      <div>
+        <h3 class="text-lg font-bold text-teal-400 mb-4">Kode Developers</h3>
+        <p class="text-sm text-gray-400">Building digital solutions with precision and passion.</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-semibold mb-4">Company</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="../index.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+          <li><a href="about.html" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
+          <li><a href="updates.html" class="text-gray-400 hover:text-teal-400 transition">Updates</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="font-semibold mb-4">Resources</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="products.html" class="text-gray-400 hover:text-teal-400 transition">Products</a></li>
+          <li><a href="projects.html" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
+          <li><a href="ai.html" class="text-gray-400 hover:text-teal-400 transition">AI & Research</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold mb-4">Contact</h4>
+        <ul class="text-sm space-y-2">
+          <li><a href="contact.html" class="text-gray-400 hover:text-teal-400 transition">Get in Touch</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+      <p>&copy; 2024 Kode Developers. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Common.js"></script>
+</body>
+</html>
