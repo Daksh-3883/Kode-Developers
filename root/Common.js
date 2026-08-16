@@ -136,12 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if(y > lastY && y > 120 && !hidden){
-      navbar.style.transform = "translate(-50%,-140%)";
+      navbar.style.transform = "translateY(-140%)";
       hidden = true;
     }
 
     if(y < lastY && hidden){
-      navbar.style.transform = "translate(-50%,0)";
+      navbar.style.transform = "translateY(0)";
       hidden = false;
     }
 
