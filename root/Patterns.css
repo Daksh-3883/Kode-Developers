@@ -1,0 +1,425 @@
+/* ======================================================
+   PATTERNS.CSS
+   Reusable Decorative Pattern System
+   Phase 2C-2
+====================================================== */
+
+/*
+   This file contains four reusable decorative patterns:
+   1. Honeycomb - Outlined hexagons in geometric layout
+   2. Technical Grid - Subtle gradient-based grid
+   3. Network / Nodes - Abstract network visualization
+   4. Geometric Lines / Orbits - Abstract geometric shapes
+
+   Each pattern:
+   - Supports light and dark themes via CSS variables
+   - Respects prefers-reduced-motion for accessibility
+   - Uses low opacity for subtle decoration
+   - Designed for reuse across Phase 3 and beyond
+   - Does not impact text readability
+*/
+
+/* ================= HONEYCOMB PATTERN ================= */
+
+/*
+   Reusable honeycomb decorative pattern.
+   Use: Add .pattern-honeycomb to a container
+   Optionally position it as a partial background from edges/corners.
+*/
+
+.pattern-honeycomb {
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-honeycomb::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2312c8c4' stroke-width='1.2' opacity='0.15'%3E%3Cpath d='M30,15 L60,0 L90,15 L90,45 L60,60 L30,45 Z'/%3E%3Cpath d='M30,45 L60,30 L90,45 L90,75 L60,90 L30,75 Z'/%3E%3Cpath d='M60,60 L90,45 L120,60 L120,90 L90,105 L60,90 Z'/%3E%3Cpath d='M0,30 L30,15 L60,30 L60,60 L30,75 L0,60 Z'/%3E%3Cpath d='M30,75 L60,60 L90,75 L90,105 L60,120 L30,105 Z'/%3E%3Cpath d='M0,60 L30,45 L60,60 L60,90 L30,105 L0,90 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark theme honeycomb - slightly more visible teal */
+body.dark-theme .pattern-honeycomb::before {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2312c8c4' stroke-width='1.2' opacity='0.18'%3E%3Cpath d='M30,15 L60,0 L90,15 L90,45 L60,60 L30,45 Z'/%3E%3Cpath d='M30,45 L60,30 L90,45 L90,75 L60,90 L30,75 Z'/%3E%3Cpath d='M60,60 L90,45 L120,60 L120,90 L90,105 L60,90 Z'/%3E%3Cpath d='M0,30 L30,15 L60,30 L60,60 L30,75 L0,60 Z'/%3E%3Cpath d='M30,75 L60,60 L90,75 L90,105 L60,120 L30,105 Z'/%3E%3Cpath d='M0,60 L30,45 L60,60 L60,90 L30,105 L0,90 Z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.16;
+}
+
+/* Light theme honeycomb - darker outline */
+body.light-theme .pattern-honeycomb::before {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230f9f9b' stroke-width='1.2' opacity='0.12'%3E%3Cpath d='M30,15 L60,0 L90,15 L90,45 L60,60 L30,45 Z'/%3E%3Cpath d='M30,45 L60,30 L90,45 L90,75 L60,90 L30,75 Z'/%3E%3Cpath d='M60,60 L90,45 L120,60 L120,90 L90,105 L60,90 Z'/%3E%3Cpath d='M0,30 L30,15 L60,30 L60,60 L30,75 L0,60 Z'/%3E%3Cpath d='M30,75 L60,60 L90,75 L90,105 L60,120 L30,105 Z'/%3E%3Cpath d='M0,60 L30,45 L60,60 L60,90 L30,105 L0,90 Z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.10;
+}
+
+/* Reduced motion - disable any potential ambient animation */
+@media (prefers-reduced-motion: reduce) {
+  .pattern-honeycomb::before {
+    animation: none !important;
+  }
+}
+
+
+/* ================= TECHNICAL GRID PATTERN ================= */
+
+/*
+   Reusable subtle technical grid using CSS gradients.
+   Use: Add .pattern-grid to a container
+   Optional: Use .pattern-grid-medium or .pattern-grid-large for different sizes
+*/
+
+.pattern-grid {
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-grid::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(18, 200, 196, 0.08) 25%, rgba(18, 200, 196, 0.08) 26%, transparent 27%, transparent 74%, rgba(18, 200, 196, 0.08) 75%, rgba(18, 200, 196, 0.08) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(18, 200, 196, 0.08) 25%, rgba(18, 200, 196, 0.08) 26%, transparent 27%, transparent 74%, rgba(18, 200, 196, 0.08) 75%, rgba(18, 200, 196, 0.08) 76%, transparent 77%, transparent);
+  background-size: 60px 60px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark theme grid - more prominent */
+body.dark-theme .pattern-grid::before {
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(18, 200, 196, 0.12) 25%, rgba(18, 200, 196, 0.12) 26%, transparent 27%, transparent 74%, rgba(18, 200, 196, 0.12) 75%, rgba(18, 200, 196, 0.12) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(18, 200, 196, 0.12) 25%, rgba(18, 200, 196, 0.12) 26%, transparent 27%, transparent 74%, rgba(18, 200, 196, 0.12) 75%, rgba(18, 200, 196, 0.12) 76%, transparent 77%, transparent);
+  opacity: 0.6;
+}
+
+/* Light theme grid - more subtle */
+body.light-theme .pattern-grid::before {
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(15, 159, 155, 0.06) 25%, rgba(15, 159, 155, 0.06) 26%, transparent 27%, transparent 74%, rgba(15, 159, 155, 0.06) 75%, rgba(15, 159, 155, 0.06) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(15, 159, 155, 0.06) 25%, rgba(15, 159, 155, 0.06) 26%, transparent 27%, transparent 74%, rgba(15, 159, 155, 0.06) 75%, rgba(15, 159, 155, 0.06) 76%, transparent 77%, transparent);
+  opacity: 0.4;
+}
+
+/* Medium grid size */
+.pattern-grid-medium::before {
+  background-size: 80px 80px;
+}
+
+/* Large grid size */
+.pattern-grid-large::before {
+  background-size: 100px 100px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pattern-grid::before {
+    animation: none !important;
+  }
+}
+
+
+/* ================= NETWORK / NODES PATTERN ================= */
+
+/*
+   Reusable abstract technical network pattern.
+   Use: Add .pattern-network to a container
+   The SVG is embedded for easy styling and no external dependencies.
+*/
+
+.pattern-network {
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-network::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.network-line%7Bstroke:%2312c8c4;stroke-width:1.2;opacity:0.15%7D.network-node%7Bfill:%2312c8c4;opacity:0.2%7D.network-node-large%7Bfill:%2312c8c4;opacity:0.25%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cline class='network-line' x1='50' y1='50' x2='150' y2='100'/%3E%3Cline class='network-line' x1='150' y1='100' x2='250' y2='80'/%3E%3Cline class='network-line' x1='250' y1='80' x2='350' y2='150'/%3E%3Cline class='network-line' x1='150' y1='100' x2='180' y2='200'/%3E%3Cline class='network-line' x1='180' y1='200' x2='100' y2='250'/%3E%3Cline class='network-line' x1='180' y1='200' x2='300' y2='280'/%3E%3Cline class='network-line' x1='300' y1='280' x2='350' y2='350'/%3E%3Cline class='network-line' x1='50' y1='50' x2='100' y2='150'/%3E%3Cline class='network-line' x1='100' y1='150' x2='180' y2='200'/%3E%3Cline class='network-line' x1='250' y1='80' x2='300' y2='150'/%3E%3Cline class='network-line' x1='300' y1='150' x2='300' y2='280'/%3E%3Cline class='network-line' x1='100' y1='250' x2='180' y2='300'/%3E%3Cline class='network-line' x1='180' y1='300' x2='300' y2='280'/%3E%3Ccircle class='network-node-large' cx='50' cy='50' r='3.5'/%3E%3Ccircle class='network-node-large' cx='150' cy='100' r='3.5'/%3E%3Ccircle class='network-node' cx='250' cy='80' r='2.8'/%3E%3Ccircle class='network-node' cx='350' cy='150' r='2.8'/%3E%3Ccircle class='network-node-large' cx='180' cy='200' r='3.5'/%3E%3Ccircle class='network-node' cx='100' cy='250' r='2.8'/%3E%3Ccircle class='network-node-large' cx='300' cy='280' r='3.5'/%3E%3Ccircle class='network-node' cx='350' cy='350' r='2.8'/%3E%3Ccircle class='network-node' cx='100' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='300' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='180' cy='300' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark theme network - slightly more visible */
+body.dark-theme .pattern-network::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.network-line%7Bstroke:%2312c8c4;stroke-width:1.2;opacity:0.18%7D.network-node%7Bfill:%2312c8c4;opacity:0.24%7D.network-node-large%7Bfill:%2312c8c4;opacity:0.30%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cline class='network-line' x1='50' y1='50' x2='150' y2='100'/%3E%3Cline class='network-line' x1='150' y1='100' x2='250' y2='80'/%3E%3Cline class='network-line' x1='250' y1='80' x2='350' y2='150'/%3E%3Cline class='network-line' x1='150' y1='100' x2='180' y2='200'/%3E%3Cline class='network-line' x1='180' y1='200' x2='100' y2='250'/%3E%3Cline class='network-line' x1='180' y1='200' x2='300' y2='280'/%3E%3Cline class='network-line' x1='300' y1='280' x2='350' y2='350'/%3E%3Cline class='network-line' x1='50' y1='50' x2='100' y2='150'/%3E%3Cline class='network-line' x1='100' y1='150' x2='180' y2='200'/%3E%3Cline class='network-line' x1='250' y1='80' x2='300' y2='150'/%3E%3Cline class='network-line' x1='300' y1='150' x2='300' y2='280'/%3E%3Cline class='network-line' x1='100' y1='250' x2='180' y2='300'/%3E%3Cline class='network-line' x1='180' y1='300' x2='300' y2='280'/%3E%3Ccircle class='network-node-large' cx='50' cy='50' r='3.5'/%3E%3Ccircle class='network-node-large' cx='150' cy='100' r='3.5'/%3E%3Ccircle class='network-node' cx='250' cy='80' r='2.8'/%3E%3Ccircle class='network-node' cx='350' cy='150' r='2.8'/%3E%3Ccircle class='network-node-large' cx='180' cy='200' r='3.5'/%3E%3Ccircle class='network-node' cx='100' cy='250' r='2.8'/%3E%3Ccircle class='network-node-large' cx='300' cy='280' r='3.5'/%3E%3Ccircle class='network-node' cx='350' cy='350' r='2.8'/%3E%3Ccircle class='network-node' cx='100' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='300' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='180' cy='300' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.16;
+}
+
+/* Light theme network - more subtle */
+body.light-theme .pattern-network::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.network-line%7Bstroke:%230f9f9b;stroke-width:1.2;opacity:0.12%7D.network-node%7Bfill:%230f9f9b;opacity:0.14%7D.network-node-large%7Bfill:%230f9f9b;opacity:0.18%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cline class='network-line' x1='50' y1='50' x2='150' y2='100'/%3E%3Cline class='network-line' x1='150' y1='100' x2='250' y2='80'/%3E%3Cline class='network-line' x1='250' y1='80' x2='350' y2='150'/%3E%3Cline class='network-line' x1='150' y1='100' x2='180' y2='200'/%3E%3Cline class='network-line' x1='180' y1='200' x2='100' y2='250'/%3E%3Cline class='network-line' x1='180' y1='200' x2='300' y2='280'/%3E%3Cline class='network-line' x1='300' y1='280' x2='350' y2='350'/%3E%3Cline class='network-line' x1='50' y1='50' x2='100' y2='150'/%3E%3Cline class='network-line' x1='100' y1='150' x2='180' y2='200'/%3E%3Cline class='network-line' x1='250' y1='80' x2='300' y2='150'/%3E%3Cline class='network-line' x1='300' y1='150' x2='300' y2='280'/%3E%3Cline class='network-line' x1='100' y1='250' x2='180' y2='300'/%3E%3Cline class='network-line' x1='180' y1='300' x2='300' y2='280'/%3E%3Ccircle class='network-node-large' cx='50' cy='50' r='3.5'/%3E%3Ccircle class='network-node-large' cx='150' cy='100' r='3.5'/%3E%3Ccircle class='network-node' cx='250' cy='80' r='2.8'/%3E%3Ccircle class='network-node' cx='350' cy='150' r='2.8'/%3E%3Ccircle class='network-node-large' cx='180' cy='200' r='3.5'/%3E%3Ccircle class='network-node' cx='100' cy='250' r='2.8'/%3E%3Ccircle class='network-node-large' cx='300' cy='280' r='3.5'/%3E%3Ccircle class='network-node' cx='350' cy='350' r='2.8'/%3E%3Ccircle class='network-node' cx='100' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='300' cy='150' r='2.5'/%3E%3Ccircle class='network-node' cx='180' cy='300' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.10;
+}
+
+/* Network animation - optional subtle glow pulse (disabled by default for accessibility) */
+@keyframes network-pulse {
+  0%, 100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.16;
+  }
+}
+
+/* Animated network variant - opt-in with .pattern-network-animated */
+.pattern-network-animated::before {
+  animation: network-pulse 6s ease-in-out infinite;
+}
+
+body.dark-theme .pattern-network-animated::before {
+  animation: network-pulse-dark 6s ease-in-out infinite;
+}
+
+@keyframes network-pulse-dark {
+  0%, 100% {
+    opacity: 0.16;
+  }
+  50% {
+    opacity: 0.20;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pattern-network-animated::before {
+    animation: none !important;
+  }
+}
+
+
+/* ================= GEOMETRIC LINES / ORBITS PATTERN ================= */
+
+/*
+   Reusable abstract geometric decorative pattern.
+   Use: Add .pattern-geometric to a container
+   Variations: .pattern-geometric-subtle, .pattern-geometric-moderate
+*/
+
+.pattern-geometric {
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-geometric::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.geo-line%7Bstroke:%2312c8c4;stroke-width:1.5;fill:none;opacity:0.12%7D.geo-circle%7Bstroke:%2312c8c4;stroke-width:1.2;fill:none;opacity:0.10%7D.geo-accent%7Bstroke:%2312c8c4;stroke-width:0.9;fill:none;opacity:0.08%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='80'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='60'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='40'/%3E%3Cline class='geo-line' x1='150' y1='70' x2='150' y2='230'/%3E%3Cline class='geo-line' x1='70' y1='150' x2='230' y2='150'/%3E%3Cline class='geo-line' x1='90' y1='90' x2='210' y2='210'/%3E%3Cline class='geo-line' x1='210' y1='90' x2='90' y2='210'/%3E%3Cpath class='geo-accent' d='M 150 70 Q 200 100 230 150'/%3E%3Cpath class='geo-accent' d='M 230 150 Q 200 200 150 230'/%3E%3Cpath class='geo-accent' d='M 150 230 Q 100 200 70 150'/%3E%3Cpath class='geo-accent' d='M 70 150 Q 100 100 150 70'/%3E%3Crect class='geo-line' x='100' y='100' width='100' height='100'/%3E%3Cpolygon class='geo-accent' points='150,80 180,130 160,180 140,180 120,130'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark theme geometric - more visible */
+body.dark-theme .pattern-geometric::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.geo-line%7Bstroke:%2312c8c4;stroke-width:1.5;fill:none;opacity:0.15%7D.geo-circle%7Bstroke:%2312c8c4;stroke-width:1.2;fill:none;opacity:0.13%7D.geo-accent%7Bstroke:%2312c8c4;stroke-width:0.9;fill:none;opacity:0.10%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='80'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='60'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='40'/%3E%3Cline class='geo-line' x1='150' y1='70' x2='150' y2='230'/%3E%3Cline class='geo-line' x1='70' y1='150' x2='230' y2='150'/%3E%3Cline class='geo-line' x1='90' y1='90' x2='210' y2='210'/%3E%3Cline class='geo-line' x1='210' y1='90' x2='90' y2='210'/%3E%3Cpath class='geo-accent' d='M 150 70 Q 200 100 230 150'/%3E%3Cpath class='geo-accent' d='M 230 150 Q 200 200 150 230'/%3E%3Cpath class='geo-accent' d='M 150 230 Q 100 200 70 150'/%3E%3Cpath class='geo-accent' d='M 70 150 Q 100 100 150 70'/%3E%3Crect class='geo-line' x='100' y='100' width='100' height='100'/%3E%3Cpolygon class='geo-accent' points='150,80 180,130 160,180 140,180 120,130'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+/* Light theme geometric - more subtle */
+body.light-theme .pattern-geometric::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cstyle%3E.geo-line%7Bstroke:%230f9f9b;stroke-width:1.5;fill:none;opacity:0.08%7D.geo-circle%7Bstroke:%230f9f9b;stroke-width:1.2;fill:none;opacity:0.06%7D.geo-accent%7Bstroke:%230f9f9b;stroke-width:0.9;fill:none;opacity:0.05%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='80'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='60'/%3E%3Ccircle class='geo-circle' cx='150' cy='150' r='40'/%3E%3Cline class='geo-line' x1='150' y1='70' x2='150' y2='230'/%3E%3Cline class='geo-line' x1='70' y1='150' x2='230' y2='150'/%3E%3Cline class='geo-line' x1='90' y1='90' x2='210' y2='210'/%3E%3Cline class='geo-line' x1='210' y1='90' x2='90' y2='210'/%3E%3Cpath class='geo-accent' d='M 150 70 Q 200 100 230 150'/%3E%3Cpath class='geo-accent' d='M 230 150 Q 200 200 150 230'/%3E%3Cpath class='geo-accent' d='M 150 230 Q 100 200 70 150'/%3E%3Cpath class='geo-accent' d='M 70 150 Q 100 100 150 70'/%3E%3Crect class='geo-line' x='100' y='100' width='100' height='100'/%3E%3Cpolygon class='geo-accent' points='150,80 180,130 160,180 140,180 120,130'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* Subtle variant - lower opacity */
+.pattern-geometric-subtle::before {
+  opacity: 0.35 !important;
+}
+
+body.dark-theme .pattern-geometric-subtle::before {
+  opacity: 0.4 !important;
+}
+
+body.light-theme .pattern-geometric-subtle::before {
+  opacity: 0.25 !important;
+}
+
+/* Moderate variant - higher opacity */
+.pattern-geometric-moderate::before {
+  opacity: 0.65 !important;
+}
+
+body.dark-theme .pattern-geometric-moderate::before {
+  opacity: 0.75 !important;
+}
+
+body.light-theme .pattern-geometric-moderate::before {
+  opacity: 0.5 !important;
+}
+
+/* Optional subtle rotation animation */
+@keyframes geometric-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animated variant - opt-in with .pattern-geometric-animated */
+.pattern-geometric-animated::before {
+  animation: geometric-orbit 20s linear infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pattern-geometric-animated::before {
+    animation: none !important;
+  }
+}
+
+
+/* ================= UTILITY CLASSES ================= */
+
+/*
+   General pattern utilities for positioning and control.
+*/
+
+/* Pattern positioning - use with any pattern */
+.pattern-corner-top-left::before {
+  background-position: 0 0;
+  width: 50%;
+  height: 50%;
+  right: auto;
+  bottom: auto;
+  opacity: 0.08;
+}
+
+.pattern-corner-top-right::before {
+  background-position: 100% 0;
+  width: 50%;
+  height: 50%;
+  left: auto;
+  bottom: auto;
+  opacity: 0.08;
+}
+
+.pattern-corner-bottom-left::before {
+  background-position: 0 100%;
+  width: 50%;
+  height: 50%;
+  right: auto;
+  top: auto;
+  opacity: 0.08;
+}
+
+.pattern-corner-bottom-right::before {
+  background-position: 100% 100%;
+  width: 50%;
+  height: 50%;
+  left: auto;
+  top: auto;
+  opacity: 0.08;
+}
+
+/* Edge patterns */
+.pattern-edge-top::before {
+  height: 40%;
+  bottom: auto;
+  opacity: 0.06;
+}
+
+.pattern-edge-bottom::before {
+  height: 40%;
+  top: auto;
+  opacity: 0.06;
+}
+
+.pattern-edge-left::before {
+  width: 30%;
+  right: auto;
+  opacity: 0.08;
+}
+
+.pattern-edge-right::before {
+  width: 30%;
+  left: auto;
+  opacity: 0.08;
+}
+
+/* Opacity control */
+.pattern-opacity-5::before {
+  opacity: 0.05 !important;
+}
+
+.pattern-opacity-10::before {
+  opacity: 0.10 !important;
+}
+
+.pattern-opacity-15::before {
+  opacity: 0.15 !important;
+}
+
+.pattern-opacity-20::before {
+  opacity: 0.20 !important;
+}
+
+.pattern-opacity-25::before {
+  opacity: 0.25 !important;
+}
+
+
+/* ================= Z-INDEX MANAGEMENT ================= */
+
+/*
+   Patterns use z-index: 0 to sit behind content by default.
+   If you need patterns to be behind specific content layers,
+   ensure those elements have z-index > 0 or use position: relative.
+*/
+
+.pattern-honeycomb,
+.pattern-grid,
+.pattern-network,
+.pattern-geometric {
+  position: relative;
+}
+
+.pattern-honeycomb::before,
+.pattern-grid::before,
+.pattern-network::before,
+.pattern-geometric::before {
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure content stays above patterns */
+.pattern-honeycomb > *,
+.pattern-grid > *,
+.pattern-network > *,
+.pattern-geometric > * {
+  position: relative;
+  z-index: 1;
+}

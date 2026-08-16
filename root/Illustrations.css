@@ -1,0 +1,817 @@
+/* ======================================================
+   ILLUSTRATIONS.CSS
+   Reusable Animated Illustration Foundation
+   Phase 2C-2B
+====================================================== */
+
+/*
+   This file provides reusable styling for animated illustrations.
+   
+   Features:
+   - Responsive illustration containers and layers
+   - Reusable geometric element styling
+   - Lightweight motion classes
+   - Theme compatibility
+   - Accessibility support (prefers-reduced-motion)
+   - CSS/SVG-based (no JavaScript required)
+   
+   Do NOT use this file for page-specific artwork.
+   Phase 3 will create actual page illustrations using these foundations.
+*/
+
+
+/* ================= ILLUSTRATION CONTAINER ================= */
+
+/*
+   Responsive container for illustrations.
+   Use: <div class="illustration-container">
+   
+   Features:
+   - Maintains aspect ratio
+   - No horizontal overflow
+   - Responsive scaling
+   - Proper z-index management
+*/
+
+.illustration-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive sizing variants */
+.illustration-container-small {
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.illustration-container-medium {
+  min-height: 300px;
+  max-height: 500px;
+}
+
+.illustration-container-large {
+  min-height: 400px;
+  max-height: 700px;
+}
+
+.illustration-container-hero {
+  min-height: 450px;
+  max-height: 800px;
+}
+
+/* SVG within containers */
+.illustration-container svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  overflow: visible;
+}
+
+
+/* ================= ILLUSTRATION LAYERS ================= */
+
+/*
+   Layer system for organizing illustration elements.
+   Use these classes to organize visual hierarchy.
+   
+   Order (bottom to top):
+   1. background - static or subtle patterns
+   2. decorative - supportive geometric shapes
+   3. main - primary visual elements
+   4. interactive - optional interactive elements
+*/
+
+.illustration-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.illustration-decorative {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.illustration-main {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.illustration-interactive {
+  position: absolute;
+  z-index: 4;
+  pointer-events: auto;
+}
+
+/* Stacking order: ensure layers render correctly */
+.illustration-container {
+  position: relative;
+}
+
+.illustration-background,
+.illustration-decorative {
+  pointer-events: none;
+}
+
+
+/* ================= GEOMETRIC ELEMENTS ================= */
+
+/*
+   Reusable styling for basic geometric shapes used in illustrations.
+   These classes provide base styling; actual SVG content defines shapes.
+*/
+
+/* Circles and rings */
+.geom-circle {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.geom-circle-filled {
+  fill: var(--color-accent-primary);
+  opacity: 0.15;
+}
+
+.geom-ring {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.2;
+  opacity: 0.5;
+}
+
+.geom-ring-accent {
+  fill: none;
+  stroke: var(--color-brand-primary);
+  stroke-width: 2;
+  opacity: 0.7;
+}
+
+/* Arcs and paths */
+.geom-arc {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+
+.geom-path {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.2;
+  opacity: 0.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.geom-path-thick {
+  fill: none;
+  stroke: var(--color-brand-primary);
+  stroke-width: 2.5;
+  opacity: 0.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Lines */
+.geom-line {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1;
+  opacity: 0.4;
+}
+
+.geom-line-accent {
+  fill: none;
+  stroke: var(--color-brand-primary);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.geom-line-thick {
+  fill: none;
+  stroke: var(--color-brand-primary);
+  stroke-width: 2;
+  opacity: 0.7;
+}
+
+/* Nodes and points */
+.geom-node {
+  fill: var(--color-accent-primary);
+  opacity: 0.5;
+}
+
+.geom-node-accent {
+  fill: var(--color-brand-primary);
+  opacity: 0.7;
+}
+
+.geom-node-large {
+  fill: var(--color-brand-primary);
+  opacity: 0.8;
+}
+
+/* Hexagons */
+.geom-hexagon {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.2;
+  opacity: 0.5;
+}
+
+.geom-hexagon-filled {
+  fill: var(--color-accent-primary);
+  opacity: 0.1;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+/* Squares and blocks */
+.geom-square {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.2;
+  opacity: 0.5;
+}
+
+.geom-square-filled {
+  fill: var(--color-accent-primary);
+  opacity: 0.1;
+}
+
+.geom-block {
+  fill: var(--color-surface);
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+/* Connecting paths (data flow) */
+.geom-connector {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1;
+  opacity: 0.4;
+}
+
+.geom-connector-active {
+  fill: none;
+  stroke: var(--color-brand-primary);
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+/* Theme adjustments for geometric elements */
+body.dark-theme .geom-circle,
+body.dark-theme .geom-ring,
+body.dark-theme .geom-arc,
+body.dark-theme .geom-path,
+body.dark-theme .geom-line,
+body.dark-theme .geom-node,
+body.dark-theme .geom-hexagon,
+body.dark-theme .geom-square {
+  opacity: 0.65;
+}
+
+body.light-theme .geom-circle,
+body.light-theme .geom-ring,
+body.light-theme .geom-arc,
+body.light-theme .geom-path,
+body.light-theme .geom-line,
+body.light-theme .geom-node,
+body.light-theme .geom-hexagon,
+body.light-theme .geom-square {
+  opacity: 0.45;
+}
+
+
+/* ================= REUSABLE MOTION CLASSES ================= */
+
+/*
+   Lightweight motion effects for illustrations.
+   Apply to elements or groups to add animation.
+   
+   Rules:
+   - Slow ambient loops: 4-12 seconds
+   - Smooth easing curves
+   - Transform and opacity priority
+   - Respect prefers-reduced-motion
+   - No automatic animation; must be explicitly applied
+*/
+
+/* Gentle floating effect */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.motion-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.motion-float-slow {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.motion-float-slower {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+/* Slow rotation */
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.motion-rotate-slow {
+  animation: rotate-slow 8s linear infinite;
+  transform-origin: center;
+}
+
+.motion-rotate-medium {
+  animation: rotate-slow 6s linear infinite;
+  transform-origin: center;
+}
+
+.motion-rotate-fast {
+  animation: rotate-slow 4s linear infinite;
+  transform-origin: center;
+}
+
+/* Reverse slow rotation */
+@keyframes rotate-reverse-slow {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.motion-rotate-reverse-slow {
+  animation: rotate-reverse-slow 8s linear infinite;
+  transform-origin: center;
+}
+
+.motion-rotate-reverse-medium {
+  animation: rotate-reverse-slow 6s linear infinite;
+  transform-origin: center;
+}
+
+/* Orbiting effect */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(60px) rotate(-360deg);
+  }
+}
+
+.motion-orbit {
+  animation: orbit 8s linear infinite;
+  transform-origin: center;
+}
+
+.motion-orbit-slow {
+  animation: orbit 12s linear infinite;
+  transform-origin: center;
+}
+
+.motion-orbit-fast {
+  animation: orbit 6s linear infinite;
+  transform-origin: center;
+}
+
+/* Subtle node pulse */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.7;
+    r: 2px;
+  }
+  50% {
+    opacity: 1;
+    r: 3px;
+  }
+}
+
+.motion-pulse-node {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.motion-pulse-node-slow {
+  animation: pulse-subtle 5s ease-in-out infinite;
+}
+
+/* Fade and reveal */
+@keyframes fade-reveal {
+  0%, 10% {
+    opacity: 0;
+  }
+  20%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.motion-fade-reveal {
+  animation: fade-reveal 6s ease-in-out infinite;
+}
+
+.motion-fade-reveal-slow {
+  animation: fade-reveal 8s ease-in-out infinite;
+}
+
+/* Subtle scale pulse */
+@keyframes scale-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.motion-scale-subtle {
+  animation: scale-subtle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.motion-scale-slow {
+  animation: scale-subtle 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Data flow along paths (stroke animation) */
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.motion-data-flow {
+  animation: data-flow 3s ease-in-out infinite;
+  stroke-dasharray: 100;
+  stroke-linecap: round;
+}
+
+.motion-data-flow-slow {
+  animation: data-flow 5s ease-in-out infinite;
+  stroke-dasharray: 100;
+  stroke-linecap: round;
+}
+
+/* Combined: float + rotate */
+@keyframes float-rotate {
+  0% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateZ(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotateZ(360deg);
+  }
+}
+
+.motion-float-rotate {
+  animation: float-rotate 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Combined: fade + scale */
+@keyframes fade-scale {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.motion-fade-scale {
+  animation: fade-scale 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+
+/* ================= MOTION TIMING VARIANTS ================= */
+
+/*
+   Utility classes for adjusting animation timing.
+   Apply in addition to the main motion class.
+   Example: class="motion-rotate-slow motion-duration-10s"
+*/
+
+@keyframes duration-6s {
+  to { opacity: 1; }
+}
+
+@keyframes duration-8s {
+  to { opacity: 1; }
+}
+
+@keyframes duration-10s {
+  to { opacity: 1; }
+}
+
+@keyframes duration-12s {
+  to { opacity: 1; }
+}
+
+.motion-duration-6s {
+  animation-duration: 6s !important;
+}
+
+.motion-duration-8s {
+  animation-duration: 8s !important;
+}
+
+.motion-duration-10s {
+  animation-duration: 10s !important;
+}
+
+.motion-duration-12s {
+  animation-duration: 12s !important;
+}
+
+
+/* ================= ACCESSIBILITY ================= */
+
+/*
+   Respect prefers-reduced-motion preference.
+   When enabled, disable all decorative animations.
+   Static illustration remains visible.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-float,
+  .motion-float-slow,
+  .motion-float-slower,
+  .motion-rotate-slow,
+  .motion-rotate-medium,
+  .motion-rotate-fast,
+  .motion-rotate-reverse-slow,
+  .motion-rotate-reverse-medium,
+  .motion-orbit,
+  .motion-orbit-slow,
+  .motion-orbit-fast,
+  .motion-pulse-node,
+  .motion-pulse-node-slow,
+  .motion-fade-reveal,
+  .motion-fade-reveal-slow,
+  .motion-scale-subtle,
+  .motion-scale-slow,
+  .motion-data-flow,
+  .motion-data-flow-slow,
+  .motion-float-rotate,
+  .motion-fade-scale {
+    animation: none !important;
+  }
+
+  /* Keep static state visible */
+  .motion-float,
+  .motion-float-slow,
+  .motion-float-slower,
+  .motion-rotate-slow,
+  .motion-rotate-medium,
+  .motion-rotate-fast,
+  .motion-rotate-reverse-slow,
+  .motion-rotate-reverse-medium,
+  .motion-orbit,
+  .motion-orbit-slow,
+  .motion-orbit-fast {
+    transform: none !important;
+  }
+
+  .motion-pulse-node,
+  .motion-pulse-node-slow,
+  .motion-fade-reveal,
+  .motion-fade-reveal-slow,
+  .motion-scale-subtle,
+  .motion-scale-slow,
+  .motion-data-flow,
+  .motion-data-flow-slow,
+  .motion-float-rotate,
+  .motion-fade-scale {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+
+/* ================= UTILITY CLASSES ================= */
+
+/*
+   Helper classes for illustration composition.
+*/
+
+/* Visibility control */
+.illust-hidden {
+  display: none;
+}
+
+.illust-opacity-light {
+  opacity: 0.4;
+}
+
+.illust-opacity-medium {
+  opacity: 0.6;
+}
+
+.illust-opacity-strong {
+  opacity: 0.85;
+}
+
+/* Size scaling within containers */
+.illust-scale-small {
+  transform: scale(0.8);
+}
+
+.illust-scale-medium {
+  transform: scale(1);
+}
+
+.illust-scale-large {
+  transform: scale(1.2);
+}
+
+/* Positioning helpers */
+.illust-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.illust-align-top {
+  align-items: flex-start;
+}
+
+.illust-align-bottom {
+  align-items: flex-end;
+}
+
+.illust-justify-left {
+  justify-content: flex-start;
+}
+
+.illust-justify-right {
+  justify-content: flex-end;
+}
+
+/* Responsive padding/spacing */
+.illust-padded {
+  padding: 2rem;
+}
+
+.illust-padded-sm {
+  padding: 1rem;
+}
+
+.illust-padded-lg {
+  padding: 3rem;
+}
+
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+
+@media (max-width: 768px) {
+  .illustration-container-small {
+    min-height: 150px;
+    max-height: 250px;
+  }
+
+  .illustration-container-medium {
+    min-height: 200px;
+    max-height: 350px;
+  }
+
+  .illustration-container-large {
+    min-height: 250px;
+    max-height: 500px;
+  }
+
+  .illustration-container-hero {
+    min-height: 300px;
+    max-height: 500px;
+  }
+
+  .illust-padded {
+    padding: 1rem;
+  }
+
+  .illust-padded-lg {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .illustration-container {
+    min-height: 150px;
+  }
+
+  .illustration-container-small {
+    min-height: 120px;
+    max-height: 180px;
+  }
+
+  .illustration-container-medium {
+    min-height: 150px;
+    max-height: 250px;
+  }
+
+  .illustration-container-large {
+    min-height: 180px;
+    max-height: 350px;
+  }
+
+  .illustration-container-hero {
+    min-height: 200px;
+    max-height: 350px;
+  }
+
+  .illust-padded,
+  .illust-padded-sm {
+    padding: 0.5rem;
+  }
+
+  .illust-padded-lg {
+    padding: 1rem;
+  }
+}
+
+
+/* ================= COLOR THEME ADJUSTMENTS ================= */
+
+/*
+   Geometric elements inherit theme colors automatically via variables.
+   This section provides additional theme-specific refinements.
+*/
+
+body.dark-theme .illustration-background {
+  background: var(--color-bg-primary);
+}
+
+body.light-theme .illustration-background {
+  background: var(--color-bg-primary);
+}
+
+/* Ensure proper contrast in both themes */
+body.dark-theme .geom-circle-filled,
+body.dark-theme .geom-square-filled {
+  opacity: 0.2;
+}
+
+body.light-theme .geom-circle-filled,
+body.light-theme .geom-square-filled {
+  opacity: 0.08;
+}
+
+body.dark-theme .geom-block {
+  fill: var(--color-surface);
+  opacity: 0.9;
+}
+
+body.light-theme .geom-block {
+  fill: var(--color-surface);
+  opacity: 0.7;
+}
