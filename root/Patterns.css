@@ -405,6 +405,8 @@ body.light-theme .pattern-geometric-moderate::before {
 .pattern-network,
 .pattern-geometric {
   position: relative;
+  max-width: 100%;
+  isolation: isolate;
 }
 
 .pattern-honeycomb::before,
@@ -422,4 +424,47 @@ body.light-theme .pattern-geometric-moderate::before {
 .pattern-geometric > * {
   position: relative;
   z-index: 1;
+  min-width: 0;
+}
+
+/* ================= RESPONSIVE SAFETY ================= */
+
+@media (max-width: 767px) {
+  .pattern-honeycomb::before {
+    background-size: 160px 160px;
+  }
+
+  .pattern-grid::before {
+    background-size: 44px 44px;
+  }
+
+  .pattern-grid-medium::before {
+    background-size: 56px 56px;
+  }
+
+  .pattern-grid-large::before {
+    background-size: 72px 72px;
+  }
+
+  .pattern-network::before {
+    background-size: 280px 280px;
+  }
+
+  .pattern-geometric::before {
+    background-size: 220px 220px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pattern-honeycomb::before {
+    background-size: 200px 200px;
+  }
+
+  .pattern-network::before {
+    background-size: 340px 340px;
+  }
+
+  .pattern-geometric::before {
+    background-size: 260px 260px;
+  }
 }

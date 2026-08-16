@@ -36,12 +36,15 @@
 .illustration-container {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: auto;
   min-height: 200px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
 }
 
 /* Responsive sizing variants */
@@ -70,6 +73,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  max-height: 100%;
   display: block;
   overflow: visible;
 }
@@ -90,8 +94,7 @@
 
 .illustration-background {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -100,8 +103,7 @@
 
 .illustration-decorative {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
@@ -114,6 +116,8 @@
   pointer-events: auto;
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .illustration-interactive {
@@ -663,14 +667,17 @@ body.light-theme .geom-square {
 /* Size scaling within containers */
 .illust-scale-small {
   transform: scale(0.8);
+  transform-origin: center;
 }
 
 .illust-scale-medium {
   transform: scale(1);
+  transform-origin: center;
 }
 
 .illust-scale-large {
   transform: scale(1.2);
+  transform-origin: center;
 }
 
 /* Positioning helpers */
@@ -741,6 +748,10 @@ body.light-theme .geom-square {
 
   .illust-padded-lg {
     padding: 1.5rem;
+  }
+
+  .illust-scale-large {
+    transform: scale(1.05);
   }
 }
 
