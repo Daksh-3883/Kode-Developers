@@ -1,7 +1,0 @@
-# Allow all search engines to fully index the site
-User-agent: *
-Allow: /
-
-# Clean SEO-friendly sitemap reference
-Sitemap: https://kodedevelopers.org/sitemap.xml
-
