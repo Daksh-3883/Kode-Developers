@@ -4,162 +4,321 @@
    Shared styles are handled by common.css
 ====================================================== */
 
-
-/* ===================== HERO SECTION ===================== */
-#home{
-  position:relative;
-}
-
-#home::before{
-  content:"";
-  position:absolute;
-  inset:0;
+.home-hero{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  padding-block:clamp(6.5rem, 12vw, 9rem) clamp(3.5rem, 8vw, 6rem);
   background:
-    radial-gradient(circle at top left,
-    var(--color-accent-subtle),
-    transparent 35%),
-    radial-gradient(circle at bottom right,
-    var(--color-accent-subtle),
-    transparent 35%);
-  pointer-events:none;
+    radial-gradient(circle at 12% 16%, var(--color-accent-subtle), transparent 32%),
+    radial-gradient(circle at 90% 80%, rgba(14,165,233,0.10), transparent 34%);
 }
 
-#home h1{
-  line-height:1.1;
+.home-hero__inner{
+  display:grid;
+  grid-template-columns:minmax(0, 1.02fr) minmax(18rem, .78fr);
+  align-items:center;
+  gap:clamp(2rem, 6vw, 5rem);
 }
 
-#home p{
-  color:var(--text-muted);
+.home-hero__copy{
+  display:grid;
+  gap:1.15rem;
+  max-width:45rem;
 }
 
-
-/* ===================== HERO BUTTONS ===================== */
-#home a{
-  min-width:210px;
-  transform:translateY(0);
-  box-shadow:0 0 0 transparent;
-  transition:
-    background-color .35s ease,
-    color .35s ease,
-    transform .35s ease,
-    box-shadow .35s ease;
-  will-change:transform,background-color,color,box-shadow;
+.home-hero__logo{
+  width:clamp(10rem, 22vw, 15.5rem);
+  height:auto;
+  border-radius:.85rem;
+  border:1px solid var(--color-border-subtle);
+  box-shadow:0 18px 40px var(--color-shadow);
+  background:var(--color-surface);
 }
 
-#home a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 28px var(--color-accent-soft);
+.eyebrow{
+  margin:0;
+  font-family:var(--font-technical);
+  font-size:var(--font-size-technical-label);
+  font-weight:var(--font-weight-semibold);
+  line-height:var(--line-height-compact);
+  letter-spacing:0.02em;
+  text-transform:uppercase;
+  color:var(--color-accent-primary);
 }
 
-/* ===================== LOGO SECTION ===================== */
-#logo img{
-  margin:auto;
-  filter:drop-shadow(0 0 22px var(--color-border-strong));
-  animation:
-    logoEnter 1.2s ease forwards,
-    logoFloat 5s ease-in-out infinite 1.2s;
-  opacity:0;
+.home-hero h1{
+  margin:0;
+  max-width:12ch;
 }
 
-@keyframes logoEnter{
-  0%{
-    opacity:0;
-    transform:translateY(28px) scale(.82);
-  }
-
-  100%{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+.home-hero__lead{
+  max-width:42rem;
+  margin:0;
+  color:var(--color-text-secondary);
+  font-size:var(--font-size-body-large);
 }
 
-@keyframes logoFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-10px);
-  }
+.home-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.85rem;
 }
 
-
-/* ===================== ABOUT ===================== */
-#about p{
-  color:var(--text-muted);
-  max-width:760px;
+.home-actions .btn:hover,
+.home-actions .btn:focus-visible,
+.home-cta .btn:hover,
+.home-cta .btn:focus-visible{
+  text-decoration:none;
 }
 
-
-/* ===================== SERVICES ===================== */
-#services .glass-card{
-  min-height:220px;
+.home-actions .btn img,
+.section-link img{
+  width:1rem;
+  height:1rem;
+  flex:0 0 auto;
+  filter:brightness(0) saturate(100%) invert(63%) sepia(88%) saturate(473%) hue-rotate(130deg) brightness(92%) contrast(94%);
 }
 
-#services h3{
-  letter-spacing:.3px;
+.home-actions .btn-primary img,
+.home-cta .btn-primary img{
+  filter:brightness(0) invert(1);
 }
 
-#services p{
-  color:var(--text-muted);
+.home-hero__visual{
+  min-height:clamp(18rem, 38vw, 34rem);
+  border-radius:1.25rem;
+  background:
+    linear-gradient(180deg, var(--color-surface-elevated), transparent),
+    var(--color-accent-subtle);
+  border:1px solid var(--color-border-subtle);
+  box-shadow:0 24px 60px var(--color-shadow);
 }
 
-
-/* ===================== PROJECTS ===================== */
-#projects .glass-card{
-  min-height:280px;
+.home-hero__visual svg{
+  width:min(100%, 34rem);
+  padding:clamp(.75rem, 2vw, 1.5rem);
 }
 
-#projects p{
-  color:var(--text-muted);
+.home-section{
+  padding-block:var(--section-space-y);
 }
 
-#projects a{
-  font-weight:600;
+.home-split{
+  display:grid;
+  grid-template-columns:minmax(0, .82fr) minmax(0, 1.18fr);
+  gap:clamp(1.5rem, 5vw, 4rem);
+  align-items:start;
 }
 
-#projects a:hover{
-  letter-spacing:.4px;
+.home-split h2,
+.section-heading h2,
+.home-cta h2{
+  margin:0;
 }
 
-
-/* ===================== RATING ===================== */
-#rating span{
-  cursor:pointer;
-  transition:
-    transform .25s ease,
-    color .25s ease;
+.home-copy{
+  display:grid;
+  gap:1rem;
 }
 
-#rating span:hover{
-  transform:scale(1.18);
+.home-copy p,
+.section-heading p,
+.home-card p,
+.home-cta p{
+  margin:0;
+  color:var(--color-text-muted);
 }
 
-#ratingMsg{
-  min-height:28px;
+.section-heading{
+  max-width:44rem;
+  margin-bottom:clamp(1.5rem, 4vw, 2.5rem);
+  display:grid;
+  gap:.75rem;
 }
 
+.home-card-grid,
+.utility-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:var(--grid-gap);
+}
 
-/* ===================== SECTION SPACING ===================== */
+.home-card{
+  display:grid;
+  align-content:start;
+  gap:1rem;
+  padding:clamp(1.15rem, 3vw, 1.75rem);
+  min-height:100%;
+}
+
+.home-card h3{
+  margin:0;
+}
+
+.icon-box img,
+.mini-item img{
+  width:1.25rem;
+  height:1.25rem;
+  filter:brightness(0) saturate(100%) invert(63%) sepia(88%) saturate(473%) hue-rotate(130deg) brightness(92%) contrast(94%);
+}
+
+.section-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  width:max-content;
+  max-width:100%;
+  margin-top:.15rem;
+  font-weight:var(--font-weight-semibold);
+  line-height:var(--line-height-compact);
+}
+
+.featured-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1.25fr) minmax(18rem, .75fr);
+  gap:var(--grid-gap);
+}
+
+.featured-layout .featured-card{
+  gap:1.15rem;
+}
+
+.mini-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:.85rem;
+}
+
+.mini-item{
+  display:flex;
+  align-items:center;
+  gap:.65rem;
+  min-height:3.25rem;
+  padding:.8rem .9rem;
+  border:1px solid var(--color-border-subtle);
+  border-radius:.85rem;
+  background:var(--color-surface);
+}
+
+.mini-item span{
+  color:var(--color-text-secondary);
+  font-weight:var(--font-weight-semibold);
+}
+
+.rating-card{
+  text-align:left;
+}
+
+.rating-stars{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+}
+
+.rating-stars button{
+  width:2.75rem;
+  height:2.75rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--color-border-subtle);
+  border-radius:.75rem;
+  background:var(--color-bg-secondary);
+  color:var(--color-text-muted);
+  font-size:1.4rem;
+  line-height:1;
+}
+
+.rating-stars button:hover,
+.rating-stars button:focus-visible,
+.rating-stars button.text-yellow-400{
+  color:var(--color-accent-primary) !important;
+  border-color:var(--color-border-strong);
+  background:var(--color-accent-subtle);
+}
+
+.rating-message,
+#avgRating{
+  margin:0;
+  color:var(--color-accent-primary);
+  font-weight:var(--font-weight-medium);
+}
+
+.home-cta{
+  padding-block:var(--section-space-y);
+  text-align:center;
+}
+
+.home-cta .section-container{
+  display:grid;
+  justify-items:center;
+  gap:1rem;
+  max-width:56rem;
+}
+
+.home-cta p:not(.eyebrow){
+  max-width:42rem;
+}
+
 section{
   position:relative;
 }
 
-
-/* ===================== MOBILE ===================== */
-@media (max-width:768px){
-
-  #home h1{
-    font-size:2.5rem;
+@media (max-width:1023px){
+  .home-hero__inner,
+  .home-split,
+  .featured-layout{
+    grid-template-columns:1fr;
   }
 
-  #home a{
-    min-width:100%;
+  .home-hero__copy,
+  .home-hero h1,
+  .home-hero__lead{
+    max-width:100%;
   }
 
-  #services .glass-card,
-  #projects .glass-card{
+  .home-hero__visual{
+    order:2;
+  }
+}
+
+@media (max-width:767px){
+  .home-hero{
     min-height:auto;
+    padding-top:6rem;
   }
 
+  .home-actions,
+  .home-actions .btn{
+    width:100%;
+  }
+
+  .home-card-grid,
+  .utility-grid,
+  .mini-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-hero__visual{
+    min-height:16rem;
+    border-radius:1rem;
+  }
+
+  .section-link{
+    width:100%;
+  }
+}
+
+@media (max-width:420px){
+  .home-hero__logo{
+    width:100%;
+    max-width:13rem;
+  }
+
+  .rating-stars button{
+    width:2.45rem;
+    height:2.45rem;
+  }
 }
