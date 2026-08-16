@@ -64,7 +64,3 @@ async function loadAverageRating(){
 }
 window.setRating = setRating;
 loadAverageRating();
-
-window.addEventListener('resize', initCanvas);
-initCanvas();
-requestAnimationFrame(animateBackground);
