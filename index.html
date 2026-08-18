@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Basic Meta Setup -->
@@ -26,54 +26,8 @@
 </head>
 
 <body class="font-sans overflow-x-hidden">
-
   <!-- Navigation Bar -->
-  <nav id="navbar" class="fixed top-0 left-0 backdrop-blur-xl rounded-none shadow-md border px-6 py-3 w-full max-w-none z-50 transition-all duration-500">
-
-    <div class="flex justify-between items-center gap-6">
-
-      <!-- Logo / Brand Name -->
-      <h1 class="flex items-center gap-2 text-lg md:text-xl font-bold text-teal-400 hover:scale-110 transition cursor-pointer glow-text" onclick="window.location='index.html'">
-        <span>Kode Developers</span>
-      </h1>
-
-      <!-- Desktop Navigation Links -->
-      <div class="flex items-center gap-4">
-        <ul class="hidden md:flex gap-8 font-medium">
-        <li><a href="index.html" class="nav-link active hover:text-teal-300 transition">Home</a></li>
-        <li><a href="root/products.html" class="nav-link hover:text-teal-300 transition">Products</a></li>
-        <li><a href="root/projects.html" class="nav-link hover:text-teal-300 transition">Projects</a></li>
-        <li><a href="root/ai.html" class="nav-link hover:text-teal-300 transition">AI & Research</a></li>
-        <li><a href="root/about.html" class="nav-link hover:text-teal-300 transition">About</a></li>
-        <li><a href="root/updates.html" class="nav-link hover:text-teal-300 transition">Updates</a></li>
-        <li><a href="root/contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
-      </ul>
-
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="p-2 rounded-full border border-gray-500 hover:scale-110 transition-transform focus:outline-none">
-          &#9790;
-        </button>
-
-        <!-- Mobile Menu Button (Hamburger) -->
-        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] focus:outline-none">
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
-      <a href="index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
-      <a href="root/products.html" class="nav-link py-2 hover:text-teal-300 transition">Products</a>
-      <a href="root/projects.html" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
-      <a href="root/ai.html" class="nav-link py-2 hover:text-teal-300 transition">AI & Research</a>
-      <a href="root/about.html" class="nav-link py-2 hover:text-teal-300 transition">About</a>
-      <a href="root/updates.html" class="nav-link py-2 hover:text-teal-300 transition">Updates</a>
-      <a href="root/contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
-    </div>
-  </nav>
+  <nav id="navbar"></nav>
 
   <!-- Hero Section -->
   <section id="home" class="home-hero pattern-honeycomb pattern-corner-top-right">
@@ -271,52 +225,12 @@
       </a>
     </div>
   </section>
-
   <!-- Footer -->
-  <footer class="py-12 px-6 border-t border-gray-700 fade-up">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 mb-8">
-      <!-- Branding -->
-      <div>
-        <h3 class="text-lg font-bold text-teal-400 mb-4">Kode Developers</h3>
-        <p class="text-sm text-gray-400">Building digital solutions with precision and passion.</p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <h4 class="font-semibold mb-4">Company</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="index.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
-          <li><a href="root/about.html" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
-          <li><a href="root/updates.html" class="text-gray-400 hover:text-teal-400 transition">Updates</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h4 class="font-semibold mb-4">Resources</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="root/products.html" class="text-gray-400 hover:text-teal-400 transition">Products</a></li>
-          <li><a href="root/projects.html" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
-          <li><a href="root/ai.html" class="text-gray-400 hover:text-teal-400 transition">AI & Research</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h4 class="font-semibold mb-4">Contact</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="root/contact.html" class="text-gray-400 hover:text-teal-400 transition">Get in Touch</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
-      <p>&copy; 2024 Kode Developers. All rights reserved.</p>
-    </div>
-  </footer>
+  <footer data-shared-footer></footer>
 
   <!-- Custom JavaScript -->
   <script src="root/Common.js" defer></script>
   <script src="root/Home.js" defer></script>
 </body>
 </html>
+

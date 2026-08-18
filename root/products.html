@@ -10,133 +10,169 @@
 </head>
 <body class="font-sans overflow-x-hidden dark-theme">
 
-  <!-- Loader -->
   <div id="loader">
     <h1>Kode Developers</h1>
   </div>
 
-  <!-- Navigation Bar -->
-  <nav id="navbar" class="fixed top-0 left-0 backdrop-blur-xl rounded-none shadow-md border px-6 py-3 w-full max-w-none z-50 transition-all duration-500">
-    <div class="flex justify-between items-center gap-6">
-      <!-- Logo / Brand Name -->
-      <h1 class="flex items-center gap-2 text-lg md:text-xl font-bold text-teal-400 hover:scale-110 transition cursor-pointer glow-text" onclick="window.location='../index.html'">
-        <img src="../docs/Assets/Logo/Main-Logo-Mark(transparent).svg" alt="" class="w-8 h-8 shrink-0">
-        <span>Kode Developers</span>
-      </h1>
+  <nav id="navbar"></nav>
 
-      <!-- Desktop Navigation Links -->
-      <div class="flex items-center gap-4">
-        <ul class="hidden md:flex gap-8 font-medium">
-        <li><a href="../index.html" class="nav-link hover:text-teal-300 transition">Home</a></li>
-        <li><a href="products.html" class="nav-link active hover:text-teal-300 transition">Products</a></li>
-        <li><a href="projects.html" class="nav-link hover:text-teal-300 transition">Projects</a></li>
-        <li><a href="ai.html" class="nav-link hover:text-teal-300 transition">AI & Research</a></li>
-        <li><a href="about.html" class="nav-link hover:text-teal-300 transition">About</a></li>
-        <li><a href="updates.html" class="nav-link hover:text-teal-300 transition">Updates</a></li>
-        <li><a href="contact.html" class="nav-link hover:text-teal-300 transition">Contact</a></li>
-      </ul>
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="p-2 rounded-full border border-gray-500 hover:scale-110 transition-transform focus:outline-none">
-          🌙
-        </button>
+  <main class="products-page">
+    <div class="products-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3V10.5Z"/></svg>
+          Home
+        </a>
+        <span>/</span>
+        <span>Products</span>
+      </nav>
 
-        <!-- Mobile Menu Button (Hamburger) -->
-        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] focus:outline-none">
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-          <span class="bar w-8 h-[3px] bg-teal-400 rounded transition-all duration-300"></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden flex-col mt-4 font-medium rounded-3xl p-5 backdrop-blur-2xl shadow-lg border transform scale-y-0 origin-top opacity-0 transition-all duration-400">
-      <a href="../index.html" class="nav-link py-2 hover:text-teal-300 transition">Home</a>
-      <a href="products.html" class="nav-link py-2 hover:text-teal-300 transition">Products</a>
-      <a href="projects.html" class="nav-link py-2 hover:text-teal-300 transition">Projects</a>
-      <a href="ai.html" class="nav-link py-2 hover:text-teal-300 transition">AI & Research</a>
-      <a href="about.html" class="nav-link py-2 hover:text-teal-300 transition">About</a>
-      <a href="updates.html" class="nav-link py-2 hover:text-teal-300 transition">Updates</a>
-      <a href="contact.html" class="nav-link py-2 hover:text-teal-300 transition">Contact</a>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-24">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 glow-text leading-tight">
-      Our Products
-    </h1>
-    <p class="text-lg md:text-xl max-w-2xl leading-relaxed">
-      Tools designed to empower developers and teams
-    </p>
-  </section>
-
-  <!-- Products Grid -->
-  <section class="py-16 md:py-20 px-6 fade-up">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Active Products</h2>
-
-      <!-- Products Grid -->
-      <div class="grid md:grid-cols-1 gap-8">
-
-        <!-- ChatKode Product -->
-        <div class="glass-card p-8 hover:shadow-lg transition-shadow">
-          <h3 class="text-2xl font-bold text-teal-400 mb-4">ChatKode</h3>
-          <p class="text-base md:text-lg leading-relaxed mb-6">
-            An AI-powered debugging and learning companion that helps developers understand code, debug faster, and learn smarter through natural conversations.
+      <section class="products-hero">
+        <div class="products-hero__copy">
+          <p class="eyebrow">Our Products</p>
+          <h1>Smart tools.<br>Built with <span>purpose.</span></h1>
+          <p class="products-hero__lead">
+            We build modern, reliable, and user-focused products that solve real problems and empower people to do more with technology.
           </p>
-          <a href="chatkode.html" class="inline-block px-6 py-3 bg-teal-500 text-white font-semibold rounded-lg hover:bg-teal-400 transition-colors">
-            Explore ChatKode →
-          </a>
+          <div class="hero-highlights">
+            <div class="hero-highlight">
+              <span class="hero-highlight__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5.5v5.8c0 4.6 3 8.8 7.5 10.7 4.5-1.9 7.5-6.1 7.5-10.7V5.5L12 2Zm3.8 7.2-4.6 4.6-2.1-2.1-1.4 1.4 3.5 3.5 6-6-1.4-1.4Z"/></svg>
+              </span>
+              <div>
+                <h2>Quality First</h2>
+                <p>Built with clean code and best practices</p>
+              </div>
+            </div>
+            <div class="hero-highlight">
+              <span class="hero-highlight__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm8.5 1a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM8 13c4 0 7 2.1 7 5v2H1v-2c0-2.9 3-5 7-5Zm8.5.5c3.3 0 5.5 1.7 5.5 4.2V20h-5v-2c0-1.6-.7-3-1.9-4 .5-.3.9-.5 1.4-.5Z"/></svg>
+              </span>
+              <div>
+                <h2>User Focused</h2>
+                <p>Designed to deliver real value</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-      </div>
+        <div class="products-hero__visual" aria-hidden="true">
+          <div class="tech-orbit"></div>
+          <div class="tech-logo-panel">
+            <img src="../docs/Assets/Logo/Main-Mark.svg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="products-list-section">
+        <div class="section-heading products-heading">
+          <div>
+            <h2>Our Products</h2>
+            <p>Explore the products we've built to simplify, automate, and accelerate your workflow.</p>
+          </div>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-showcase-card product-showcase-card--chatkode">
+            <div class="product-card__top">
+              <span class="product-icon product-icon--cyan">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.8 2 11.5c0 2.7 1.5 5.1 3.8 6.7L5 22l4.2-2.2c.9.2 1.8.2 2.8.2 5.5 0 10-3.8 10-8.5S17.5 3 12 3Zm-3 9.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm6 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/></svg>
+              </span>
+              <span class="product-status product-status--available">Available</span>
+            </div>
+            <h3>ChatKode</h3>
+            <p>AI-powered coding assistant and chat companion built for developers, learners, and problem solvers.</p>
+            <ul>
+              <li>AI Chat & Code Assistance</li>
+              <li>Code Explanation</li>
+              <li>Multi-language Support</li>
+              <li>Smart Suggestions</li>
+            </ul>
+            <a href="chatkode.html" class="product-link">Explore ChatKode <img src="../docs/Assets/icons/UI/arrow-right.svg" alt="" aria-hidden="true"></a>
+          </article>
+
+          <article class="product-showcase-card product-showcase-card--toolbox">
+            <div class="product-card__top">
+              <span class="product-icon product-icon--purple">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v3h5a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5V3Zm2 3h2V5h-2v1Zm-7 5h16V8H4v3Zm7 2v2h2v-2h-2Z"/></svg>
+              </span>
+              <span class="product-status product-status--soon product-status--purple">Coming Soon</span>
+            </div>
+            <h3>KodeToolbox</h3>
+            <p>A collection of handy developer tools that make everyday tasks faster and easier.</p>
+            <ul>
+              <li>Code Formatters</li>
+              <li>Converters</li>
+              <li>Generators</li>
+              <li>And more coming soon</li>
+            </ul>
+            <span class="product-link product-link--disabled">Learn more <img src="../docs/Assets/icons/UI/arrow-right.svg" alt="" aria-hidden="true"></span>
+          </article>
+
+          <article class="product-showcase-card product-showcase-card--insights">
+            <div class="product-card__top">
+              <span class="product-icon product-icon--green">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined-icon lucide-chart-no-axes-combined"><path d="M12 16v5"/><path d="M16 14.639V21"/><path d="M20 10.656V21"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18.463V21"/><path d="M8 14.656V21"/></svg>
+              </span>
+              <span class="product-status product-status--soon product-status--green">Coming Soon</span>
+            </div>
+            <h3>KodeInsights</h3>
+            <p>Analytics and insights platform to help you understand, track, and improve what matters.</p>
+            <ul>
+              <li>Real-time Analytics</li>
+              <li>Custom Dashboards</li>
+              <li>Performance Tracking</li>
+              <li>Export & Reports</li>
+            </ul>
+            <span class="product-link product-link--disabled product-link--green">Learn more <img src="../docs/Assets/icons/UI/arrow-right.svg" alt="" aria-hidden="true"></span>
+          </article>
+        </div>
+      </section>
+
+      <section class="why-products">
+        <div class="why-products__intro">
+          <p class="eyebrow">Why Choose Our Products</p>
+          <h2>Built differently.<br>Made to <span>last.</span></h2>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5.5v5.8c0 4.6 3 8.8 7.5 10.7 4.5-1.9 7.5-6.1 7.5-10.7V5.5L12 2Zm0 3.1 5.5 2.6v3.6c0 3.3-2.1 6.4-5.5 8-3.4-1.6-5.5-4.7-5.5-8V7.7L12 5.1Z"/></svg>
+          <h3>Secure by Design</h3>
+          <p>Security and privacy are built into everything we create.</p>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-13h-7l1-7Z"/></svg>
+          <h3>Performance First</h3>
+          <p>Optimized for speed, reliability, and scalability from the start.</p>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.7 7.3-5 5 5 5 1.4-1.4-3.6-3.6 3.6-3.6-1.4-1.4Zm6.6 0-1.4 1.4 3.6 3.6-3.6 3.6 1.4 1.4 5-5-5-5Z"/></svg>
+          <h3>Developer Friendly</h3>
+          <p>Tools and experiences built for developers, by developers.</p>
+        </div>
+        <div class="why-card why-card--purple">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 9.8 8.4 3 10.5l6.8 2.1L12 19l2.2-6.4 6.8-2.1-6.8-2.1L12 2Zm6 13-1 3-3 1 3 1 1 3 1-3 3-1-3-1-1-3ZM5 2 4 5 1 6l3 1 1 3 1-3 3-1-3-1-1-3Z"/></svg>
+          <h3>Always Improving</h3>
+          <p>We listen, iterate, and constantly make our products better.</p>
+        </div>
+      </section>
+
+      <section class="product-cta">
+        <div class="cta-pattern cta-pattern--honeycomb" aria-hidden="true"></div>
+        <div class="product-cta__content">
+          <h2>Have an idea for a product?</h2>
+          <p>Let's build something amazing together.</p>
+          <a href="contact.html" class="btn btn-secondary">
+            <img src="../docs/Assets/icons/Actions/mail.svg" alt="" aria-hidden="true">
+            Contact Us
+          </a>
+        </div>
+        <div class="cta-pattern cta-pattern--network" aria-hidden="true"></div>
+      </section>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="py-12 px-6 border-t border-gray-700 mt-20 fade-up">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
-      <!-- Branding -->
-      <div>
-        <h3 class="text-lg font-bold text-teal-400 mb-4">Kode Developers</h3>
-        <p class="text-sm text-gray-400">Building digital solutions with precision and passion.</p>
-      </div>
+  <footer data-shared-footer></footer>
 
-      <!-- Links -->
-      <div>
-        <h4 class="font-semibold mb-4">Company</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="../index.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
-          <li><a href="about.html" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
-          <li><a href="updates.html" class="text-gray-400 hover:text-teal-400 transition">Updates</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h4 class="font-semibold mb-4">Resources</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="products.html" class="text-gray-400 hover:text-teal-400 transition">Products</a></li>
-          <li><a href="projects.html" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
-          <li><a href="ai.html" class="text-gray-400 hover:text-teal-400 transition">AI & Research</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h4 class="font-semibold mb-4">Contact</h4>
-        <ul class="text-sm space-y-2">
-          <li><a href="contact.html" class="text-gray-400 hover:text-teal-400 transition">Get in Touch</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
-      <p>&copy; 2024 Kode Developers. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="Common.js"></script>
+  <script src="Common.js" defer></script>
 </body>
 </html>
