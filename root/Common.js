@@ -62,7 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="site-nav__actions">
             <ul class="site-nav__links">${navLinks}</ul>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
-              <span class="theme-toggle__icon" aria-hidden="true"></span>
+              <span class="theme-toggle__icon" aria-hidden="true">
+                <img src="${iconBase}/UI/sun.svg" alt="" class="theme-toggle__sun">
+                <img src="${iconBase}/UI/moon.svg" alt="" class="theme-toggle__moon">
+              </span>
               <span class="theme-toggle__knob" aria-hidden="true"></span>
             </button>
             <button id="menu-btn" class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
@@ -98,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2>Products</h2>
             <ul>
               <li><a href="${chatkodeHref}">ChatKode</a></li>
-              <li><span>KodeToolbox</span></li>
-              <li><span>KodeInsights</span></li>
+              <li><span>Kode Toolbox</span></li>
+              <li><span>Kode Insights</span></li>
               <li><a href="${productHref}">All Products</a></li>
             </ul>
           </div>
