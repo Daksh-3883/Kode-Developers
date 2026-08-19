@@ -117,7 +117,7 @@
   z-index:0;
 }
 
-.signature-mark{
+.hero-blueprint{
   position:relative;
   width:min(58%, 17rem);
   aspect-ratio:3 / 2;
@@ -125,35 +125,46 @@
   overflow:visible;
 }
 
-.signature-mark use{
-  transform-box:view-box;
-  transform-origin:center;
+.hero-blueprint path,
+.hero-blueprint line,
+.hero-blueprint rect,
+.hero-blueprint circle{
   vector-effect:non-scaling-stroke;
 }
 
-.signature-mark__piece{
-  opacity:1;
-  animation:signature-mark-loop 7.5s cubic-bezier(.65,0,.35,1) infinite;
+.bp-guides{
+  stroke:rgba(18,200,196,0.42);
+  stroke-width:1;
+  opacity:0;
+  animation:bp-guides-loop var(--bp-dur,12s) ease-in-out infinite;
 }
 
-.signature-mark__piece--top{
-  --signature-x:0px;
-  --signature-y:-18px;
+.bp-guide{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  animation:bp-guide-draw var(--bp-dur,12s) ease-in-out infinite;
 }
 
-.signature-mark__piece--left{
-  --signature-x:-18px;
-  --signature-y:10px;
+.bp-point{
+  fill:rgba(18,200,196,0.7);
+  stroke:none;
 }
 
-.signature-mark__piece--center{
-  --signature-x:0px;
-  --signature-y:18px;
+.bp-outline{
+  fill:none;
+  stroke:var(--color-accent-primary);
+  stroke-width:1.5;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  opacity:0;
+  animation:bp-outline-loop var(--bp-dur,12s) cubic-bezier(.4,0,.2,1) infinite;
 }
 
-.signature-mark__piece--right{
-  --signature-x:18px;
-  --signature-y:10px;
+.bp-logo{
+  opacity:0;
+  animation:bp-logo-loop var(--bp-dur,12s) ease-in-out infinite;
 }
 
 .build-overview.pattern-grid::before{
@@ -336,19 +347,37 @@ section{
   position:relative;
 }
 
-@keyframes signature-mark-loop{
-  0%, 14%, 100%{
-    transform:translate3d(var(--signature-x), var(--signature-y), 0);
-    opacity:.88;
-  }
-  34%, 62%{
-    transform:translate3d(0, 0, 0);
-    opacity:1;
-  }
-  84%{
-    transform:translate3d(var(--signature-x), var(--signature-y), 0);
-    opacity:.88;
-  }
+@keyframes bp-guides-loop{
+  0%, 6%   { opacity:0; }
+  13%      { opacity:1; }
+  52%      { opacity:1; }
+  60%      { opacity:0; }
+  100%     { opacity:0; }
+}
+
+@keyframes bp-guide-draw{
+  0%, 6%   { stroke-dashoffset:1; }
+  40%      { stroke-dashoffset:0; }
+  86%      { stroke-dashoffset:0; }
+  100%     { stroke-dashoffset:1; }
+}
+
+@keyframes bp-outline-loop{
+  0%, 6%   { stroke-dashoffset:1; opacity:0; }
+  8%       { opacity:1; }
+  40%      { stroke-dashoffset:0; opacity:1; }
+  52%      { stroke-dashoffset:0; opacity:1; }
+  60%      { opacity:0; }
+  86%      { stroke-dashoffset:0; opacity:0; }
+  100%     { stroke-dashoffset:1; opacity:0; }
+}
+
+@keyframes bp-logo-loop{
+  0%, 52%  { opacity:0; }
+  64%      { opacity:1; }
+  82%      { opacity:1; }
+  92%      { opacity:0; }
+  100%     { opacity:0; }
 }
 
 @media (max-width:1023px){
@@ -391,7 +420,7 @@ section{
     border-radius:1rem;
   }
 
-  .signature-mark{
+  .hero-blueprint{
     width:min(68%, 13rem);
   }
 
@@ -413,9 +442,19 @@ section{
 }
 
 @media (prefers-reduced-motion: reduce){
-  .signature-mark__piece{
+  .bp-guides,
+  .bp-outline{
     animation:none !important;
-    transform:none !important;
+    stroke-dashoffset:0 !important;
+    opacity:0 !important;
+  }
+
+  .bp-point{
+    opacity:0 !important;
+  }
+
+  .bp-logo{
+    animation:none !important;
     opacity:1 !important;
   }
 }
