@@ -256,9 +256,9 @@ body.light-theme .product-showcase-card{
   position:absolute;
   right:1.2rem;
   bottom:1.2rem;
-  width:6.5rem;
-  height:4.5rem;
-  opacity:.18;
+  width:8.5rem;
+  height:5.5rem;
+  opacity:.24;
   pointer-events:none;
   z-index:0;
 }
@@ -317,9 +317,17 @@ body.light-theme .product-showcase-card{
   background:rgba(167,139,250,.18);
 }
 
+.product-icon--purple img{
+  filter:brightness(0) saturate(100%) invert(70%) sepia(29%) saturate(1219%) hue-rotate(212deg) brightness(101%) contrast(101%);
+}
+
 .product-icon--green{
   color:#a3e635;
   background:rgba(163,230,53,.18);
+}
+
+.product-icon--green img{
+  filter:brightness(0) saturate(100%) invert(81%) sepia(68%) saturate(737%) hue-rotate(36deg) brightness(99%) contrast(90%);
 }
 
 .product-status{
@@ -425,6 +433,15 @@ body.light-theme .product-showcase-card{
 .product-link img{
   width:1rem;
   height:1rem;
+  filter:brightness(0) saturate(100%) invert(68%) sepia(96%) saturate(573%) hue-rotate(129deg) brightness(91%) contrast(91%);
+}
+
+.product-showcase-card--toolbox .product-link img{
+  filter:brightness(0) saturate(100%) invert(70%) sepia(29%) saturate(1219%) hue-rotate(212deg) brightness(101%) contrast(101%);
+}
+
+.product-showcase-card--insights .product-link img{
+  filter:brightness(0) saturate(100%) invert(81%) sepia(68%) saturate(737%) hue-rotate(36deg) brightness(99%) contrast(90%);
 }
 
 .product-link:hover,
@@ -510,8 +527,13 @@ body.light-theme .why-products{
   overflow:hidden;
   border:1px solid var(--color-border-subtle);
   border-radius:.85rem;
-  background:linear-gradient(90deg, rgba(7,22,24,.82), rgba(4,13,16,.9), rgba(7,22,24,.82));
+  background:var(--color-bg-secondary);
   text-align:center;
+}
+
+.product-cta::before,
+.product-cta::after{
+  display:none;
 }
 
 body.light-theme .product-cta{
@@ -544,7 +566,7 @@ body.light-theme .product-cta{
   width:1rem;
   height:1rem;
   stroke:var(--color-accent-primary);
-  filter:drop-shadow(0 0 4px var(--color-accent-soft));
+  filter:brightness(0) saturate(100%) invert(75%) sepia(78%) saturate(704%) hue-rotate(129deg) brightness(98%) contrast(92%) drop-shadow(0 0 4px var(--color-accent-soft));
 }
 
 @media (max-width:1023px){

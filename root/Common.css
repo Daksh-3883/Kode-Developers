@@ -434,13 +434,31 @@ body.light-theme .theme-toggle{
   position:absolute;
   width:1.15rem;
   height:1.15rem;
-  filter:brightness(0) saturate(100%) invert(68%) sepia(96%) saturate(573%) hue-rotate(129deg) brightness(91%) contrast(91%) drop-shadow(0 0 5px var(--color-accent-soft));
+  filter:brightness(0) saturate(100%) invert(75%) sepia(78%) saturate(704%) hue-rotate(129deg) brightness(98%) contrast(92%) drop-shadow(0 0 5px var(--color-accent-soft));
 }
 
 body.dark-theme .theme-toggle__sun{ display:block; }
 body.dark-theme .theme-toggle__moon{ display:none; }
 body.light-theme .theme-toggle__sun{ display:none; }
 body.light-theme .theme-toggle__moon{ display:block; }
+
+body.dark-theme .theme-toggle__icon{
+  position:absolute;
+  left:.45rem;
+}
+
+body.light-theme .theme-toggle__icon{
+  position:absolute;
+  right:.45rem;
+}
+
+body.dark-theme .theme-toggle__sun{
+  filter:brightness(0) saturate(100%) invert(82%) sepia(89%) saturate(1016%) hue-rotate(338deg) brightness(103%) contrast(101%) drop-shadow(0 0 5px rgba(245,158,11,.28));
+}
+
+body.light-theme .theme-toggle__moon{
+  filter:brightness(0) saturate(100%) invert(35%) sepia(79%) saturate(865%) hue-rotate(132deg) brightness(91%) contrast(91%) drop-shadow(0 0 5px var(--color-accent-soft));
+}
 
 .theme-toggle__knob{
   position:absolute;
@@ -1291,7 +1309,7 @@ body.light-theme .site-footer{
 }
 
 .social-icon[aria-label="Email"] img{
-  filter:brightness(0) saturate(100%) invert(68%) sepia(96%) saturate(573%) hue-rotate(129deg) brightness(91%) contrast(91%);
+  filter:brightness(0) saturate(100%) invert(75%) sepia(78%) saturate(704%) hue-rotate(129deg) brightness(98%) contrast(92%) drop-shadow(0 0 4px var(--color-accent-soft));
 }
 
 .site-footer__form{
