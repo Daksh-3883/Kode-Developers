@@ -26,27 +26,97 @@
           <p class="projects-hero__description">A collection of products, websites, experiments, and technical projects built by Kode Developers.</p>
           <a class="projects-hero__explore" href="#featured-title"><span aria-hidden="true">↓</span> Explore our work</a>
         </div>
-        <div class="projects-hero__visual" aria-label="Connected project ecosystem illustration">
-          <svg viewBox="0 0 520 420" role="img" aria-labelledby="ecosystem-title ecosystem-desc">
-            <title id="ecosystem-title">Connected project ecosystem</title>
-            <desc id="ecosystem-desc">A central project node connected to abstract software, website, data, and experiment symbols.</desc>
-            <g class="ecosystem-lines">
-              <path d="M260 210L122 92M260 210L395 82M260 210L126 333M260 210L405 330" />
-              <path d="M122 92L78 54M122 92L83 125M395 82L443 47M395 82L448 116M126 333L78 370M126 333L174 371M405 330L453 369M405 330L449 292" />
+        <div class="projects-hero__visual" aria-label="Layered digital workbench illustration">
+          <svg viewBox="0 0 560 420" role="img" aria-labelledby="workbench-title workbench-desc">
+            <title id="workbench-title">Layered digital workbench</title>
+            <desc id="workbench-desc">An abstract arrangement of overlapping website, code, mobile, analytics, and experimental interface fragments.</desc>
+
+            <g class="workbench-ambient">
+              <circle class="ambient-dot ambient-dot--one" cx="116" cy="303" r="4"/>
+              <circle class="ambient-dot ambient-dot--two" cx="447" cy="94" r="4"/>
+              <circle class="ambient-dot ambient-dot--three" cx="130" cy="72" r="4"/>
+              <circle class="ambient-dot ambient-dot--four" cx="485" cy="293" r="4"/>
+              <path class="ambient-line ambient-line--short" d="M433 82h28"/>
+              <path class="ambient-line ambient-line--short" d="M108 336h24"/>
+              <path class="ambient-line ambient-line--short" d="M473 138v24"/>
+              <path class="ambient-line ambient-line--short" d="M123 118v26"/>
+              <path class="ambient-plus" d="M104 263h18M95 272h36"/>
+              <path class="ambient-plus" d="M430 313h18M421 322h36"/>
             </g>
-            <g class="ecosystem-nodes">
-              <polygon class="ecosystem-core" points="260,174 296,194 296,235 260,256 224,235 224,194" />
-              <circle cx="122" cy="92" r="8" /><circle cx="395" cy="82" r="8" /><circle cx="126" cy="333" r="8" /><circle cx="405" cy="330" r="8" />
-              <circle class="ecosystem-small" cx="78" cy="54" r="4" /><circle class="ecosystem-small" cx="83" cy="125" r="4" /><circle class="ecosystem-small" cx="443" cy="47" r="4" /><circle class="ecosystem-small" cx="448" cy="116" r="4" /><circle class="ecosystem-small" cx="78" cy="370" r="4" /><circle class="ecosystem-small" cx="174" cy="371" r="4" /><circle class="ecosystem-small" cx="453" cy="369" r="4" /><circle class="ecosystem-small" cx="449" cy="292" r="4" />
+
+            <g class="workbench-layer workbench-layer--back">
+              <rect class="panel panel--back" x="88" y="82" width="252" height="164" rx="12"/>
+              <path class="line line--muted" d="M112 116h100"/>
+              <path class="line line--muted" d="M112 136h140"/>
+              <path class="line line--muted" d="M112 156h110"/>
+              <rect class="panel panel--mini" x="112" y="170" width="86" height="52" rx="7"/>
+              <rect class="panel panel--mini panel--light" x="210" y="170" width="76" height="52" rx="7"/>
+              <path class="line line--accent" d="M126 186h44"/>
+              <path class="line line--accent" d="M126 196h28"/>
+              <path class="line line--accent" d="M126 206h32"/>
+              <path class="line line--accent" d="M222 186h36"/>
+              <path class="line line--accent" d="M222 198h26"/>
+              <path class="line line--accent" d="M222 210h32"/>
             </g>
-            <g class="ecosystem-symbols">
-              <path d="M105 82l-13 10 13 10M139 82l13 10-13 10M127 78l-10 28" />
-              <rect x="378" y="65" width="34" height="25" rx="3" /><path d="M378 72h34M384 69h1M389 69h1M394 69h1" />
-              <path d="M111 325h30M111 341h30M118 318v30M134 318v30" />
-              <path d="M393 316l12 12-12 12-12-12zM405 328h22" />
+
+            <g class="workbench-layer workbench-layer--mid">
+              <rect class="panel panel--main" x="182" y="110" width="246" height="160" rx="14"/>
+              <rect class="panel panel--header" x="200" y="128" width="208" height="18" rx="6"/>
+              <circle class="dot dot--small" cx="210" cy="137" r="3"/>
+              <circle class="dot dot--small" cx="220" cy="137" r="3"/>
+              <circle class="dot dot--small" cx="230" cy="137" r="3"/>
+              <rect class="panel panel--image" x="202" y="158" width="96" height="82" rx="8"/>
+              <path class="line line--accent" d="M226 188h38"/>
+              <path class="line line--accent" d="M226 198h58"/>
+              <path class="line line--accent" d="M226 208h44"/>
+              <rect class="panel panel--card" x="312" y="158" width="92" height="12" rx="4"/>
+              <rect class="panel panel--card" x="312" y="176" width="83" height="12" rx="4"/>
+              <rect class="panel panel--card" x="312" y="194" width="90" height="12" rx="4"/>
+              <rect class="panel panel--card" x="312" y="212" width="78" height="12" rx="4"/>
+              <path class="line line--muted" d="M215 242h156"/>
             </g>
-            <text class="ecosystem-label ecosystem-label--core" x="260" y="282">CORE PROJECTS</text>
-            <text class="ecosystem-label" x="122" y="126">SOFTWARE</text><text class="ecosystem-label" x="395" y="113">WEBSITES</text><text class="ecosystem-label" x="126" y="365">DATA</text><text class="ecosystem-label" x="405" y="362">EXPERIMENTS</text>
+
+            <g class="workbench-layer workbench-layer--code">
+              <rect class="panel panel--code" x="128" y="186" width="180" height="120" rx="10"/>
+              <path class="line line--accent" d="M148 214h36"/>
+              <path class="line line--accent" d="M148 228h58"/>
+              <path class="line line--accent" d="M148 242h74"/>
+              <path class="line line--accent" d="M148 256h38"/>
+              <path class="line line--accent code-line--purple" d="M220 214h48"/>
+              <path class="line line--accent code-line--purple" d="M220 228h62"/>
+              <path class="line line--accent code-line--gold" d="M220 242h54"/>
+              <path class="line line--accent code-line--gold" d="M220 256h40"/>
+              <path class="line line--accent code-line--pink" d="M148 272h84"/>
+            </g>
+
+            <g class="workbench-layer workbench-layer--mobile">
+              <rect class="panel panel--phone" x="420" y="192" width="106" height="156" rx="18"/>
+              <rect class="panel panel--phone-screen" x="432" y="212" width="82" height="110" rx="12"/>
+              <path class="line line--muted" d="M445 236h42"/>
+              <path class="line line--muted" d="M445 252h32"/>
+              <rect class="panel panel--phone-bar" x="438" y="230" width="52" height="16" rx="5"/>
+              <rect class="panel panel--phone-bar panel--phone-bar--short" x="438" y="294" width="38" height="10" rx="5"/>
+              <path class="line line--accent" d="M446 272h28"/>
+            </g>
+
+            <g class="workbench-layer workbench-layer--chart">
+              <rect class="panel panel--chart" x="218" y="282" width="118" height="92" rx="10"/>
+              <path class="line line--muted" d="M240 348v-42"/>
+              <path class="line line--muted" d="M275 348v-30"/>
+              <path class="line line--muted" d="M310 348v-52"/>
+              <path class="line line--muted" d="M232 350h92"/>
+              <rect class="bar bar--teal" x="241" y="308" width="12" height="40" rx="3"/>
+              <rect class="bar bar--blue" x="259" y="296" width="12" height="52" rx="3"/>
+              <rect class="bar bar--pink" x="282" y="314" width="12" height="34" rx="3"/>
+              <rect class="bar bar--gold" x="300" y="288" width="12" height="60" rx="3"/>
+            </g>
+
+            <g class="workbench-layer workbench-layer--geom">
+              <path class="shape shape--cube" d="M88 286l18-10 18 10-18 10zM106 276v20M88 286l18 10"/>
+              <path class="shape shape--ring" d="M400 108l14 8v16l-14 8-14-8v-16z"/>
+              <path class="shape shape--plus" d="M420 332h18M411 341h36"/>
+              <path class="shape shape--mini" d="M97 236l12-12 12 12-12 12z"/>
+            </g>
           </svg>
         </div>
       </div>
