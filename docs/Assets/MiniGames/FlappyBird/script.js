@@ -86,10 +86,21 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-canvas.addEventListener('click', flap);
-canvas.addEventListener('touchstart', (event) => {
-    event.preventDefault();
+const startInput = (event) => {
+    if (event && typeof event.preventDefault === 'function') {
+        event.preventDefault();
+    }
     flap();
+};
+
+overlay.addEventListener('click', startInput);
+overlay.addEventListener('touchstart', (event) => {
+    startInput(event);
+}, { passive: false });
+
+canvas.addEventListener('click', startInput);
+canvas.addEventListener('touchstart', (event) => {
+    startInput(event);
 }, { passive: false });
 
 function spawnPipe() {

@@ -182,6 +182,20 @@
         title.textContent = button.dataset.title;
         frame.src = `../docs/Assets/MiniGames/${button.dataset.game}/index.html`;
         modal.showModal();
+
+        const closeButton = document.querySelector(".game-modal__close");
+        closeButton?.blur();
+        frame.tabIndex = 0;
+        frame.focus();
+
+        frame.addEventListener("load", () => {
+          try {
+            frame.contentWindow?.focus?.();
+            frame.contentWindow?.document?.body?.focus?.();
+          } catch (error) {
+            // Ignore iframe focus issues during modal open.
+          }
+        }, { once: true });
       }));
       document.querySelector(".game-modal__close").addEventListener("click", close);
       modal.addEventListener("click", event => { if(event.target === modal) close(); });
