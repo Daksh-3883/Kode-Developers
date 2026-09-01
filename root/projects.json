@@ -1,0 +1,160 @@
+{
+  "projects": [
+    {
+      "id": "hali-pali-agro-products",
+      "name": "Hali Pali Agro Products",
+      "type": "Website",
+      "category": "E-commerce Website",
+      "status": "Live",
+      "tagline": "",
+      "description": "Hali Pali Agro Products is a traditional, family-run honey business from rural Haryana, based in Village Sandwa, Bhiwani. The website provides a modern digital storefront while retaining the business's authentic, farm-direct identity.",
+      "organization": {
+        "name": "Hali Pali Agro Products",
+        "industry": "Agriculture / Honey / Food",
+        "description": "A traditional, family-run honey business from rural Haryana with a farm-direct identity.",
+        "location": "Village Sandwa, Bhiwani, Haryana, India",
+        "owner": "Montu Singh"
+      },
+      "challenge": "A traditional, family-run honey business from rural Haryana needed a digital presence that could compete with polished national honey brands without losing its authentic, farm-direct identity.",
+      "solution": "A full front-end e-commerce experience that turns raw agricultural trust into a modern shopping journey — built entirely from scratch with HTML, CSS, and JavaScript, and hosted on GitHub Pages.",
+      "features": [
+        {
+          "title": "Multi-page storefront",
+          "description": "Dedicated Shop, Product listing, and Order Tracking pages rather than only a single landing page.",
+          "icon": "storefront"
+        },
+        {
+          "title": "Real product architecture",
+          "description": "Sheesham Honey across 3 sizes: 400g — ₹220, 600g — ₹320, 1kg — ₹500. Products include star ratings and dual CTAs: Add to Cart and Buy Now.",
+          "icon": "package"
+        },
+        {
+          "title": "Trust-driven storytelling",
+          "description": "Dedicated sections for sourcing, purity claims, and nutritional benefits including antioxidants and natural energy.",
+          "icon": "leaf"
+        },
+        {
+          "title": "Social proof system",
+          "description": "Customer testimonial cards containing photos, names, and star ratings.",
+          "icon": "stars"
+        },
+        {
+          "title": "Conversion mechanics",
+          "description": "First-order 20% discount banner, email newsletter capture, and a full contact form with business address and phone information.",
+          "icon": "discount"
+        },
+        {
+          "title": "Visual storytelling gallery",
+          "description": "Honey Harvest Gallery showcasing farm, bees, honeycomb, and packaging imagery to build authenticity.",
+          "icon": "gallery"
+        },
+        {
+          "title": "Responsive design",
+          "description": "Fully responsive design optimized for mobile-first Indian shoppers.",
+          "icon": "mobile"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../docs/Assets/Pictures/Projects/HaliPali.png",
+          "alt": "Hali Pali Agro Products homepage preview",
+          "caption": "Homepage"
+        }
+      ],
+      "technology": ["HTML", "CSS", "JavaScript", "Google Apps Script"],
+      "tools": ["Visual Studio Code", "Git", "Live Server"],
+      "platforms": ["GitHub", "GitHub Pages", "Google Sheets"],
+      "technicalHighlights": [
+        {
+          "title": "Google Apps Script Order Integration",
+          "description": "Google Apps Script was used for the Hali Pali order integration with Google Sheets."
+        },
+        {
+          "title": "Static Front-End Architecture",
+          "description": "The website was built using HTML, CSS, and JavaScript without using frameworks such as React, Bootstrap, or Tailwind."
+        }
+      ],
+      "links": {
+        "live": "https://kodedevelopers-web.github.io/HaliPaliAgroProducts/",
+        "repository": "https://github.com/KodeDevelopers-Web/HaliPaliAgroProducts"
+      },
+      "contributors": [
+        {
+          "name": "Divyanshu",
+          "role": "Full-stack Development"
+        }
+      ]
+    },
+    {
+      "id": "himrohi-expedition",
+      "name": "Himrohi Expedition",
+      "type": "Website",
+      "category": "Adventure / Educational Travel Website",
+      "status": "Live",
+      "tagline": "",
+      "description": "Himrohi Expedition is an adventure travel organization focused on school and youth expeditions in the Himalayas. The website is designed around institutional trust and safety rather than typical adventure-tourism marketing.",
+      "organization": {
+        "name": "Himrohi Expedition",
+        "industry": "Adventure Travel / Educational Expeditions",
+        "description": "An adventure travel organization focused on school and youth expeditions in the Himalayas.",
+        "location": "",
+        "owner": "Montu Singh"
+      },
+      "challenge": "Most trekking/adventure sites sell excitement. Himrohi needed to sell something harder: confidence — convincing school administrators and parents to send students into the Himalayas, where safety, not scenery, closes the deal.",
+      "solution": "A 7-page modular website engineered around institutional trust signals instead of typical adventure marketing hype — reframing the trekking company as a youth safety-focused education partner.",
+      "features": [
+        {
+          "title": "Full site architecture",
+          "description": "A 7-page website consisting of Home, About Us, Activities, Destinations, Safety Standards, Our Team, and Contact. Destinations has its own subsection.",
+          "icon": "map"
+        },
+        {
+          "title": "Data-led hero section",
+          "description": "The hero section leads with concrete numbers instead of adjectives: 400+ student expeditions delivered, 100% certified instructors, 1:2 guide-to-student safety ratio, and 4 Himalayan regions covered.",
+          "icon": "chart"
+        },
+        {
+          "title": "Structured tour catalog",
+          "description": "Programs are presented with altitude, duration, difficulty, and season for quick comparison. Featured routes include Manali Winter Trek, Nubra Valley Ladakh, and Sonamarg Camping Base.",
+          "icon": "route"
+        },
+        {
+          "title": "Dedicated Safety Standards page",
+          "description": "The website includes a dedicated Safety Standards page covering NIM & HMI-certified guides, wilderness first responder training, published safety checklists, and daily briefing protocols.",
+          "icon": "shield"
+        },
+        {
+          "title": "Institutional trust grid",
+          "description": "Transparent logistics, 24/7 mountain operations support, and clear operational standards are explicitly presented for risk-averse buyers.",
+          "icon": "trust"
+        },
+        {
+          "title": "B2B-style lead generation",
+          "description": "The primary CTA is Request School Catalog using a direct mailto flow rather than a shopping cart, reflecting an institutional sales cycle instead of impulse booking.",
+          "icon": "mail"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../docs/Assets/Pictures/Projects/Himrohi.png",
+          "alt": "Himrohi Expedition homepage preview",
+          "caption": "Homepage"
+        }
+      ],
+      "technology": ["HTML", "CSS", "JavaScript"],
+      "tools": ["Visual Studio Code", "Git", "Live Server"],
+      "platforms": ["GitHub", "GitHub Pages"],
+      "technicalHighlights": [],
+      "links": {
+        "live": "https://kodedevelopers-web.github.io/Himrohi-Expedition/",
+        "repository": "https://github.com/KodeDevelopers-Web/Himrohi-Expedition"
+      },
+      "contributors": [
+        {
+          "name": "Divyanshu",
+          "role": "Full-stack Development"
+        }
+      ]
+    }
+  ]
+}
