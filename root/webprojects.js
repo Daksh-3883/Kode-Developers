@@ -1,284 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
   const showcase = document.getElementById("projectShowcase");
-
   if (!showcase) return;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const projectId = (urlParams.get("project") || "").trim();
+  const projectId = (new URLSearchParams(window.location.search).get("project") || "").trim();
+  const list = value => Array.isArray(value) ? value : [];
+  const safe = value => String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
+  const link = (url, label, primary = false) => url ? `<a class="btn ${primary ? "btn-primary" : "btn-secondary"}" href="${safe(url)}" target="_blank" rel="noreferrer noopener">${label}<span aria-hidden="true">-&gt;</span></a>` : "";
 
-  const renderEmptyState = (message, detail) => {
-    showcase.innerHTML = `
-      <section class="empty-state">
-        <h2>${message}</h2>
-        <p>${detail}</p>
-        <div class="project-cta__actions">
-          <a href="projects.html" class="btn btn-primary">Back to Projects</a>
-        </div>
-      </section>
-    `;
+  const empty = (title, detail) => {
+    showcase.innerHTML = `<section class="empty-state"><p class="eyebrow">Showcase unavailable</p><h1>${safe(title)}</h1><p>${safe(detail)}</p><a href="projects.html" class="btn btn-primary">Back to Projects <span aria-hidden="true">-&gt;</span></a></section>`;
   };
 
-  const renderProject = (project) => {
-    if (!project) {
-      renderEmptyState("Project not found", "The requested project could not be found in our showcase metadata.");
-      return;
-    }
-
-    const techList = (project.technology || []).map((item) => `<span class="skill-pill">${item}</span>`).join("");
-    const toolList = (project.tools || []).map((item) => `<span class="skill-pill">${item}</span>`).join("");
-    const platformList = (project.platforms || []).map((item) => `<span class="skill-pill">${item}</span>`).join("");
-    const featureList = (project.features || []).map((item) => `
-      <article class="feature-card">
-        <div class="feature-card__icon" aria-hidden="true">${item.icon || "•"}</div>
-        <h4>${item.title || ""}</h4>
-        <p>${item.description || ""}</p>
-      </article>
-    `).join("");
-
-    const screenshotList = (project.screenshots || []).map((shot) => `
-      <figure class="gallery-item">
-        <img src="${shot.src || ""}" alt="${shot.alt || project.name || "Project preview"}" loading="lazy">
-        ${shot.caption ? `<figcaption>${shot.caption}</figcaption>` : ""}
-      </figure>
-    `).join("");
-
-    const technicalHighlights = (project.technicalHighlights || []).map((highlight) => `
-      <li>
-        <div class="project-info__label">${highlight.title || "Highlight"}</div>
-        <div>${highlight.description || ""}</div>
-      </li>
-    `).join("");
-
-    const contributors = (project.contributors || []).map((person) => `
-      <li>
-        <div class="contributor-card">
-          <strong>${person.name || "Contributor"}</strong>
-          <span>${person.role || ""}</span>
-        </div>
-      </li>
-    `).join("");
-
-    const links = [
-      project.links?.live ? `<a href="${project.links.live}" target="_blank" rel="noreferrer noopener">Live Website</a>` : "",
-      project.links?.repository ? `<a href="${project.links.repository}" target="_blank" rel="noreferrer noopener">Repository</a>` : ""
-    ].filter(Boolean).map((link) => `<li>${link}</li>`).join("");
-
+  const render = project => {
+    if (!project) return empty("Project not found", "The requested project could not be found in our showcase metadata.");
+    const name = safe(project.name || "Project");
+    const shots = list(project.screenshots);
+    const first = shots[0];
     const org = project.organization || {};
-    const orgName = org.name || project.name || "Organization";
-    const orgIndustry = org.industry || "";
-    const orgDescription = org.description || "";
-    const orgLocation = org.location || "";
-    const orgOwner = org.owner || "";
+    const orgFields = [["Name", org.name], ["Industry", org.industry], ["Location", org.location], ["Owner", org.owner]].filter(([, value]) => value);
+    const features = list(project.features).map((item, index) => `<article class="feature-card" tabindex="0"><div class="feature-card__top"><span class="feature-card__index">${String(index + 1).padStart(2, "0")}</span><span class="feature-card__icon" aria-hidden="true">${safe(item.icon || "+")}</span></div><h3>${safe(item.title)}</h3><p>${safe(item.description)}</p></article>`).join("");
+    const groups = [["Technology Stack", project.technology], ["Tools", project.tools], ["Platforms", project.platforms]].filter(([, values]) => list(values).length);
+    const stack = groups.map(([title, values]) => `<div class="stack-group"><p class="eyebrow">${safe(title)}</p><div class="stack-list" role="list">${list(values).map(item => `<button class="stack-item" type="button" role="listitem" aria-pressed="false">${safe(item)}<span aria-hidden="true">+</span></button>`).join("")}</div></div>`).join("");
+    const highlights = list(project.technicalHighlights).map(item => `<li><span class="project-info__label">${safe(item.title || "Highlight")}</span><span>${safe(item.description)}</span></li>`).join("");
+    const people = list(project.contributors).map(item => `<li class="contributor-card"><span class="contributor-card__mark" aria-hidden="true">-&gt;</span><span><strong>${safe(item.name || "Contributor")}</strong><small>${safe(item.role)}</small></span></li>`).join("");
+    const links = `${link(project.links?.live, "Visit Live Website", true)}${link(project.links?.repository, "View Repository")}`;
+    const heroImage = first ? `<img src="${safe(first.src)}" alt="${safe(first.alt || project.name || "Project preview")}" loading="eager">` : `<div class="screen-empty">No project preview available</div>`;
+    const gallery = shots.length ? `<section class="showcase-section project-gallery reveal" id="preview"><div class="section-heading"><div><p class="eyebrow">05 / Website preview</p><h2>See the work in context.</h2></div><p>${shots.length === 1 ? "Project homepage" : "Select a project view"}</p></div><div class="gallery-viewer"><div class="browser-window browser-window--gallery"><div class="browser-window__bar"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-address">project-preview / ${name}</span></div><div class="gallery-stage"><img id="gallery-image" src="${safe(first.src)}" alt="${safe(first.alt || project.name || "Project preview")}"></div></div>${shots.length > 1 ? `<div class="gallery-tabs" role="tablist" aria-label="Project screenshots">${shots.map((shot, index) => `<button class="gallery-tab${index === 0 ? " is-active" : ""}" type="button" role="tab" aria-selected="${index === 0}" data-src="${safe(shot.src)}" data-alt="${safe(shot.alt || project.name || "Project preview")}">${safe(shot.caption || `View ${index + 1}`)}</button>`).join("")}</div>` : `<p class="gallery-caption">${safe(first.caption || "Project preview")}</p>`}</div></section>` : "";
 
-    const projectName = project.name || "Project";
-    const projectType = project.type || "";
-    const projectCategory = project.category || "";
-    const projectStatus = project.status || "";
-    const projectTagline = project.tagline || "";
-    const projectDescription = project.description || "";
-    const challenge = project.challenge || "";
-    const solution = project.solution || "";
-
-    const orgHtml = orgName || orgIndustry || orgDescription || orgLocation || orgOwner ? `
-      <div class="project-info">
-        <h3>About the Organization</h3>
-        <ul class="project-info__list">
-          ${orgName ? `<li><span class="project-info__label">Name</span><span>${orgName}</span></li>` : ""}
-          ${orgIndustry ? `<li><span class="project-info__label">Industry</span><span>${orgIndustry}</span></li>` : ""}
-          ${orgDescription ? `<li><span class="project-info__label">Description</span><span>${orgDescription}</span></li>` : ""}
-          ${orgLocation ? `<li><span class="project-info__label">Location</span><span>${orgLocation}</span></li>` : ""}
-          ${orgOwner ? `<li><span class="project-info__label">Owner</span><span>${orgOwner}</span></li>` : ""}
-        </ul>
-      </div>
-    ` : "";
-
-    showcase.innerHTML = `
-      <article class="project-showcase">
-        <section class="project-hero">
-          <div>
-            <div class="project-hero__meta">
-              ${projectCategory ? `<span class="project-chip">${projectCategory}</span>` : ""}
-              ${projectStatus ? `<span class="project-chip">${projectStatus}</span>` : ""}
-              ${projectType ? `<span class="project-chip">${projectType}</span>` : ""}
-            </div>
-            <h1>${projectName}</h1>
-            ${projectTagline ? `<p class="project-hero__tagline">${projectTagline}</p>` : ""}
-            <p class="project-hero__description">${projectDescription}</p>
-            <div class="project-hero__actions">
-              ${project.links?.live ? `<a class="btn btn-primary" href="${project.links.live}" target="_blank" rel="noreferrer noopener">Visit Live Site</a>` : ""}
-              ${project.links?.repository ? `<a class="btn btn-secondary" href="${project.links.repository}" target="_blank" rel="noreferrer noopener">View Repository</a>` : ""}
-              <a class="btn btn-secondary" href="projects.html">Back to Projects</a>
-            </div>
-          </div>
-          <div class="project-hero__visual">
-            <div class="project-screen">
-              ${(project.screenshots && project.screenshots[0]) ? `<img src="${project.screenshots[0].src}" alt="${project.screenshots[0].alt || projectName}" loading="eager">` : ""}
-            </div>
-            ${(project.screenshots && project.screenshots[0] && project.screenshots[0].caption) ? `<p class="project-hero__caption">${project.screenshots[0].caption}</p>` : ""}
-          </div>
-        </section>
-
-        ${projectDescription ? `
-          <section class="showcase-section project-overview">
-            <div class="section-heading">
-              <h2>Project Overview</h2>
-            </div>
-            <div class="project-overview__body">
-              <p>${projectDescription}</p>
-            </div>
-          </section>
-        ` : ""}
-
-        ${orgHtml ? `
-          <section class="showcase-section">
-            <div class="section-heading">
-              <h2>About the Organization</h2>
-            </div>
-            <div class="project-grid-two">
-              ${orgHtml}
-            </div>
-          </section>
-        ` : ""}
-
-        ${(challenge || solution) ? `
-          <section class="showcase-section">
-            <div class="section-heading">
-              <h2>Challenge & Solution</h2>
-            </div>
-            <div class="project-grid-two">
-              ${challenge ? `
-                <div class="project-info">
-                  <h3>The Challenge</h3>
-                  <p>${challenge}</p>
-                </div>
-              ` : ""}
-              ${solution ? `
-                <div class="project-info">
-                  <h3>The Solution</h3>
-                  <p>${solution}</p>
-                </div>
-              ` : ""}
-            </div>
-          </section>
-        ` : ""}
-
-        ${featureList ? `
-          <section class="showcase-section project-features">
-            <div class="section-heading">
-              <h2>Key Features</h2>
-            </div>
-            <div class="feature-grid">
-              ${featureList}
-            </div>
-          </section>
-        ` : ""}
-
-        ${screenshotList ? `
-          <section class="showcase-section project-gallery">
-            <div class="section-heading">
-              <h2>Website Gallery</h2>
-            </div>
-            <div class="gallery-grid">
-              ${screenshotList}
-            </div>
-          </section>
-        ` : ""}
-
-        <section class="showcase-section project-tech">
-          <div class="section-heading">
-            <h2>Technology & Tools</h2>
-          </div>
-          <div class="project-grid-two">
-            <div class="project-info">
-              <h3>Technology Stack</h3>
-              <div class="project-tech__list">
-                ${techList || ""}
-              </div>
-            </div>
-            <div class="project-info">
-              <h3>Tools</h3>
-              <div class="project-tech__list">
-                ${toolList || ""}
-              </div>
-            </div>
-          </div>
-          ${platformList ? `
-            <div class="project-info" style="margin-top:1rem;">
-              <h3>Platforms</h3>
-              <div class="project-tech__list">
-                ${platformList}
-              </div>
-            </div>
-          ` : ""}
-        </section>
-
-        ${technicalHighlights ? `
-          <section class="showcase-section project-info">
-            <div class="section-heading">
-              <h2>Technical Highlights</h2>
-            </div>
-            <ul class="project-info__list">
-              ${technicalHighlights}
-            </ul>
-          </section>
-        ` : ""}
-
-        <section class="showcase-section project-links">
-          <div class="section-heading">
-            <h2>Project Links</h2>
-          </div>
-          <ul class="project-links__list">
-            ${links || ""}
-          </ul>
-        </section>
-
-        <section class="showcase-section project-contributors">
-          <div class="section-heading">
-            <h2>Contributors</h2>
-          </div>
-          <ul class="project-contributors__list">
-            ${contributors || ""}
-          </ul>
-        </section>
-
-        ${orgOwner ? `
-          <section class="showcase-section project-owner">
-            <div class="section-heading">
-              <h2>Client / Owner</h2>
-            </div>
-            <ul class="project-owner__list">
-              <li><span class="project-info__label">Owner</span><span>${orgOwner}</span></li>
-            </ul>
-          </section>
-        ` : ""}
-
-        <section class="showcase-section project-cta">
-          <div>
-            <h3>Continue exploring</h3>
-            <p>See more work from Kode Developers and browse the rest of our projects.</p>
-          </div>
-          <div class="project-cta__actions">
-            <a class="btn btn-primary" href="projects.html">Browse Projects</a>
-            <a class="btn btn-secondary" href="index.html">Back to Home</a>
-          </div>
-        </section>
-      </article>
-    `;
+    showcase.innerHTML = `<article class="project-showcase">
+      <section class="project-hero pattern-grid pattern-grid-large" aria-labelledby="project-title"><div class="project-hero__copy"><p class="eyebrow">Project / ${safe(project.type || "Website")}</p><div class="project-hero__meta">${[project.category, project.status].filter(Boolean).map(item => `<span class="project-chip">${safe(item)}</span>`).join("")}</div><h1 id="project-title">${name}</h1>${project.tagline ? `<p class="project-hero__tagline">${safe(project.tagline)}</p>` : ""}<p class="project-hero__description">${safe(project.description)}</p><div class="project-hero__actions">${link(project.links?.live, "Visit Live Site", true)}${link(project.links?.repository, "View Repository")}<a class="btn btn-quiet" href="#overview">Explore case study <span aria-hidden="true">-&gt;</span></a></div></div><div class="project-hero__visual" data-tilt><span class="hero-coordinate hero-coordinate--top">KODE / 03C-2</span><span class="hero-coordinate hero-coordinate--bottom">LIVE BUILD / 001</span><div class="browser-window"><div class="browser-window__bar"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-address">${name}</span><span class="browser-signal" aria-hidden="true">-&gt;</span></div><div class="project-screen">${heroImage}</div></div></div></section>
+      ${project.description ? `<section class="showcase-section project-overview reveal" id="overview"><div class="section-heading"><div><p class="eyebrow">01 / Project overview</p><h2>Built around the real brief.</h2></div><p>What this project needed to be.</p></div><div class="overview-layout"><p class="overview-lead">${safe(project.description)}</p><div class="overview-facts">${[["Type", project.type], ["Category", project.category], ["Status", project.status]].filter(([, value]) => value).map(([label, value]) => `<div><span class="project-info__label">${safe(label)}</span><strong>${safe(value)}</strong></div>`).join("")}</div></div></section>` : ""}
+      ${orgFields.length || org.description ? `<section class="showcase-section reveal"><div class="section-heading"><div><p class="eyebrow">02 / About the organization</p><h2>The context behind the build.</h2></div></div><div class="organization-layout"><div class="organization-intro"><span class="section-marker" aria-hidden="true">02</span><h3>${safe(org.name || project.name || "Organization")}</h3><p>${safe(org.description || "")}</p></div><dl class="organization-facts">${orgFields.map(([label, value]) => `<div><dt class="project-info__label">${safe(label)}</dt><dd>${safe(value)}</dd></div>`).join("")}</dl></div></section>` : ""}
+      ${project.challenge || project.solution ? `<section class="showcase-section reveal"><div class="section-heading"><div><p class="eyebrow">03 / From brief to build</p><h2>A clear response to a real challenge.</h2></div></div><div class="story-flow">${project.challenge ? `<article class="story-step"><span class="story-step__number">01</span><div><p class="eyebrow">Challenge</p><h3>What needed solving</h3><p>${safe(project.challenge)}</p></div></article>` : ""}${project.challenge && project.solution ? `<div class="story-connector" aria-hidden="true"><span></span><b>-&gt;</b></div>` : ""}${project.solution ? `<article class="story-step story-step--solution"><span class="story-step__number">02</span><div><p class="eyebrow">Solution</p><h3>What we built</h3><p>${safe(project.solution)}</p></div></article>` : ""}</div></section>` : ""}
+      ${features ? `<section class="showcase-section project-features reveal"><div class="section-heading"><div><p class="eyebrow">04 / Key features</p><h2>Details that do useful work.</h2></div><p>Focus the cursor. The details follow.</p></div><div class="feature-grid">${features}</div></section>` : ""}
+      ${gallery}
+      ${stack ? `<section class="showcase-section project-tech pattern-geometric-subtle reveal"><div class="section-heading"><div><p class="eyebrow">06 / Built with</p><h2>The stack behind the surface.</h2></div><p>Explore the build ingredients.</p></div><div class="stack-layout"><div class="stack-orbit" aria-hidden="true"><span>PROJECT</span><i></i><i></i><i></i></div><div class="stack-groups">${stack}</div></div></section>` : ""}
+      ${highlights ? `<section class="showcase-section technical-highlights reveal"><div class="section-heading"><div><p class="eyebrow">07 / Technical highlights</p><h2>Small details, deliberately handled.</h2></div></div><ul class="project-info__list">${highlights}</ul></section>` : ""}
+      ${links ? `<section class="showcase-section project-links reveal"><div class="section-heading"><div><p class="eyebrow">08 / Project links</p><h2>Open the build.</h2></div></div><div class="project-links__actions">${links}</div></section>` : ""}
+      ${people ? `<section class="showcase-section project-contributors reveal"><div class="section-heading"><div><p class="eyebrow">09 / Contributors</p><h2>Built by people who care.</h2></div></div><ul class="project-contributors__list">${people}</ul></section>` : ""}
+      ${org.owner ? `<section class="showcase-section project-owner reveal"><div class="owner-line"><span class="project-info__label">Client / Owner</span><strong>${safe(org.owner)}</strong></div></section>` : ""}
+      <section class="project-cta reveal"><div><p class="eyebrow">Keep exploring</p><h2>More work, same intent.</h2><p>See more work from Kode Developers.</p></div><div class="project-cta__actions"><a class="btn btn-primary" href="projects.html">Browse Projects <span aria-hidden="true">-&gt;</span></a><a class="btn btn-secondary" href="index.html">Back to Home</a></div></section>
+    </article>`;
+    activateInteractions();
   };
 
-  const fetchProjects = async () => {
-    try {
-      const response = await fetch("projects.json", { cache: "no-store" });
-      if (!response.ok) {
-        throw new Error("Unable to load project metadata");
-      }
-      const data = await response.json();
-      const project = (data.projects || []).find((item) => item.id === projectId);
-      renderProject(project);
-    } catch (error) {
-      renderEmptyState("Unable to load project data", "The project showcase is temporarily unavailable. Please try again later.");
-    }
-  };
+  function activateInteractions() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reveals = document.querySelectorAll(".reveal");
+    if (reducedMotion || !("IntersectionObserver" in window)) reveals.forEach(item => item.classList.add("is-visible"));
+    else { const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 }); reveals.forEach(item => observer.observe(item)); }
+    if (!reducedMotion) { const tilt = document.querySelector("[data-tilt]"); tilt?.addEventListener("pointermove", event => { const rect = tilt.getBoundingClientRect(); tilt.style.setProperty("--tilt-x", `${((event.clientY - rect.top) / rect.height - .5) * -2}deg`); tilt.style.setProperty("--tilt-y", `${((event.clientX - rect.left) / rect.width - .5) * 2}deg`); }); tilt?.addEventListener("pointerleave", () => { tilt.style.setProperty("--tilt-x", "0deg"); tilt.style.setProperty("--tilt-y", "0deg"); }); }
+    document.querySelectorAll(".gallery-tab").forEach(tab => tab.addEventListener("click", () => { const image = document.getElementById("gallery-image"); if (!image) return; image.src = tab.dataset.src; image.alt = tab.dataset.alt; document.querySelectorAll(".gallery-tab").forEach(item => { item.classList.remove("is-active"); item.setAttribute("aria-selected", "false"); }); tab.classList.add("is-active"); tab.setAttribute("aria-selected", "true"); }));
+    document.querySelectorAll(".stack-item").forEach(item => item.addEventListener("click", () => { const active = item.classList.toggle("is-active"); item.setAttribute("aria-pressed", String(active)); }));
+  }
 
-  fetchProjects();
+  fetch("projects.json", { cache: "no-store" }).then(response => { if (!response.ok) throw new Error("Unable to load project metadata"); return response.json(); }).then(data => render(list(data.projects).find(item => item.id === projectId))).catch(() => empty("Unable to load project data", "The project showcase is temporarily unavailable. Please try again later."));
 });
