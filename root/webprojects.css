@@ -117,9 +117,27 @@ body.light-theme {
   border: 1px solid transparent;
 }
 
-.btn-primary:hover,
-.project-link-btn:hover {
-  background: var(--color-accent-hover);
+.webprojects-page a.btn-primary:hover,
+.webprojects-page a.project-link-btn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.webprojects-page a.btn-primary:focus-visible,
+.webprojects-page a.project-link-btn:focus-visible {
+  background: var(--color-accent-soft);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+.webprojects-page a.btn-primary:active,
+.webprojects-page a.project-link-btn:active {
+  background: var(--color-accent-subtle);
+  border-color: var(--color-accent-primary);
+  color: var(--color-text-primary);
 }
 
 .btn-secondary,
