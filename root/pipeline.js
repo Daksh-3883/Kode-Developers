@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const processing = list(project.processingFeatures).map(item => `<li>${safe(item)}</li>`).join("");
     const schema = list(project.unifiedSchema?.internalFields).map(item => `<span>${safe(item)}</span>`).join("");
     const config = list(project.configuration?.configurableAreas).map(item => `<li>${safe(item)}</li>`).join("");
-    const stageImage = imagePath("Pipeline(workflow).png");
+    const stageImage = imagePath("Workflow.png");
     const githubImage = imagePath("Pipeline(github).png");
     const colabImage = imagePath("Pipeline(colab).png");
 
