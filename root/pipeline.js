@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const number = value => Number(value || 0).toLocaleString();
   const percent = (value, total) => total ? `${((value / total) * 100).toFixed(1)}%` : "0%";
   const imagePath = name => `../docs/Assets/Pictures/Dataset%20pipeline/${name}`;
+  const archivePath = "../docs/Assets/Dataset%20pipeline/Dataset-Pipeline-main.zip";
   const externalLink = (url, label, primary = false) => url ? `<a class="pipeline-btn ${primary ? "pipeline-btn--primary" : ""}" href="${safe(url)}" target="_blank" rel="noopener noreferrer">${safe(label)} <span aria-hidden="true">-&gt;</span></a>` : "";
   const objectEntries = value => Object.entries(value || {});
 
@@ -60,7 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <section class="pipeline-section" id="explore"><div class="pipeline-heading"><div><p class="pipeline-kicker">08 / Explore the build</p><h2>From source code to execution.</h2></div></div><div class="explore-grid"><figure class="explore-card"><img src="${githubImage}" alt="Dataset Pipeline GitHub repository" loading="lazy"><figcaption><strong>Repository</strong><span>Inspect the implementation on GitHub.</span>${externalLink(project.links?.repository, "Open GitHub")}</figcaption></figure><figure class="explore-card"><img src="${colabImage}" alt="Dataset Pipeline running in Google Colab" loading="lazy"><figcaption><strong>Experimentation</strong><span>Run and inspect the pipeline in Colab.</span>${externalLink(project.links?.colab, "Open Colab")}</figcaption></figure></div></section>
 
-      <section class="pipeline-section contribution-section"><div class="contribution-copy"><p class="pipeline-kicker">09 / Contribution</p><h2>Built by ${safe(project.company?.name || project.organization?.name)}.</h2><p>${safe(project.company?.relationship)}. ${list(project.contributors).map(person => `${safe(person.name)} contributes ${safe(person.role)}.`).join(" ")}</p></div><div class="contributor-list">${list(project.contributors).map(person => `<div><strong>${safe(person.name)}</strong><span>${safe(person.role)}</span></div>`).join("")}</div></section>
+      <section class="pipeline-section pipeline-download" id="download"><div class="download-copy"><p class="pipeline-kicker">09 / Download the project</p><h2>Take the complete pipeline with you.</h2><p>Download the packaged project files and explore the configuration, processing code, and supporting resources locally.</p></div><div class="download-action"><a class="pipeline-btn pipeline-btn--primary" href="${archivePath}" download="Dataset-Pipeline-main.zip">Download ZIP <span aria-hidden="true">-&gt;</span></a><span>Dataset-Pipeline-main.zip</span></div></section>
+
+      <section class="pipeline-section contribution-section"><div class="contribution-copy"><p class="pipeline-kicker">10 / Contribution</p><h2>Built by ${safe(project.company?.name || project.organization?.name)}.</h2><p>${safe(project.company?.relationship)}. ${list(project.contributors).map(person => `${safe(person.name)} contributes ${safe(person.role)}.`).join(" ")}</p></div><div class="contributor-list">${list(project.contributors).map(person => `<div><strong>${safe(person.name)}</strong><span>${safe(person.role)}</span></div>`).join("")}</div></section>
       <section class="pipeline-cta"><div><p class="pipeline-kicker">Keep exploring</p><h2>Open the pipeline and see the decisions in context.</h2></div><div class="pipeline-actions">${links.map(link => externalLink(link.url, link.label, true)).join("")}<a class="pipeline-btn pipeline-btn--quiet" href="projects.html">Back to Projects <span aria-hidden="true">-&gt;</span></a></div></section>
     </article>`;
     activateReveals();

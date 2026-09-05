@@ -119,6 +119,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="site-footer__bottom">&copy; 2026 Kode Developers. All rights reserved.</p>
       `;
     });
+
+    if(!document.getElementById("scroll-top")){
+      const scrollTop = document.createElement("button");
+      scrollTop.id = "scroll-top";
+      scrollTop.className = "scroll-top";
+      scrollTop.type = "button";
+      scrollTop.setAttribute("aria-label", "Back to top");
+      scrollTop.setAttribute("title", "Back to top");
+      scrollTop.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 10 6-6 6 6M12 4v16"/></svg>`;
+      document.body.appendChild(scrollTop);
+    }
   }
 
   renderSharedChrome();
@@ -139,6 +150,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const savedTheme = localStorage.getItem("theme") || "dark";
   applyTheme(savedTheme);
+
+  const scrollTop = document.getElementById("scroll-top");
+  const updateScrollTop = () => scrollTop?.classList.toggle("is-visible", window.scrollY > 420);
+  updateScrollTop();
+  window.addEventListener("scroll", updateScrollTop, { passive:true });
+  scrollTop?.addEventListener("click", () => {
+    window.scrollTo({ top:0, behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
 
   themeBtn?.addEventListener("click", () => {
     const next = document.body.classList.contains("dark-theme") ? "light" : "dark";
