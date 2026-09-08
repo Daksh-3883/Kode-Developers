@@ -4,185 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatKode | Kode Developers</title>
-  <meta name="description" content="ChatKode is an AI-powered coding assistant and chat companion developed by Kode Developers.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="Common.css">
   <link rel="stylesheet" href="chatkode.css">
 </head>
 <body class="font-sans overflow-x-hidden dark-theme">
+
+  <!-- Loader -->
   <div id="loader">
     <h1>Kode Developers</h1>
   </div>
-
+  <!-- Navigation Bar -->
   <nav id="navbar"></nav>
 
-  <main class="chatkode-page">
-    <section class="chatkode-hero">
-      <div class="chatkode-hero__inner">
-        <p class="chatkode-kicker"><img src="../docs/Assets/Logo/Main-Mark.svg" alt="KODE DEVELOPERS" aria-label="KODE DEVELOPERS"> Kode Developers</p>
-        <div class="chatkode-hero__visual" aria-hidden="true">
-          <div class="orbit orbit--outer"></div>
-          <div class="orbit orbit--mid"></div>
-          <div class="orbit orbit--inner"></div>
-          <div class="orbital-node orbital-node--one"></div>
-          <div class="orbital-node orbital-node--two"></div>
-          <div class="orbital-node orbital-node--three"></div>
-          <div class="orbital-node orbital-node--four"></div>
-          <div class="orbital-node orbital-node--five"></div>
-          <div class="orbital-node orbital-node--six"></div>
-
-          <div class="chatkode-node chatkode-node--ask">
-            <span class="node-icon">?</span>
-            <span>Ask</span>
-          </div>
-          <div class="chatkode-node chatkode-node--code">
-            <span class="node-icon">&lt;/&gt;</span>
-            <span>Code</span>
-          </div>
-          <div class="chatkode-node chatkode-node--explain">
-            <span class="node-icon">✦</span>
-            <span>Explain</span>
-          </div>
-          <div class="chatkode-node chatkode-node--explore">
-            <span class="node-icon">◎</span>
-            <span>Explore</span>
-          </div>
-
-          <div class="chatkode-core">
-            <div class="chatkode-core__glow"></div>
-            <img src="../docs/Assets/Logo/ChatkodeMark.svg" alt="ChatKode logo" class="chatkode-core__logo">
-          </div>
-        </div>
-
-        <div class="chatkode-hero__content">
-          <p class="chatkode-hero__eyebrow">AI-powered workspace</p>
-          <h1>ChatKode</h1>
-          <p class="chatkode-hero__summary">A coding companion for clearer thinking, faster debugging, and smarter iteration.</p>
-          <div class="chatkode-actions">
-            <a href="#chatkode-interface" class="chatkode-button chatkode-button--primary">Explore ChatKode</a>
-            <a href="#chatkode-system" class="chatkode-button chatkode-button--secondary">See it in action</a>
-          </div>
-          <div class="chatkode-scroll" aria-label="Scroll to explore">
-            <span class="chatkode-scroll__mouse" aria-hidden="true"></span>
-            <span>Scroll to explore</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="chatkode-interface" class="chatkode-section chatkode-showcase">
-      <div class="chatkode-section__heading">
-        <p class="chatkode-section__eyebrow">Meet ChatKode</p>
-        <h2>Built for real developer flow.</h2>
-      </div>
-
-      <div class="chatkode-surface" aria-label="ChatKode interface preview">
-        <div class="chatkode-surface__header">
-          <div class="chatkode-window-controls" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <span class="chatkode-surface__label">chatkode / assistant</span>
-        </div>
-
-        <div class="chatkode-surface__body">
-          <aside class="chatkode-sidebar">
-            <div class="chatkode-sidebar__group active">
-              <span class="chatkode-sidebar__dot"></span>
-              <span>Ask</span>
-            </div>
-            <div class="chatkode-sidebar__group">
-              <span class="chatkode-sidebar__dot"></span>
-              <span>Code</span>
-            </div>
-            <div class="chatkode-sidebar__group">
-              <span class="chatkode-sidebar__dot"></span>
-              <span>Explain</span>
-            </div>
-          </aside>
-
-          <div class="chatkode-window">
-            <div class="chatkode-message chatkode-message--prompt">
-              <div class="chatkode-avatar">
-                <img src="../docs/Assets/Logo/ChatkodeMark.svg" alt="" aria-hidden="true">
-              </div>
-              <div class="chatkode-bubble">
-                <p>Help me understand this function and suggest a cleaner approach.</p>
-              </div>
-            </div>
-
-            <div class="chatkode-message chatkode-message--reply">
-              <div class="chatkode-bubble">
-                <p><span class="chatkode-code">const parse = (value) =&gt; value.trim().toLowerCase();</span></p>
-                <p>This keeps the logic readable, reduces repeated work, and makes edge cases easier to reason about.</p>
-              </div>
-            </div>
-
-            <div class="chatkode-prompt-bar">
-              <span>How can I help you build today?</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="chatkode-system" class="chatkode-section chatkode-system">
-      <div class="chatkode-system__copy">
-        <p class="chatkode-section__eyebrow">Capability system</p>
-        <h2>One connected system for code, context, and clarity.</h2>
-        <p>
-          ChatKode brings conversation and code together in a single workspace, helping developers ask, inspect, and refine ideas without breaking focus.
-        </p>
-      </div>
-
-      <div class="chatkode-system__map" aria-label="ChatKode capabilities map">
-        <div class="map-node map-node--left">Ask</div>
-        <div class="map-node map-node--top">Code</div>
-        <div class="map-node map-node--right">Explore</div>
-        <div class="map-node map-node--bottom">Explain</div>
-        <div class="chatkode-system__core">
-          <img src="../docs/Assets/Logo/ChatkodeMark.svg" alt="ChatKode mark" aria-label="ChatKode central product mark">
-        </div>
-      </div>
-    </section>
-
-    <section class="chatkode-section chatkode-workflow">
-      <div class="chatkode-section__heading">
-        <p class="chatkode-section__eyebrow">How it works</p>
-        <h2>From prompt to progress.</h2>
-      </div>
-
-      <div class="chatkode-flow">
-        <article class="chatkode-step">
-          <span class="chatkode-step__number">01</span>
-          <h3>Ask</h3>
-          <p>Describe the issue, the goal, or the direction you want to explore.</p>
-        </article>
-        <article class="chatkode-step">
-          <span class="chatkode-step__number">02</span>
-          <h3>Inspect</h3>
-          <p>Review code patterns, structure, and the reasoning behind a possible solution.</p>
-        </article>
-        <article class="chatkode-step">
-          <span class="chatkode-step__number">03</span>
-          <h3>Refine</h3>
-          <p>Iterate toward a cleaner implementation with clearer, smarter next steps.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="chatkode-section chatkode-final-cta">
-      <div class="chatkode-final-cta__panel">
-        <p class="chatkode-section__eyebrow">Built by Kode Developers</p>
-        <h2>Designing clearer ways to build with AI.</h2>
-        <a href="../index.html#projects" class="chatkode-button chatkode-button--primary">Back to projects</a>
-      </div>
-    </section>
+  <!-- Main Content -->
+  <main class="pt-32 pb-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-teal-400">ChatKode</h1>
+      <p class="text-lg mb-4">An AI-powered coding assistant designed to accelerate development workflows, reduce debugging time, and help developers think in solutionsâ€”not syntax.</p>
+      <p class="text-lg mb-8">Built for students, indie hackers, and developers who want faster output without sacrificing code quality.</p>
+      <a href="../index.html#projects" class="text-teal-400 underline hover:text-teal-300 transition">â† Back to Projects</a>
+    </div>
   </main>
-
+  <!-- Footer -->
   <footer data-shared-footer></footer>
 
+  <!-- Custom JavaScript -->
   <script src="Common.js" defer></script>
   <script src="chatkode.js" defer></script>
 </body>
