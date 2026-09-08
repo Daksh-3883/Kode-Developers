@@ -1,33 +1,764 @@
-/* ===================== <--general--> ===================== */
+:root {
+  --chatkode-bg: #040b17;
+  --chatkode-bg-strong: #020915;
+  --chatkode-panel: rgba(10, 18, 32, 0.82);
+  --chatkode-panel-strong: rgba(12, 24, 38, 0.96);
+  --chatkode-border: rgba(120, 145, 255, 0.22);
+  --chatkode-border-strong: rgba(117, 204, 255, 0.4);
+  --chatkode-text: #edf6ff;
+  --chatkode-text-soft: #c9d7ee;
+  --chatkode-text-muted: #8ba2c2;
+  --chatkode-cyan: #6ad7ff;
+  --chatkode-blue: #5f8cff;
+  --chatkode-purple: #8d7dff;
+  --chatkode-lime: #a7f59c;
+  --chatkode-glow: rgba(116, 142, 255, 0.38);
+}
+
+body.light-theme {
+  --chatkode-bg: #eef5ff;
+  --chatkode-bg-strong: #dfeaff;
+  --chatkode-panel: rgba(255, 255, 255, 0.82);
+  --chatkode-panel-strong: rgba(244, 248, 255, 0.96);
+  --chatkode-border: rgba(95, 140, 255, 0.18);
+  --chatkode-border-strong: rgba(76, 103, 255, 0.42);
+  --chatkode-text: #091825;
+  --chatkode-text-soft: #1d2d42;
+  --chatkode-text-muted: #597090;
+  --chatkode-cyan: #1ea7d9;
+  --chatkode-blue: #3b6cff;
+  --chatkode-purple: #7a68ff;
+  --chatkode-lime: #3aa66a;
+  --chatkode-glow: rgba(64, 108, 255, 0.2);
+}
+
 body {
-  font-family: var(--font-primary);
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background:
+    radial-gradient(circle at 50% 18%, rgba(72, 93, 255, 0.2), transparent 30%),
+    linear-gradient(180deg, var(--chatkode-bg-strong) 0%, var(--chatkode-bg) 38%, var(--chatkode-bg) 100%);
+  color: var(--chatkode-text);
+}
+
+.chatkode-page {
+  position: relative;
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+  overflow: hidden;
+}
+
+.chatkode-page::before,
+.chatkode-page::after {
+  content: "";
+  position: absolute;
+  inset: auto 10% 0 10%;
+  height: 28rem;
+  background: radial-gradient(circle at center, rgba(67, 103, 255, 0.18), transparent 62%);
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.chatkode-page::after {
+  inset: auto 0 0 0;
+  height: 22rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(12, 26, 42, 0.2));
+  filter: none;
+}
+
+.chatkode-hero,
+.chatkode-section {
+  position: relative;
+  z-index: 1;
+}
+
+.chatkode-hero {
+  padding-top: 3.2rem;
+  padding-bottom: 2rem;
+}
+
+.chatkode-hero__inner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 56rem;
+  text-align: center;
+}
+
+.chatkode-kicker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  color: var(--chatkode-text-soft);
+  font-size: 0.7rem;
+  letter-spacing: 0.38rem;
+  text-transform: uppercase;
+  font-family: var(--font-technical);
+  opacity: 0.9;
 }
 
-/* ===================== <--fade-up-animation--> ===================== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+.chatkode-kicker img {
+  width: 1.7rem;
+  height: 1.7rem;
+  filter: drop-shadow(0 0 16px rgba(122, 149, 255, 0.4));
 }
 
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
+.chatkode-hero__visual {
+  position: relative;
+  width: min(100%, 54rem);
+  height: 32rem;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+.orbit {
+  position: absolute;
+  inset: 12% 18% 18% 18%;
+  border: 1px solid rgba(112, 148, 255, 0.26);
+  border-radius: 50%;
+  box-shadow: inset 0 0 12px rgba(112, 148, 255, 0.09), 0 0 18px rgba(112, 148, 255, 0.08);
+}
 
-/* ===================== <--responsive-grid--> ===================== */
-@media (max-width: 768px) {
-  .grid {
-    gap: 1.5rem;
+.orbit--outer {
+  transform: rotate(-18deg);
+}
+
+.orbit--mid {
+  inset: 19% 24% 25% 24%;
+  transform: rotate(24deg);
+  border-color: rgba(118, 202, 255, 0.28);
+}
+
+.orbit--inner {
+  inset: 28% 31% 32% 31%;
+  transform: rotate(-12deg);
+  border-color: rgba(157, 138, 255, 0.2);
+}
+
+.orbital-node {
+  position: absolute;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #8fd5ff 0%, #6b7cff 100%);
+  box-shadow: 0 0 0 2px rgba(131, 169, 255, 0.22), 0 0 18px rgba(115, 130, 255, 0.95);
+}
+
+.orbital-node--one { top: 18%; left: 26%; }
+.orbital-node--two { top: 52%; left: 18%; }
+.orbital-node--three { top: 20%; right: 21%; }
+.orbital-node--four { top: 53%; right: 16%; }
+.orbital-node--five { bottom: 18%; left: 43%; }
+.orbital-node--six { bottom: 22%; right: 41%; }
+
+.chatkode-node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 7.6rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--chatkode-border);
+  border-radius: 1rem;
+  background: rgba(13, 21, 35, 0.48);
+  color: var(--chatkode-text-soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.chatkode-node--ask { top: 18%; left: 4%; }
+.chatkode-node--code { top: 54%; left: 6%; }
+.chatkode-node--explain { top: 19%; right: 5%; }
+.chatkode-node--explore { top: 57%; right: 5%; }
+
+.node-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, rgba(128, 175, 255, 0.2), rgba(155, 122, 255, 0.18));
+  border: 1px solid rgba(142, 166, 255, 0.35);
+  color: var(--chatkode-text);
+  font-family: var(--font-technical);
+  font-size: 0.8rem;
+}
+
+.chatkode-core {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(12rem, 18vw, 17rem);
+  aspect-ratio: 1;
+  border-radius: 2.2rem;
+  background: linear-gradient(135deg, rgba(97, 143, 255, 0.35), rgba(142, 110, 255, 0.15));
+  box-shadow:
+    0 0 0 1px rgba(181, 214, 255, 0.36),
+    0 18px 60px rgba(64, 100, 255, 0.24),
+    inset 0 0 25px rgba(108, 122, 255, 0.12);
+  clip-path: polygon(25% 7%, 75% 7%, 98% 50%, 75% 93%, 25% 93%, 2% 50%);
+}
+
+.chatkode-core__glow {
+  position: absolute;
+  inset: 10%;
+  border-radius: 1.7rem;
+  background: linear-gradient(135deg, rgba(127, 170, 255, 0.28), rgba(161, 134, 255, 0.08));
+  filter: blur(10px);
+}
+
+.chatkode-core__logo {
+  position: relative;
+  z-index: 1;
+  width: 58%;
+  max-width: 7rem;
+  filter: drop-shadow(0 0 14px rgba(138, 161, 255, 0.65));
+}
+
+.chatkode-hero__content {
+  position: relative;
+  margin-top: -2rem;
+  max-width: 52rem;
+}
+
+.chatkode-hero__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--chatkode-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 0.72rem;
+  font-family: var(--font-technical);
+}
+
+.chatkode-hero__content h1 {
+  margin: 0;
+  font-size: clamp(3.2rem, 7vw, 7.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+  font-weight: 800;
+  color: var(--chatkode-text);
+}
+
+.chatkode-hero__summary {
+  max-width: 42rem;
+  margin: 1.2rem auto 0;
+  color: var(--chatkode-text-soft);
+  font-size: clamp(1.05rem, 1.8vw, 1.38rem);
+  line-height: 1.6;
+}
+
+.chatkode-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.chatkode-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11.4rem;
+  min-height: 3.4rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(143, 173, 255, 0.3);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chatkode-button:hover,
+.chatkode-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(143, 173, 255, 0.5);
+  box-shadow: 0 0 0 1px rgba(143, 173, 255, 0.2);
+}
+
+.chatkode-button--primary {
+  background: linear-gradient(90deg, rgba(98, 134, 255, 0.5), rgba(141, 125, 255, 0.6));
+  color: var(--chatkode-text);
+  box-shadow: 0 18px 50px rgba(98, 134, 255, 0.3);
+}
+
+.chatkode-button--secondary {
+  background: rgba(14, 23, 34, 0.2);
+  color: var(--chatkode-text-soft);
+}
+
+.chatkode-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2.3rem;
+  color: var(--chatkode-text-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.04rem;
+}
+
+.chatkode-scroll__mouse {
+  display: block;
+  width: 1.1rem;
+  height: 1.7rem;
+  border: 1px solid rgba(146, 172, 255, 0.65);
+  border-radius: 999px;
+  position: relative;
+}
+
+.chatkode-scroll__mouse::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.3rem;
+  width: 0.2rem;
+  height: 0.45rem;
+  margin-left: -0.1rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--chatkode-cyan), #8aa8ff);
+}
+
+.chatkode-section {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding-top: 2.6rem;
+}
+
+.chatkode-section__heading {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.chatkode-section__eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--chatkode-cyan);
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  font-family: var(--font-technical);
+}
+
+.chatkode-section__heading h2,
+.chatkode-system__copy h2,
+.chatkode-final-cta__panel h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.chatkode-surface {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  border: 1px solid var(--chatkode-border);
+  border-radius: 1.8rem;
+  background: linear-gradient(180deg, rgba(9, 17, 28, 0.92), rgba(9, 17, 28, 0.74));
+  box-shadow: 0 25px 60px rgba(5, 12, 22, 0.42), inset 0 0 0 1px rgba(147, 168, 255, 0.04);
+  overflow: hidden;
+}
+
+.chatkode-surface__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(150, 170, 255, 0.08);
+  background: rgba(22, 31, 43, 0.6);
+}
+
+.chatkode-window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chatkode-window-controls span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  display: block;
+  background: rgba(159, 175, 214, 0.7);
+}
+
+.chatkode-window-controls span:first-child { background: #ff7f7d; }
+.chatkode-window-controls span:nth-child(2) { background: #f8d66d; }
+.chatkode-window-controls span:nth-child(3) { background: #78d89a; }
+
+.chatkode-surface__label {
+  color: var(--chatkode-text-muted);
+  font-family: var(--font-technical);
+  font-size: 0.72rem;
+  letter-spacing: 0.06rem;
+}
+
+.chatkode-surface__body {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  min-height: 28rem;
+}
+
+.chatkode-sidebar {
+  border-right: 1px solid rgba(150, 170, 255, 0.08);
+  padding: 1.2rem 1rem;
+  background: rgba(9, 18, 24, 0.44);
+}
+
+.chatkode-sidebar__group {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.78rem 0.7rem;
+  border-radius: 0.8rem;
+  color: var(--chatkode-text-muted);
+  font-size: 0.84rem;
+}
+
+.chatkode-sidebar__group.active {
+  background: rgba(102, 136, 255, 0.12);
+  border: 1px solid rgba(120, 152, 255, 0.22);
+  color: var(--chatkode-text);
+}
+
+.chatkode-sidebar__dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: linear-gradient(180deg, #7fd4ff, #7d92ff);
+  box-shadow: 0 0 16px rgba(141, 165, 255, 0.7);
+}
+
+.chatkode-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 0.9rem;
+  padding: 1.4rem 1.2rem 1rem;
+  background: linear-gradient(180deg, rgba(7, 16, 20, 0.76), rgba(9, 21, 29, 0.8));
+}
+
+.chatkode-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.72rem;
+}
+
+.chatkode-message--reply {
+  justify-content: flex-end;
+}
+
+.chatkode-avatar {
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: rgba(122, 137, 255, 0.12);
+  border: 1px solid rgba(121, 145, 255, 0.22);
+}
+
+.chatkode-avatar img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.chatkode-bubble {
+  max-width: 30rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem 1rem 1rem 0.3rem;
+  background: rgba(17, 39, 56, 0.7);
+  border: 1px solid rgba(127, 153, 255, 0.12);
+  color: var(--chatkode-text-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.chatkode-message--reply .chatkode-bubble {
+  border-radius: 1rem 1rem 0.3rem 1rem;
+  background: linear-gradient(135deg, rgba(84, 123, 255, 0.2), rgba(145, 124, 255, 0.12));
+}
+
+.chatkode-code {
+  display: inline-block;
+  font-family: var(--font-technical);
+  color: var(--chatkode-cyan);
+}
+
+.chatkode-prompt-bar {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 21, 30, 0.6);
+  border: 1px solid rgba(128, 157, 255, 0.12);
+  color: var(--chatkode-text-muted);
+  font-size: 0.92rem;
+}
+
+.chatkode-system {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  align-items: center;
+  padding-top: 4.5rem;
+}
+
+.chatkode-system__copy {
+  max-width: 32rem;
+}
+
+.chatkode-system__copy p:last-child {
+  color: var(--chatkode-text-soft);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.chatkode-system__map {
+  position: relative;
+  width: min(100%, 42rem);
+  height: 26rem;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.chatkode-system__map::before,
+.chatkode-system__map::after {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border: 1px solid rgba(128, 158, 255, 0.22);
+  border-radius: 50%;
+}
+
+.chatkode-system__map::before {
+  transform: rotate(-18deg);
+}
+
+.chatkode-system__map::after {
+  transform: rotate(18deg);
+  width: 52%;
+  height: 52%;
+  border-color: rgba(129, 120, 255, 0.16);
+}
+
+.map-node {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 6.6rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 155, 255, 0.2);
+  background: rgba(9, 18, 30, 0.56);
+  color: var(--chatkode-text-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-technical);
+}
+
+.map-node--left { left: 6%; top: 50%; transform: translateY(-50%); }
+.map-node--top { top: 10%; left: 50%; transform: translateX(-50%); }
+.map-node--right { right: 6%; top: 50%; transform: translateY(-50%); }
+.map-node--bottom { bottom: 10%; left: 50%; transform: translateX(-50%); }
+
+.chatkode-system__core {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 2.2rem;
+  background: linear-gradient(135deg, rgba(116, 170, 255, 0.32), rgba(149, 118, 255, 0.14));
+  border: 1px solid rgba(149, 181, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(145, 170, 255, 0.18), 0 18px 40px rgba(77, 100, 255, 0.18);
+  clip-path: polygon(25% 7%, 75% 7%, 98% 50%, 75% 93%, 25% 93%, 2% 50%);
+}
+
+.chatkode-system__core img {
+  width: 3.4rem;
+}
+
+.chatkode-workflow {
+  padding-top: 4.5rem;
+}
+
+.chatkode-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.chatkode-step {
+  padding: 1.8rem 1.3rem 1.5rem;
+  border-radius: 1.35rem;
+  border: 1px solid var(--chatkode-border);
+  background: linear-gradient(180deg, rgba(10, 17, 29, 0.72), rgba(16, 26, 38, 0.64));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.chatkode-step__number {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--chatkode-cyan);
+  font-size: 0.72rem;
+  letter-spacing: 0.12rem;
+  font-family: var(--font-technical);
+}
+
+.chatkode-step h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+}
+
+.chatkode-step p {
+  margin: 0;
+  color: var(--chatkode-text-soft);
+  line-height: 1.7;
+}
+
+.chatkode-final-cta {
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+}
+
+.chatkode-final-cta__panel {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.4rem, 5vw, 3rem);
+  border-radius: 2rem;
+  border: 1px solid var(--chatkode-border);
+  background: linear-gradient(135deg, rgba(15, 29, 48, 0.9), rgba(12, 18, 31, 0.82));
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(5, 12, 20, 0.38);
+}
+
+.chatkode-final-cta__panel .chatkode-button {
+  margin-top: 1.5rem;
+}
+
+body.light-theme .chatkode-surface,
+body.light-theme .chatkode-step,
+body.light-theme .chatkode-final-cta__panel,
+body.light-theme .chatkode-node,
+body.light-theme .chatkode-button--secondary,
+body.light-theme .chatkode-system__core,
+body.light-theme .map-node {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme .chatkode-bubble,
+body.light-theme .chatkode-prompt-bar,
+body.light-theme .chatkode-sidebar,
+body.light-theme .chatkode-window {
+  background: rgba(238, 248, 255, 0.8);
+}
+
+body.light-theme .chatkode-section__eyebrow,
+body.light-theme .chatkode-hero__eyebrow,
+body.light-theme .chatkode-kicker,
+body.light-theme .chatkode-step__number,
+body.light-theme .chatkode-code {
+  color: var(--chatkode-blue);
+}
+
+body.light-theme .chatkode-button--secondary,
+body.light-theme .map-node,
+body.light-theme .chatkode-node,
+body.light-theme .chatkode-bubble,
+body.light-theme .chatkode-prompt-bar,
+body.light-theme .chatkode-step,
+body.light-theme .chatkode-final-cta__panel,
+body.light-theme .chatkode-surface {
+  border-color: var(--chatkode-border);
+}
+
+@media (max-width: 980px) {
+  .chatkode-hero__inner {
+    min-height: 50rem;
+  }
+
+  .chatkode-hero__visual {
+    height: 28rem;
+  }
+
+  .chatkode-node {
+    min-width: 6.4rem;
+    font-size: 0.75rem;
+  }
+
+  .chatkode-system {
+    grid-template-columns: 1fr;
+  }
+
+  .chatkode-system__copy {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .chatkode-page {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .chatkode-hero__inner {
+    min-height: 44rem;
+  }
+
+  .chatkode-kicker {
+    top: 0.3rem;
+    letter-spacing: 0.22rem;
+    font-size: 0.62rem;
+  }
+
+  .chatkode-hero__visual {
+    width: min(100%, 30rem);
+    height: 21rem;
+  }
+
+  .chatkode-node {
+    min-width: 5.6rem;
+    padding: 0.6rem 0.6rem;
+    font-size: 0.68rem;
+  }
+
+  .chatkode-node--ask { top: 12%; left: 0; }
+  .chatkode-node--code { top: 58%; left: 0; }
+  .chatkode-node--explain { top: 12%; right: 0; }
+  .chatkode-node--explore { top: 58%; right: 0; }
+
+  .chatkode-surface__body {
+    grid-template-columns: 1fr;
+  }
+
+  .chatkode-sidebar {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(150, 170, 255, 0.08);
+  }
+
+  .chatkode-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .chatkode-system__map {
+    height: 20rem;
+  }
+
+  .map-node {
+    width: 5.4rem;
+    font-size: 0.66rem;
   }
 }
