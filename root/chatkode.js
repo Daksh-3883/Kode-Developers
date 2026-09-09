@@ -1,43 +1,43 @@
-if (!window.kodeCommonLoaded) {
-  // ===================== 1. THEME TOGGLE ENGINE =====================
-  const themeToggleBtn = document.getElementById('theme-toggle');
-
-  // Helper to update the button icon based on current theme
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.body.classList.add('dark-theme');
-      document.body.classList.remove('light-theme');
-      if (themeToggleBtn) themeToggleBtn.textContent = '☀️'; // Sun for dark mode
-    } else {
-      document.body.classList.add('light-theme');
-      document.body.classList.remove('dark-theme');
-      if (themeToggleBtn) themeToggleBtn.textContent = '🌙'; // Moon for light mode
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  if (!window.kodeCommonLoaded) {
+    window.kodeCommonLoaded = true;
   }
 
-  // Check local storage for saved theme preference (default to dark)
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  applyTheme(savedTheme);
-
-  // Listen for clicks on the toggle button
-  themeToggleBtn?.addEventListener('click', () => {
-    const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme);
-    applyTheme(newTheme);
+  const cards = Array.from(document.querySelectorAll(".chatkode-capability-card"));
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      card.classList.add("is-active");
+    });
+    card.addEventListener("mouseleave", () => {
+      card.classList.remove("is-active");
+    });
   });
 
-  // ===================== 2. FADE-UP ON SCROLL =====================
-  const fadeEls = document.querySelectorAll('.fade-up');
+  const workflowSteps = Array.from(document.querySelectorAll(".chatkode-workflow__step"));
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Intersection Observer to trigger animations when elements enter viewport
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // Stop observing once shown
-      }
+  if (!prefersReducedMotion && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: "translateY(24px)" },
+            { opacity: 1, transform: "translateY(0)" }
+          ], {
+            duration: 680,
+            easing: "cubic-bezier(.2,.8,.2,1)",
+            fill: "forwards"
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.22 });
+
+    workflowSteps.forEach(step => observer.observe(step));
+  } else {
+    workflowSteps.forEach(step => {
+      step.style.opacity = "1";
+      step.style.transform = "translateY(0)";
     });
-  }, { threshold: 0.1 });
-
-  fadeEls.forEach(el => observer.observe(el));
-}
+  }
+});

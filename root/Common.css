@@ -3,7 +3,7 @@
    Shared Global Styles
 ====================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap");
 
 /* Phase 2C Decorative Systems - Shared Architecture */
 @import "Patterns.css";
@@ -28,7 +28,7 @@
   --color-info:#0ea5e9;
 
   /* Typography */
-  --font-primary:"Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-primary:"Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-technical:"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   --font-weight-regular:400;
