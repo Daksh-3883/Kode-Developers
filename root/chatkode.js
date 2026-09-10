@@ -116,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
       heroCenter.style.setProperty("--hero-shift-y", `${shiftY}px`);
 
       if (heroSystem) {
-        heroSystem.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+        heroSystem.style.setProperty("--cursor-shift-x", `${x * 10}px`);
+        heroSystem.style.setProperty("--cursor-shift-y", `${y * 10}px`);
       }
 
       if (page) {
@@ -128,17 +129,160 @@ document.addEventListener("DOMContentLoaded", () => {
     const onLeave = () => {
       heroCenter.style.setProperty("--hero-shift-x", "0px");
       heroCenter.style.setProperty("--hero-shift-y", "0px");
-      if (heroSystem) heroSystem.style.transform = "translate(0, 0)";
+      if (heroSystem) {
+        heroSystem.style.setProperty("--cursor-shift-x", "0px");
+        heroSystem.style.setProperty("--cursor-shift-y", "0px");
+      }
     };
 
     hero.addEventListener("mousemove", onMove);
     hero.addEventListener("mouseleave", onLeave);
   }
 
+  // Hero → product transition: as the visitor scrolls past the hero, the
+  // orbital system settles and fades so the page reads as one continuous
+  // system handing off to the product demo below, instead of two separate blocks.
+  if (hero && !prefersReducedMotion) {
+    let heroScrollFrame = null;
+    const updateHeroScroll = () => {
+      const rect = hero.getBoundingClientRect();
+      const distance = Math.max(rect.height * 0.85, 1);
+      const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
+      hero.style.setProperty("--hero-scroll", progress.toFixed(4));
+    };
+    const onHeroScroll = () => {
+      if (!heroScrollFrame) {
+        heroScrollFrame = requestAnimationFrame(() => {
+          updateHeroScroll();
+          heroScrollFrame = null;
+        });
+      }
+    };
+    updateHeroScroll();
+    window.addEventListener("scroll", onHeroScroll, { passive: true });
+    window.addEventListener("resize", updateHeroScroll);
+  }
+
+  // Page continuity: a thin signal line runs behind the sections and draws
+  // itself in as the visitor scrolls, tying the hero, product demo,
+  // capabilities, workflow and CTA into one connected system.
+  const flowLine = document.querySelector(".chatkode-flow-line");
+  if (flowLine && !prefersReducedMotion) {
+    let flowFrame = null;
+    const updateFlow = () => {
+      const doc = document.documentElement;
+      const max = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(window.scrollY / max, 0), 1);
+      flowLine.style.setProperty("--flow-progress", progress.toFixed(4));
+    };
+    const onFlowScroll = () => {
+      if (!flowFrame) {
+        flowFrame = requestAnimationFrame(() => {
+          updateFlow();
+          flowFrame = null;
+        });
+      }
+    };
+    updateFlow();
+    window.addEventListener("scroll", onFlowScroll, { passive: true });
+    window.addEventListener("resize", updateFlow);
+  } else if (flowLine) {
+    flowLine.style.display = "none";
+  }
+
+  // Capability system activation: cards light up progressively as the
+  // section scrolls into view, like the ChatKode system routing power to
+  // each capability in turn, rather than appearing all at once.
+  const capabilitiesSection = document.querySelector(".chatkode-capabilities");
+  if (capabilitiesSection && capabilityCards.length && !prefersReducedMotion && "IntersectionObserver" in window) {
+    capabilitiesSection.classList.add("is-charging");
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
+    const capabilityObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const activeCount = Math.ceil(entry.intersectionRatio * capabilityCards.length);
+        capabilityCards.forEach((card, i) => {
+          card.classList.toggle("is-charged", i < activeCount);
+        });
+      });
+    }, { threshold: thresholds });
+    capabilityObserver.observe(capabilitiesSection);
+  } else {
+    capabilityCards.forEach(card => card.classList.add("is-charged"));
+  }
+
+  // Final CTA convergence: once the CTA is reached, surrounding system
+  // noise settles and the ChatKode mark becomes the sole focus.
+  const buildSection = document.querySelector(".chatkode-build__wrap");
+  if (buildSection && !prefersReducedMotion && "IntersectionObserver" in window) {
+    buildSection.classList.add("is-pending");
+    const buildObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          buildSection.classList.add("is-converged");
+          buildObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    buildObserver.observe(buildSection);
+  } else if (buildSection) {
+    buildSection.classList.add("is-converged");
+  }
+
+  // Scroll-aware product-demo state progression for ask → understand → build → refine.
+  const meet = document.querySelector(".chatkode-meet");
+  const demo = document.querySelector(".chatkode-demo");
+  const productMessages = Array.from(document.querySelectorAll(".chatkode-demo__message"));
+  const productCodeLines = Array.from(document.querySelectorAll(".chatkode-demo__code-line"));
+
+  if (meet && demo && !prefersReducedMotion) {
+    const getStage = progress => {
+      if (progress < 0.22) return "ask";
+      if (progress < 0.48) return "understand";
+      if (progress < 0.72) return "build";
+      return "refine";
+    };
+
+    const updateDemoStory = () => {
+      const rect = meet.getBoundingClientRect();
+      const distance = Math.max(rect.height - window.innerHeight, 1);
+      const scrollRatio = Math.min(Math.max((-rect.top) / distance, 0), 1);
+      const stage = getStage(scrollRatio);
+      demo.dataset.storyStage = stage;
+
+      demo.style.setProperty("--story-progress", scrollRatio.toFixed(4));
+      demo.style.setProperty("--story-stage", stage);
+
+      productMessages.forEach((message, index) => {
+        const isActive = index <= (stage === "ask" ? 1 : stage === "understand" ? 1 : stage === "build" ? 2 : 3);
+        message.classList.toggle("is-active", isActive);
+      });
+
+      productCodeLines.forEach((line, index) => {
+        line.classList.toggle("is-revealed", index < (stage === "build" ? 1 : stage === "refine" ? 2 : 1));
+      });
+    };
+
+    const onScroll = () => {
+      if (!updateDemoStoryFrame) {
+        updateDemoStoryFrame = requestAnimationFrame(() => {
+          updateDemoStory();
+          updateDemoStoryFrame = null;
+        });
+      }
+    };
+
+    let updateDemoStoryFrame = null;
+    updateDemoStory();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateDemoStory);
+  }
+
   // Accessibility and reduced motion fallbacks.
   if (prefersReducedMotion) {
     storySections.forEach(section => section.classList.add("is-visible"));
-    capabilityCards.forEach(card => card.classList.add("is-active"));
+    capabilityCards.forEach(card => card.classList.add("is-active", "is-charged"));
     workflowSteps.forEach(step => step.classList.add("is-visible"));
+    const buildWrap = document.querySelector(".chatkode-build__wrap");
+    if (buildWrap) buildWrap.classList.add("is-converged");
   }
 });
