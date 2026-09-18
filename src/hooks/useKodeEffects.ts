@@ -15,7 +15,7 @@ export function useKodeEffects(page: string) {
               entries.forEach(entry => {
                 if (entry.isIntersecting) {
                   entry.target.classList.add("show");
-                  observer.unobserve(entry.target);
+                  observer?.unobserve(entry.target);
                 }
               });
             },

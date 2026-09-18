@@ -10,6 +10,7 @@ const safe = (value: unknown) =>
 const number = (value: unknown) => Number(value || 0).toLocaleString();
 const percent = (value: number, total: number) => (total ? `${((value / total) * 100).toFixed(1)}%` : "0%");
 const objectEntries = (value: unknown) => Object.entries((value || {}) as Record<string, unknown>);
+type ProjectLink = { url: string; label: string; type?: string };
 
 export function PipelinePage() {
   const ref = useRef<HTMLElement>(null);
@@ -25,7 +26,9 @@ export function PipelinePage() {
     const dedupe = run.deduplication || {};
     const finalDataset = run.finalDataset || {};
     const exportRun = run.export || {};
-    const links = list(data.projectLinks).length ? data.projectLinks : objectEntries(data.links).map(([type, url]) => ({ type, label: type, url }));
+    const links: ProjectLink[] = list(data.projectLinks).length
+      ? list(data.projectLinks)
+      : objectEntries(data.links).map(([type, url]) => ({ type, label: type, url: String(url ?? "") }));
     const totalMerged = (merge.accepted || 0) + (merge.rejected || 0);
     const maxLanguage = Math.max(...Object.values(run.languageDistribution || {}).map(Number), 1);
     const imagePath = (name: string) => assetHref(`docs/Assets/Pictures/Dataset%20pipeline/${name}`);

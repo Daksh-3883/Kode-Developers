@@ -15,7 +15,7 @@ export function WebProjectPage() {
   useKodeEffects("webprojects");
 
   useEffect(() => {
-    const showcase = ref.current;
+    const showcase = ref.current as HTMLElement | null;
     if (!showcase) return;
     const projectId = (new URLSearchParams(window.location.search).get("project") || "").trim();
     const project = list((projectsData as any).projects).find(item => item.id === projectId);
@@ -60,17 +60,17 @@ export function WebProjectPage() {
       <section class="project-cta reveal"><div><p class="eyebrow">Keep exploring</p><h2>More work, same intent.</h2><p>See more work from Kode Developers.</p></div><div class="project-cta__actions"><a class="btn btn-primary" href="${routeHref("projects")}">Browse Projects <span aria-hidden="true">-&gt;</span></a><a class="btn btn-secondary" href="${routeHref("")}">Back to Home</a></div></section>
     </article>`;
 
-    activateInteractions();
-    function activateInteractions() {
+    activateInteractions(showcase);
+    function activateInteractions(root: HTMLElement) {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const reveals = showcase.querySelectorAll(".reveal");
+      const reveals = root.querySelectorAll(".reveal");
       if (reducedMotion || !("IntersectionObserver" in window)) reveals.forEach(item => item.classList.add("is-visible"));
       else {
         const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 });
         reveals.forEach(item => observer.observe(item));
       }
       if (!reducedMotion) {
-        const tilt = showcase.querySelector<HTMLElement>("[data-tilt]");
+        const tilt = root.querySelector<HTMLElement>("[data-tilt]");
         tilt?.addEventListener("pointermove", event => {
           const rect = tilt.getBoundingClientRect();
           tilt.style.setProperty("--tilt-x", `${((event.clientY - rect.top) / rect.height - 0.5) * -2}deg`);
@@ -81,16 +81,16 @@ export function WebProjectPage() {
           tilt.style.setProperty("--tilt-y", "0deg");
         });
       }
-      showcase.querySelectorAll<HTMLButtonElement>(".gallery-tab").forEach(tab => tab.addEventListener("click", () => {
-        const image = showcase.querySelector<HTMLImageElement>("#gallery-image");
+      root.querySelectorAll<HTMLButtonElement>(".gallery-tab").forEach(tab => tab.addEventListener("click", () => {
+        const image = root.querySelector<HTMLImageElement>("#gallery-image");
         if (!image) return;
         image.src = tab.dataset.src || "";
         image.alt = tab.dataset.alt || "";
-        showcase.querySelectorAll(".gallery-tab").forEach(item => { item.classList.remove("is-active"); item.setAttribute("aria-selected", "false"); });
+        root.querySelectorAll(".gallery-tab").forEach(item => { item.classList.remove("is-active"); item.setAttribute("aria-selected", "false"); });
         tab.classList.add("is-active");
         tab.setAttribute("aria-selected", "true");
       }));
-      showcase.querySelectorAll<HTMLButtonElement>(".stack-item").forEach(item => item.addEventListener("click", () => {
+      root.querySelectorAll<HTMLButtonElement>(".stack-item").forEach(item => item.addEventListener("click", () => {
         const active = item.classList.toggle("is-active");
         item.setAttribute("aria-pressed", String(active));
       }));
