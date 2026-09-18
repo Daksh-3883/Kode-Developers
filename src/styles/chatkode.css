@@ -1,0 +1,510 @@
+@import "tailwindcss" source(none);
+@source "../";
+@source "../../src/legacy";
+@source "../../root";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ChatKode design system — dark technical, derived from the ChatKode logo.
+ * Roles: navy surfaces, electric blue interaction, cyan technical signal,
+ * green activation/success, gold mathematics/logic, soft cyan-white text.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 18px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-success: var(--success);
+  --color-logic: var(--logic);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-syn-key: var(--syn-key);
+  --color-syn-fn: var(--syn-fn);
+  --color-syn-str: var(--syn-str);
+  --color-syn-num: var(--syn-num);
+  --color-syn-com: var(--syn-com);
+  --color-syn-var: var(--syn-var);
+
+  --shadow-brand-blue: var(--glow-blue);
+  --shadow-brand-blue-strong: var(--glow-blue-strong);
+  --shadow-brand-cyan: var(--glow-cyan);
+  --shadow-brand-green: var(--glow-green);
+  --shadow-brand-gold: var(--glow-gold);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+.chatkode-integrated {
+  --radius: 0.375rem;
+
+  /* Deep navy surfaces, straight from the logo background family */
+  --background: oklch(0.19 0.045 250);
+  --foreground: oklch(0.96 0.02 205);
+  --surface: oklch(0.23 0.05 250);
+  --surface-raised: oklch(0.27 0.055 250);
+
+  --card: oklch(0.24 0.05 250);
+  --card-foreground: oklch(0.96 0.02 205);
+  --popover: oklch(0.24 0.05 250);
+  --popover-foreground: oklch(0.96 0.02 205);
+
+  /* Electric blue #0195EE */
+  --primary: oklch(0.65 0.16 240);
+  --primary-hover: oklch(0.7 0.16 240);
+  --primary-foreground: oklch(0.16 0.04 250);
+
+  --secondary: oklch(0.3 0.05 250);
+  --secondary-foreground: oklch(0.95 0.02 205);
+
+  --muted: oklch(0.28 0.045 250);
+  --muted-foreground: oklch(0.72 0.03 220);
+
+  /* Gold #F5D108 */
+  --accent: oklch(0.86 0.16 95);
+  --accent-foreground: oklch(0.2 0.04 95);
+  --logic: oklch(0.86 0.16 95);
+
+  /* Light cyan #7FE3F5 */
+  --signal: oklch(0.83 0.11 205);
+  --signal-soft: oklch(0.83 0.11 205 / 12%);
+
+  /* Green #12DE73 */
+  --success: oklch(0.79 0.19 155);
+
+  --destructive: oklch(0.63 0.2 25);
+  --destructive-foreground: oklch(0.97 0.01 25);
+
+  --border: oklch(0.9 0.05 215 / 12%);
+  --border-strong: oklch(0.9 0.05 215 / 24%);
+  --input: oklch(0.9 0.05 215 / 18%);
+  --ring: oklch(0.65 0.16 240 / 60%);
+
+  --syn-key: oklch(0.83 0.11 205);
+  --syn-fn: oklch(0.7 0.16 240);
+  --syn-str: oklch(0.79 0.19 155);
+  --syn-num: oklch(0.86 0.16 95);
+  --syn-com: oklch(0.6 0.03 230);
+  --syn-var: oklch(0.9 0.03 210);
+
+  --gradient-signal: linear-gradient(
+    120deg,
+    oklch(0.65 0.16 240) 0%,
+    oklch(0.83 0.11 205) 55%,
+    oklch(0.79 0.19 155) 100%
+  );
+
+  --glow-blue: 0 10px 30px -18px oklch(0.65 0.16 240 / 85%);
+  --glow-blue-strong: 0 16px 40px -18px oklch(0.65 0.16 240 / 95%);
+  --glow-cyan: 0 10px 30px -18px oklch(0.83 0.11 205 / 70%);
+  --glow-green: 0 0 0 1px oklch(0.79 0.19 155 / 22%), 0 8px 24px -16px oklch(0.79 0.19 155 / 80%);
+  --glow-gold: 0 0 0 1px oklch(0.86 0.16 95 / 22%), 0 8px 24px -16px oklch(0.86 0.16 95 / 80%);
+
+  --shadow-panel: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 24px 60px -30px oklch(0 0 0 / 80%);
+  --shadow-lift: 0 10px 30px -18px oklch(0 0 0 / 90%);
+}
+
+@layer base {
+.chatkode-integrated * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .chatkode-integrated {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .chatkode-integrated h1,
+  .chatkode-integrated h2,
+  .chatkode-integrated h3,
+  .chatkode-integrated h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .chatkode-integrated :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .chatkode-integrated ::selection {
+    background: oklch(0.65 0.16 240 / 30%);
+  }
+}
+
+.chatkode-integrated section {
+  border-bottom: 0;
+}
+
+/* ---------- utilities ---------- */
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility text-gradient-signal {
+  background: var(--gradient-signal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility grid-atmosphere {
+  background-image:
+    linear-gradient(to right, oklch(0.83 0.11 205 / 5%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.83 0.11 205 / 5%) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility hairline-top {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- brand surfaces ---------- */
+
+@utility hero-blue-field {
+  background:
+    radial-gradient(60% 55% at 22% 20%, oklch(0.65 0.16 240 / 20%), transparent 70%),
+    radial-gradient(45% 45% at 80% 12%, oklch(0.83 0.11 205 / 12%), transparent 72%);
+  filter: blur(2px);
+}
+
+@utility hero-circuit {
+  color: oklch(0.83 0.11 205 / 22%);
+}
+
+@utility code-aura {
+  background: radial-gradient(60% 60% at 50% 40%, oklch(0.65 0.16 240 / 16%), transparent 72%);
+  filter: blur(14px);
+}
+
+@utility cta-field {
+  background: radial-gradient(55% 60% at 50% 100%, oklch(0.65 0.16 240 / 22%), transparent 72%);
+}
+
+@utility cta-path {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(to top, oklch(0.65 0.16 240 / 55%), transparent);
+  animation: ck-rise 6s ease-in-out infinite;
+}
+
+@utility cta-path-left {
+  left: 22%;
+}
+
+@utility cta-path-right {
+  right: 22%;
+  animation-delay: 1.6s;
+  background: linear-gradient(to top, oklch(0.83 0.11 205 / 45%), transparent);
+}
+
+@utility section-system {
+  transition: border-color 600ms ease;
+}
+
+@utility brand-button {
+  position: relative;
+}
+
+@utility pipeline-rail {
+  background: linear-gradient(
+    to bottom,
+    var(--color-signal),
+    oklch(0.65 0.16 240 / 70%) 55%,
+    var(--color-success)
+  );
+  opacity: 0.55;
+}
+
+@utility pipeline-node {
+  backdrop-filter: blur(2px);
+}
+
+@utility math-step {
+  transition-property: transform, opacity, filter, border-color, box-shadow;
+}
+
+/* ---------- motion ---------- */
+
+@keyframes ck-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ck-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ck-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ck-pulse-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ck-rise {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(6%);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-4%);
+  }
+}
+
+@keyframes ck-trace {
+  0% {
+    stroke-dashoffset: 620;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes ck-node-on {
+  0% {
+    opacity: 0;
+    r: 2;
+  }
+  100% {
+    opacity: 1;
+    r: 4;
+  }
+}
+
+@keyframes ck-human-signal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50%, 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(5.5rem - 0.75rem), -50%, 0);
+  }
+}
+
+@keyframes ck-human-signal-mobile {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, calc(3rem - 0.75rem), 0);
+  }
+}
+
+@utility caret {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1.05em;
+  translate: 0 0.18em;
+  background: var(--color-signal);
+  animation: ck-caret 1.15s steps(1) infinite;
+}
+
+@utility drift-slow {
+  animation: ck-drift 9s ease-in-out infinite;
+}
+
+@utility pulse-dot {
+  animation: ck-pulse-dot 2.6s ease-in-out infinite;
+}
+
+/* Hero circuitry */
+
+@utility circuit-line {
+  stroke-width: 1.1;
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  animation: ck-trace 2.6s ease-out forwards;
+  opacity: 0.85;
+}
+
+@utility circuit-line-blue {
+  stroke: oklch(0.65 0.16 240 / 60%);
+  animation-delay: 300ms;
+}
+
+@utility circuit-line-cyan {
+  stroke: oklch(0.83 0.11 205 / 50%);
+  animation-delay: 700ms;
+}
+
+@utility circuit-line-green {
+  stroke: oklch(0.79 0.19 155 / 40%);
+  animation-delay: 1100ms;
+}
+
+@utility circuit-line-gold {
+  stroke: oklch(0.86 0.16 95 / 38%);
+  animation-delay: 1500ms;
+}
+
+@utility circuit-node {
+  opacity: 0;
+  animation: ck-node-on 500ms ease-out forwards;
+}
+
+@utility node-blue {
+  fill: oklch(0.65 0.16 240 / 85%);
+  animation-delay: 2.1s;
+}
+
+@utility node-cyan {
+  fill: oklch(0.83 0.11 205 / 80%);
+  animation-delay: 2.35s;
+}
+
+@utility node-green {
+  fill: oklch(0.79 0.19 155 / 80%);
+  animation-delay: 2.6s;
+}
+
+@utility node-gold {
+  fill: oklch(0.86 0.16 95 / 85%);
+  animation-delay: 2.85s;
+}
+
+/* Diagram states */
+
+@utility algorithm-edge {
+  stroke-linecap: round;
+}
+
+@utility algorithm-node {
+  stroke-width: 1;
+}
+
+@utility math-curve {
+  animation: ck-dash 1.6s 200ms ease-out forwards;
+}
+
+@utility human-signal-active {
+  animation: ck-human-signal-mobile 1.25s 350ms ease-in-out 2;
+}
+
+@media (min-width: 640px) {
+  .human-signal-active {
+    animation-name: ck-human-signal;
+  }
+
+  .human-signal-return.human-signal-active {
+    animation-delay: 1.15s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .chatkode-integrated *,
+  .chatkode-integrated *::before,
+  .chatkode-integrated *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

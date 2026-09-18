@@ -1,0 +1,101 @@
+import { useEffect, useRef } from "react";
+import projectsData from "../../root/projects.json";
+import { assetHref, routeHref } from "@/lib/routes";
+import { useDocumentMeta } from "@/hooks/useDocumentMeta";
+import { useKodeEffects } from "@/hooks/useKodeEffects";
+
+const list = (value: unknown): any[] => (Array.isArray(value) ? value : []);
+const safe = (value: unknown) =>
+  String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character]!);
+const localAsset = (path: string) => assetHref(path.replace(/^\.\.\//, ""));
+
+export function WebProjectPage() {
+  const ref = useRef<HTMLElement>(null);
+  useDocumentMeta("Project Showcase | Kode Developers");
+  useKodeEffects("webprojects");
+
+  useEffect(() => {
+    const showcase = ref.current;
+    if (!showcase) return;
+    const projectId = (new URLSearchParams(window.location.search).get("project") || "").trim();
+    const project = list((projectsData as any).projects).find(item => item.id === projectId);
+
+    const link = (url: string, label: string, primary = false) =>
+      url ? `<a class="btn ${primary ? "btn-primary" : "btn-secondary"}" href="${safe(url)}" target="_blank" rel="noreferrer noopener">${safe(label)}<span aria-hidden="true">-&gt;</span></a>` : "";
+    const empty = (title: string, detail: string) => {
+      showcase.innerHTML = `<section class="empty-state"><p class="eyebrow">Showcase unavailable</p><h1>${safe(title)}</h1><p>${safe(detail)}</p><a href="${routeHref("projects")}" class="btn btn-primary">Back to Projects <span aria-hidden="true">-&gt;</span></a></section>`;
+    };
+
+    if (!project) {
+      empty("Project not found", "The requested project could not be found in our showcase metadata.");
+      return;
+    }
+
+    const name = safe(project.name || "Project");
+    const shots = list(project.screenshots);
+    const first = shots[0];
+    const org = project.organization || {};
+    const orgFields = [["Name", org.name], ["Industry", org.industry], ["Location", org.location], ["Owner", org.owner]].filter(([, value]) => value);
+    const features = list(project.features).map((item, index) => `<article class="feature-card" tabindex="0"><div class="feature-card__top"><span class="feature-card__index">${String(index + 1).padStart(2, "0")}</span><span class="feature-card__icon" aria-hidden="true">${safe(item.icon || "+")}</span></div><h3>${safe(item.title)}</h3><p>${safe(item.description)}</p></article>`).join("");
+    const groups = [["Technology Stack", project.technology], ["Tools", project.tools], ["Platforms", project.platforms]].filter(([, values]) => list(values).length);
+    const stack = groups.map(([title, values]) => `<div class="stack-group"><p class="eyebrow">${safe(title)}</p><div class="stack-list" role="list">${list(values).map(item => `<button class="stack-item" type="button" role="listitem" aria-pressed="false">${safe(item)}<span aria-hidden="true">+</span></button>`).join("")}</div></div>`).join("");
+    const highlights = list(project.technicalHighlights).map(item => `<li><span class="project-info__label">${safe(item.title || "Highlight")}</span><span>${safe(item.description)}</span></li>`).join("");
+    const people = list(project.contributors).map(item => `<li class="contributor-card"><span class="contributor-card__mark" aria-hidden="true">-&gt;</span><span><strong>${safe(item.name || "Contributor")}</strong><small>${safe(item.role)}</small></span></li>`).join("");
+    const links = `${link(project.links?.live, "Visit Live Website", true)}${link(project.links?.repository, "View Repository")}`;
+    const heroImage = first ? `<img src="${localAsset(first.src)}" alt="${safe(first.alt || project.name || "Project preview")}" loading="eager">` : `<div class="screen-empty">No project preview available</div>`;
+    const gallery = shots.length ? `<section class="showcase-section project-gallery reveal" id="preview"><div class="section-heading"><div><p class="eyebrow">05 / Website preview</p><h2>See the work in context.</h2></div><p>${shots.length === 1 ? "Project homepage" : "Select a project view"}</p></div><div class="gallery-viewer"><div class="browser-window browser-window--gallery"><div class="browser-window__bar"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-address">project-preview / ${name}</span></div><div class="gallery-stage"><img id="gallery-image" src="${localAsset(first.src)}" alt="${safe(first.alt || project.name || "Project preview")}"></div></div>${shots.length > 1 ? `<div class="gallery-tabs" role="tablist" aria-label="Project screenshots">${shots.map((shot, index) => `<button class="gallery-tab${index === 0 ? " is-active" : ""}" type="button" role="tab" aria-selected="${index === 0}" data-src="${localAsset(shot.src)}" data-alt="${safe(shot.alt || project.name || "Project preview")}">${safe(shot.caption || `View ${index + 1}`)}</button>`).join("")}</div>` : `<p class="gallery-caption">${safe(first.caption || "Project preview")}</p>`}</div></section>` : "";
+
+    showcase.innerHTML = `<article class="project-showcase">
+      <section class="project-hero pattern-grid" aria-labelledby="project-title"><div class="project-hero__copy"><p class="eyebrow">Project / ${safe(project.type || "Website")}</p><div class="project-hero__meta">${[project.category, project.status].filter(Boolean).map(item => `<span class="project-chip">${safe(item)}</span>`).join("")}</div><h1 id="project-title">${name}</h1>${project.tagline ? `<p class="project-hero__tagline">${safe(project.tagline)}</p>` : ""}<p class="project-hero__description">${safe(project.description)}</p><div class="project-hero__actions">${link(project.links?.live, "Visit Live Site", true)}${link(project.links?.repository, "View Repository")}<a class="btn btn-quiet" href="#overview">Explore case study <span aria-hidden="true">-&gt;</span></a></div></div><div class="project-hero__visual" data-tilt><span class="hero-coordinate hero-coordinate--top">KODE / 03C-2</span><span class="hero-coordinate hero-coordinate--bottom">LIVE BUILD / 001</span><div class="browser-window"><div class="browser-window__bar"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-address">${name}</span><span class="browser-signal" aria-hidden="true">-&gt;</span></div><div class="project-screen">${heroImage}</div></div></div></section>
+      ${project.description ? `<section class="showcase-section project-overview reveal" id="overview"><div class="section-heading"><div><p class="eyebrow">01 / Project overview</p><h2>Built around the real brief.</h2></div><p>What this project needed to be.</p></div><div class="overview-layout"><p class="overview-lead">${safe(project.description)}</p><div class="overview-facts">${[["Type", project.type], ["Category", project.category], ["Status", project.status]].filter(([, value]) => value).map(([label, value]) => `<div><span class="project-info__label">${safe(label)}</span><strong>${safe(value)}</strong></div>`).join("")}</div></div></section>` : ""}
+      ${orgFields.length || org.description ? `<section class="showcase-section reveal"><div class="section-heading"><div><p class="eyebrow">02 / About the organization</p><h2>The context behind the build.</h2></div></div><div class="organization-layout"><div class="organization-intro"><span class="section-marker" aria-hidden="true">02</span><h3>${safe(org.name || project.name || "Organization")}</h3><p>${safe(org.description || "")}</p></div><dl class="organization-facts">${orgFields.map(([label, value]) => `<div><dt class="project-info__label">${safe(label)}</dt><dd>${safe(value)}</dd></div>`).join("")}</dl></div></section>` : ""}
+      ${project.challenge || project.solution ? `<section class="showcase-section reveal"><div class="section-heading"><div><p class="eyebrow">03 / From brief to build</p><h2>A clear response to a real challenge.</h2></div></div><div class="story-flow">${project.challenge ? `<article class="story-step"><span class="story-step__number">01</span><div><p class="eyebrow">Challenge</p><h3>What needed solving</h3><p>${safe(project.challenge)}</p></div></article>` : ""}${project.challenge && project.solution ? `<div class="story-connector" aria-hidden="true"><span></span><b>-&gt;</b></div>` : ""}${project.solution ? `<article class="story-step story-step--solution"><span class="story-step__number">02</span><div><p class="eyebrow">Solution</p><h3>What we built</h3><p>${safe(project.solution)}</p></div></article>` : ""}</div></section>` : ""}
+      ${features ? `<section class="showcase-section project-features reveal"><div class="section-heading"><div><p class="eyebrow">04 / Key features</p><h2>Details that do useful work.</h2></div><p>Focus the cursor. The details follow.</p></div><div class="feature-grid">${features}</div></section>` : ""}
+      ${gallery}
+      ${stack ? `<section class="showcase-section project-tech pattern-geometric-subtle reveal"><div class="section-heading"><div><p class="eyebrow">06 / Built with</p><h2>The stack behind the surface.</h2></div><p>Explore the build ingredients.</p></div><div class="stack-layout"><div class="stack-orbit" aria-hidden="true"><span>PROJECT</span><i></i><i></i><i></i></div><div class="stack-groups">${stack}</div></div></section>` : ""}
+      ${highlights ? `<section class="showcase-section technical-highlights reveal"><div class="section-heading"><div><p class="eyebrow">07 / Technical highlights</p><h2>Small details, deliberately handled.</h2></div></div><ul class="project-info__list">${highlights}</ul></section>` : ""}
+      ${links ? `<section class="showcase-section project-links reveal"><div class="section-heading"><div><p class="eyebrow">08 / Project links</p><h2>Open the build.</h2></div></div><div class="project-links__actions">${links}</div></section>` : ""}
+      ${people ? `<section class="showcase-section project-contributors reveal"><div class="section-heading"><div><p class="eyebrow">09 / Contributors</p><h2>Built by people who care.</h2></div></div><ul class="project-contributors__list">${people}</ul></section>` : ""}
+      ${org.owner ? `<section class="showcase-section project-owner reveal"><div class="owner-line"><span class="project-info__label">Client / Owner</span><strong>${safe(org.owner)}</strong></div></section>` : ""}
+      <section class="project-cta reveal"><div><p class="eyebrow">Keep exploring</p><h2>More work, same intent.</h2><p>See more work from Kode Developers.</p></div><div class="project-cta__actions"><a class="btn btn-primary" href="${routeHref("projects")}">Browse Projects <span aria-hidden="true">-&gt;</span></a><a class="btn btn-secondary" href="${routeHref("")}">Back to Home</a></div></section>
+    </article>`;
+
+    activateInteractions();
+    function activateInteractions() {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reveals = showcase.querySelectorAll(".reveal");
+      if (reducedMotion || !("IntersectionObserver" in window)) reveals.forEach(item => item.classList.add("is-visible"));
+      else {
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 });
+        reveals.forEach(item => observer.observe(item));
+      }
+      if (!reducedMotion) {
+        const tilt = showcase.querySelector<HTMLElement>("[data-tilt]");
+        tilt?.addEventListener("pointermove", event => {
+          const rect = tilt.getBoundingClientRect();
+          tilt.style.setProperty("--tilt-x", `${((event.clientY - rect.top) / rect.height - 0.5) * -2}deg`);
+          tilt.style.setProperty("--tilt-y", `${((event.clientX - rect.left) / rect.width - 0.5) * 2}deg`);
+        });
+        tilt?.addEventListener("pointerleave", () => {
+          tilt.style.setProperty("--tilt-x", "0deg");
+          tilt.style.setProperty("--tilt-y", "0deg");
+        });
+      }
+      showcase.querySelectorAll<HTMLButtonElement>(".gallery-tab").forEach(tab => tab.addEventListener("click", () => {
+        const image = showcase.querySelector<HTMLImageElement>("#gallery-image");
+        if (!image) return;
+        image.src = tab.dataset.src || "";
+        image.alt = tab.dataset.alt || "";
+        showcase.querySelectorAll(".gallery-tab").forEach(item => { item.classList.remove("is-active"); item.setAttribute("aria-selected", "false"); });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-selected", "true");
+      }));
+      showcase.querySelectorAll<HTMLButtonElement>(".stack-item").forEach(item => item.addEventListener("click", () => {
+        const active = item.classList.toggle("is-active");
+        item.setAttribute("aria-pressed", String(active));
+      }));
+    }
+  }, []);
+
+  return <main ref={ref} id="projectShowcase" className="webprojects-page" />;
+}

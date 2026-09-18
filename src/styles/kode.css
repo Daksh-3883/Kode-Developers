@@ -1,0 +1,54 @@
+@import "../../root/Common.css";
+@import "../../root/Home.css";
+@import "../../root/products.css";
+@import "../../root/projects.css";
+@import "../../root/ai.css";
+@import "../../root/about.css";
+@import "../../root/updates.css";
+@import "../../root/contact.css";
+@import "../../root/webprojects.css";
+@import "../../root/pipeline.css";
+
+.hidden {
+  display: none !important;
+}
+
+.scale-y-0 {
+  transform: scaleY(0);
+}
+
+.scale-y-100 {
+  transform: scaleY(1);
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
+
+.-rotate-45 {
+  transform: rotate(-45deg);
+}
+
+.translate-y-\[6px\] {
+  transform: translateY(6px);
+}
+
+.-translate-y-\[6px\] {
+  transform: translateY(-6px);
+}
+
+.text-yellow-400 {
+  color: var(--color-accent-primary) !important;
+}
+
+.text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
