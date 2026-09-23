@@ -1,229 +1,715 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ChatKode by Kode Developers — an AI-assisted coding companion for building, debugging, and refining software ideas.">
-  <title>ChatKode | Kode Developers</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="Common.css">
-  <link rel="stylesheet" href="chatkode.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatKode — AI for Code, Mathematics &amp; Algorithms</title>
+<meta name="description" content="ChatKode is a developer-focused AI from Kode Developers for coding, mathematics, algorithms and technical problem solving.">
+<meta name="author" content="Kode Developers">
+<meta property="og:title" content="ChatKode — AI for Code, Mathematics &amp; Algorithms">
+<meta property="og:description" content="ChatKode is a developer-focused AI from Kode Developers for coding, mathematics, algorithms and technical problem solving.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<link rel="stylesheet" href="/root/chatkode.css">
+<noscript><style>.reveal,.hero-in,.code-line{opacity:1 !important;transform:none !important;filter:none !important;}</style></noscript>
 </head>
-<body class="font-sans overflow-x-hidden dark-theme">
-  <div id="loader">
-    <h1>Kode Developers</h1>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#top" class="wordmark" aria-label="ChatKode home">
+      <svg class="wordmark-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="8" fill="var(--color-surface-raised)" stroke="var(--color-border-strong)"/>
+        <path d="M11 10.5c-2.6 1.6-3.5 3.6-3.5 5.5s.9 3.9 3.5 5.5" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M21 10.5c2.6 1.6 3.5 3.6 3.5 5.5s-.9 3.9-3.5 5.5" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M18 9l-4 14" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark-text">ChatKode</span>
+    </a>
+
+    <nav aria-label="Primary" class="nav-primary">
+      <ul>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#developers">Developers</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#try" class="button button--primary nav-cta">Try ChatKode<span aria-hidden="true" class="btn-arrow">→</span></a>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 
-  <nav id="navbar"></nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <nav aria-label="Mobile">
+      <ul>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#developers">Developers</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a href="#try" class="button button--primary button--lg full-width">Try ChatKode<span aria-hidden="true" class="btn-arrow">→</span></a>
+    </nav>
+  </div>
+</header>
 
-  <main class="chatkode-page">
-    <div class="chatkode-flow-line" aria-hidden="true"></div>
-    <section class="chatkode-hero">
-      <div class="chatkode-hero__top">
-        <a class="chatkode-brand" href="../index.html" aria-label="Kode Developers">
-          <span class="chatkode-brand__mark">
-            <span class="chatkode-brand__mark-pulse"></span>
-          </span>
-          <span class="chatkode-brand__text">Kode Developers</span>
-        </a>
-        <div class="chatkode-hero__top-links">
-          <a href="#meet" class="chatkode-top-link">Meet ChatKode</a>
-          <a href="#capabilities" class="chatkode-top-link">Capabilities</a>
-          <a href="#workflow" class="chatkode-top-link">Workflow</a>
-          <a href="#build" class="chatkode-top-link chatkode-top-link--primary">Start Chatting</a>
+<main id="main">
+  <h1 class="sr-only">ChatKode — a developer-focused AI for code, mathematics and algorithms</h1>
+
+  <!-- ================= HERO ================= -->
+  <div id="top" class="hero-wrap">
+    <div class="hero-atmosphere" aria-hidden="true">
+      <div class="grid-atmosphere hero-grid-bg"></div>
+      <div class="hero-blue-field"></div>
+      <svg class="hero-circuit" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="ck-dots" width="34" height="34" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="1" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#ck-dots)" />
+        <g class="circuit-paths" fill="none" stroke-linecap="square">
+          <path class="circuit-line circuit-line-blue" d="M40 210H220l46-46h154l50 50h170" />
+          <path class="circuit-line circuit-line-cyan" d="M720 92v76l52 52h270l72 72" />
+          <path class="circuit-line circuit-line-green" d="M90 540h130l52-52h190" />
+          <path class="circuit-line circuit-line-gold" d="M850 560h130l48-48h132" />
+          <circle class="circuit-node node-blue" cx="470" cy="214" r="4" />
+          <circle class="circuit-node node-cyan" cx="772" cy="220" r="4" />
+          <circle class="circuit-node node-green" cx="272" cy="488" r="4" />
+          <path class="circuit-node node-gold" d="M1028 506l6 6-6 6-6-6z" />
+        </g>
+      </svg>
+      <span class="hero-math-symbol hero-math-1">∑ᵢ₌₁ⁿ f(xᵢ) · Δx</span>
+      <span class="hero-math-symbol hero-math-2">O(n log n)</span>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow hero-in" data-hero-step="1">
+          <span class="pulse-dot"></span>AI for builders
+        </p>
+
+        <h1 class="hero-heading hero-in" data-hero-step="2">
+          Think in code.<br>
+          Solve in mathematics.<br>
+          <span class="text-gradient-signal">Build with ChatKode.</span>
+        </h1>
+
+        <p class="hero-lead hero-in" data-hero-step="3">
+          ChatKode is a developer-focused AI from Kode Developers, made for programming,
+          mathematics, algorithms and technical problem solving. It has been specifically taught
+          mathematics to strengthen its reasoning on complex algorithmic work.
+        </p>
+
+        <div class="hero-buttons hero-in" data-hero-step="4">
+          <a href="#try" class="button button--primary button--lg">Try ChatKode<span aria-hidden="true" class="btn-arrow">→</span></a>
+          <a href="#capabilities" class="button button--outline button--lg">Explore capabilities</a>
+        </div>
+
+        <dl class="hero-facts hero-in" data-hero-step="5">
+          <div><dt>Domain</dt><dd>Engineering</dd></div>
+          <div><dt>Focus</dt><dd>Reasoning</dd></div>
+          <div><dt>Built by</dt><dd>Kode Developers</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual hero-in" data-hero-step="6">
+        <div class="code-aura" aria-hidden="true"></div>
+        <div class="panel code-panel" data-code-panel data-typewriter>
+          <div class="panel-bar">
+            <div class="panel-bar-left">
+              <span class="pulse-dot"></span>
+              <span class="panel-title">lateness.py</span>
+              <span class="panel-meta">reasoning → model → algorithm → code</span>
+            </div>
+            <button type="button" class="copy-btn" data-copy-btn>copy</button>
+          </div>
+          <div class="code-scroll">
+            <pre><code data-code-body>
+<span class="code-line" data-line><span class="ln">1</span><span class="lc"><span class="syn-com"># problem: schedule jobs to minimise total lateness</span></span></span>
+<span class="code-line" data-line><span class="ln">2</span><span class="lc"><span class="syn-key">from</span> heapq <span class="syn-key">import</span> heappush, heappop</span></span>
+<span class="code-line" data-line><span class="ln">3</span><span class="lc"></span></span>
+<span class="code-line" data-line><span class="ln">4</span><span class="lc"><span class="syn-com"># model: jobs (p_i, d_i) — greedy by due date is optimal (EDD)</span></span></span>
+<span class="code-line" data-line><span class="ln">5</span><span class="lc"><span class="syn-key">def</span> <span class="syn-fn">min_total_lateness</span>(jobs):</span></span>
+<span class="code-line" data-line><span class="ln">6</span><span class="lc">    jobs = <span class="syn-fn">sorted</span>(jobs, key=<span class="syn-key">lambda</span> j: j[<span class="syn-num">1</span>])   <span class="syn-com"># O(n log n)</span></span></span>
+<span class="code-line" data-line><span class="ln">7</span><span class="lc">    t = lateness = <span class="syn-num">0</span></span></span>
+<span class="code-line" data-line><span class="ln">8</span><span class="lc">    <span class="syn-key">for</span> p, d <span class="syn-key">in</span> jobs:</span></span>
+<span class="code-line" data-line><span class="ln">9</span><span class="lc">        t += p</span></span>
+<span class="code-line" data-line><span class="ln">10</span><span class="lc">        lateness += <span class="syn-fn">max</span>(<span class="syn-num">0</span>, t - d)</span></span>
+<span class="code-line" data-line><span class="ln">11</span><span class="lc">    <span class="syn-key">return</span> lateness</span></span></code></pre>
+          </div>
+          <div class="panel-foot">
+            <span class="foot-primary">● model: greedy / EDD</span>
+            <span>complexity O(n log n)</span>
+            <span class="hide-sm">proof sketch: exchange argument</span>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="chatkode-hero__layout">
-        <aside class="chatkode-hero__side chatkode-hero__side--left">
-          <div class="chatkode-scribble scribble scribble--left">
-            <span class="scribble__icon">✦</span>
-            <span class="scribble__text">not just<br>an AI...</span>
+    <div class="cap-strip reveal">
+      <ul>
+        <li>Code</li>
+        <li>Math</li>
+        <li>Algorithms</li>
+        <li>Reasoning</li>
+        <li>Engineering</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= 01 WHAT IS CHATKODE ================= -->
+  <section id="product" class="section" aria-labelledby="what-is-title">
+    <div class="wrap">
+      <div class="split split--55">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="index-mono">01</span><i class="rule"></i><span class="label-mono">What is ChatKode</span>
           </div>
-          <div class="chatkode-scribble scribble scribble--left-lower">
-            <span class="scribble__icon">⌘</span>
-            <span class="scribble__text">real problems<br>real solutions</span>
-          </div>
-        </aside>
+          <h2 id="what-is-title" class="reveal" style="--delay:80ms">
+            Not a chatbot that happens to write code. A tool built around
+            <span class="accent-blue">how engineers think</span>.
+          </h2>
 
-        <section class="chatkode-hero__center">
-          <div class="chatkode-hero__system">
-            <span class="chatkode-system__line chatkode-system__line--a"></span>
-            <span class="chatkode-system__line chatkode-system__line--b"></span>
-            <span class="chatkode-system__dot chatkode-system__dot--one"></span>
-            <span class="chatkode-system__dot chatkode-system__dot--two"></span>
-            <span class="chatkode-system__dot chatkode-system__dot--three"></span>
-          </div>
-
-          <figure class="chatkode-logo-wrap">
-            <div class="chatkode-logo-wrap__halo"></div>
-            <img src="../docs/Assets/Logo/ChatkodeMark.svg" class="chatkode-logo" alt="ChatKode">
-          </figure>
-
-          <div class="chatkode-hero__kicker">AI-POWERED CODING ASSISTANT</div>
-          <h1 class="chatkode-hero__title">ChatKode</h1>
-          <h2 class="chatkode-hero__subtitle">Think. Code. Build. Together.</h2>
-          <p class="chatkode-hero__copy">Your intelligent coding companion for understanding problems, exploring solutions, and shipping better code with clarity.</p>
-
-          <div class="chatkode-hero__actions">
-            <a class="chatkode-button chatkode-button--primary" href="#build">Start Chatting <span aria-hidden="true">→</span></a>
-            <a class="chatkode-button chatkode-button--ghost" href="#meet">See it in action</a>
-          </div>
-
-          <div class="chatkode-hero__capability-row">
-            <span class="chatkode-hero__capability">ASK</span>
-            <span class="chatkode-hero__capability">CODE</span>
-            <span class="chatkode-hero__capability">EXPLAIN</span>
-            <span class="chatkode-hero__capability">EXPLORE</span>
-          </div>
-        </section>
-
-        <aside class="chatkode-hero__side chatkode-hero__side--right">
-          <div class="chatkode-scribble scribble scribble--right">
-            <span class="scribble__icon">✎</span>
-            <span class="scribble__text">your ideas<br>your pace</span>
-          </div>
-          <div class="chatkode-scribble scribble scribble--right-lower">
-            <span class="scribble__icon">&lt;/&gt;</span>
-            <span class="scribble__text">build better<br>code faster</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="chatkode-meet" id="meet">
-      <div class="chatkode-section__heading">
-        <span class="chatkode-section__kicker">Meet ChatKode</span>
-        <h2 class="chatkode-section__title">Your AI coding partner, reimagined.</h2>
-      </div>
-
-      <div class="chatkode-meet__grid">
-        <article class="chatkode-meet__intro">
-          <div class="chatkode-meet__intro-copy">
-            <div class="chatkode-meet__intro-line">ChatKode connects the power of a coder with the clarity of an assistant.</div>
-            <div class="chatkode-meet__intro-line">It helps you understand code, solve problems, and turn rough ideas into working software.</div>
-          </div>
-          <ul class="chatkode-check-list">
-            <li><span class="chatkode-check-icon">✓</span>Understand complex problems clearly</li>
-            <li><span class="chatkode-check-icon">✓</span>Discover practical solutions</li>
-            <li><span class="chatkode-check-icon">✓</span>Stay in your flow while learning</li>
-          </ul>
-        </article>
-
-        <article class="chatkode-demo">
-          <div class="chatkode-demo__browser">
-            <span class="chatkode-demo__browser-top">
-              <span class="chatkode-demo__dots"><span></span><span></span><span></span></span>
-              <span class="chatkode-demo__title">ChatKode</span>
-              <span class="chatkode-demo__close">×</span>
-            </span>
-            <div class="chatkode-demo__body">
-              <div class="chatkode-demo__message chatkode-demo__message--user">
-                <span class="chatkode-demo__label">Developer</span>
-                <span class="chatkode-demo__text">Why isn’t this function working?</span>
-              </div>
-              <div class="chatkode-demo__message chatkode-demo__message--assistant">
-                <span class="chatkode-demo__label">ChatKode</span>
-                <span class="chatkode-demo__text">Let’s inspect the logic and trace the failing path.</span>
-              </div>
-              <div class="chatkode-demo__code">
-                <span class="chatkode-demo__code-line"><span class="chatkode-code-key">def</span> inspect_logic()</span>
-                <span class="chatkode-demo__code-line">return trace(error)</span>
-              </div>
-              <div class="chatkode-demo__message chatkode-demo__message--assistant">
-                <span class="chatkode-demo__label">ChatKode</span>
-                <span class="chatkode-demo__text">The issue is in the code path, not the data shape.</span>
-              </div>
+          <div class="panel tech-composition reveal" style="--delay:160ms">
+            <div class="grid-atmosphere panel-grid-bg" aria-hidden="true"></div>
+            <div class="tech-composition-inner">
+              <p class="label-mono">Response shape</p>
+              <div class="kv-row"><span class="syn-com">constraints</span><span>n ≤ 10⁵ · values ≤ 10⁹ · time 1s</span></div>
+              <div class="kv-row"><span class="syn-com">representation</span><span>sorted array + two pointers</span></div>
+              <div class="kv-row"><span class="syn-com">complexity</span><span>time O(n log n) · space O(1)</span></div>
+              <div class="kv-row"><span class="syn-com">risk</span><span class="accent-gold">overflow on sum → use 64-bit</span></div>
             </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="chatkode-capabilities" id="capabilities">
-      <div class="chatkode-section__heading">
-        <span class="chatkode-section__kicker">What ChatKode Builds With</span>
-        <h2 class="chatkode-section__title">One assistant. Many possible builds.</h2>
-      </div>
-
-      <div class="chatkode-capabilities__grid">
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">✎</span>
-          <span class="chatkode-capability-card__name">Web Apps</span>
-        </article>
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">☰</span>
-          <span class="chatkode-capability-card__name">Mobile Apps</span>
-        </article>
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">⌁</span>
-          <span class="chatkode-capability-card__name">APIs</span>
-        </article>
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">◇</span>
-          <span class="chatkode-capability-card__name">Automation</span>
-        </article>
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">⌬</span>
-          <span class="chatkode-capability-card__name">Algorithms</span>
-        </article>
-        <article class="chatkode-capability-card">
-          <span class="chatkode-capability-card__icon">▦</span>
-          <span class="chatkode-capability-card__name">Data</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="chatkode-workflow" id="workflow">
-      <div class="chatkode-section__heading">
-        <span class="chatkode-section__kicker">How ChatKode Thinks</span>
-        <h2 class="chatkode-section__title">From prompt to progress.</h2>
-      </div>
-
-      <div class="chatkode-workflow__steps">
-        <article class="chatkode-workflow__step">
-          <span class="chatkode-workflow__number">01</span>
-          <span class="chatkode-workflow__name">Ask</span>
-          <span class="chatkode-workflow__desc">Describe the issue, goal, or direction.</span>
-        </article>
-        <article class="chatkode-workflow__step">
-          <span class="chatkode-workflow__number">02</span>
-          <span class="chatkode-workflow__name">Understand</span>
-          <span class="chatkode-workflow__desc">Analyze the problem and find the right approach.</span>
-        </article>
-        <article class="chatkode-workflow__step">
-          <span class="chatkode-workflow__number">03</span>
-          <span class="chatkode-workflow__name">Build</span>
-          <span class="chatkode-workflow__desc">Create code, structure, and an implementation path.</span>
-        </article>
-        <article class="chatkode-workflow__step">
-          <span class="chatkode-workflow__number">04</span>
-          <span class="chatkode-workflow__name">Refine</span>
-          <span class="chatkode-workflow__desc">Improve the result and move it forward.</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="chatkode-build" id="build">
-      <div class="chatkode-build__wrap">
-        <div class="chatkode-build__visual">
-          <img src="../docs/Assets/Logo/ChatkodeMark.svg" class="chatkode-build__logo" alt="ChatKode">
         </div>
-        <div class="chatkode-build__copy">
-          <span class="chatkode-section__kicker">Built by Kode Developers</span>
-          <h2 class="chatkode-section__title">Your next idea starts here.</h2>
-          <div class="chatkode-build__actions">
-            <a class="chatkode-button chatkode-button--primary" href="../index.html#projects">Start Chatting <span aria-hidden="true">→</span></a>
-            <a class="chatkode-button chatkode-button--ghost" href="#capabilities">Explore Capabilities</a>
+
+        <div class="section-copy-col">
+          <p class="reveal" style="--delay:120ms">
+            Most conversational assistants treat a programming question like any other question:
+            produce fluent text, stop. ChatKode is built for the part that comes before the
+            text — reading the constraints, choosing a representation, and committing to an
+            approach that can be defended.
+          </p>
+          <p class="reveal" style="--delay:180ms">
+            It was made by <strong>Kode Developers</strong> for developers, programmers and
+            technically minded people who care whether a solution is <strong>correct</strong>,
+            not only whether it <strong>compiles</strong>.
+          </p>
+          <ul class="rows reveal" style="--delay:240ms">
+            <li><span class="row-title">Reasoning first</span><span class="row-body">Constraints and structure before syntax.</span></li>
+            <li><span class="row-title">Mathematically taught</span><span class="row-body">Trained on mathematics to sharpen formal reasoning.</span></li>
+            <li><span class="row-title">Algorithmic bias</span><span class="row-body">Prefers a stated method over a guessed snippet.</span></li>
+            <li><span class="row-title">Engineering register</span><span class="row-body">Speaks in complexity, invariants and trade-offs.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 PIPELINE ================= -->
+  <section id="capabilities" class="section section--raised" aria-labelledby="pipeline-title">
+    <div class="wrap">
+      <header class="section-heading">
+        <div class="eyebrow reveal">
+          <span class="index-mono">02</span><i class="rule"></i><span class="label-mono">Built for complex problems</span>
+        </div>
+        <h2 id="pipeline-title" class="reveal" style="--delay:80ms">
+          A problem does not become code in one step. It goes through <span class="accent-blue">a pipeline</span>.
+        </h2>
+        <p class="section-copy reveal" style="--delay:140ms">
+          ChatKode works the way an engineer works: understand, formalise, choose a method, then
+          implement. Each stage is visible, so you can disagree with it.
+        </p>
+      </header>
+
+      <ol class="pipeline reveal" style="--delay:60ms" data-pipeline>
+        <span class="pipeline-rail" aria-hidden="true"></span>
+        <li style="--stage-delay:0ms"><span class="pipeline-node">01</span><div><h3>Question</h3><p>A problem stated in plain language, with its constraints and edge cases surfaced first.</p></div></li>
+        <li style="--stage-delay:130ms"><span class="pipeline-node">02</span><div><h3>Analysis</h3><p>Inputs, invariants and failure modes are separated from the noise before anything is written.</p></div></li>
+        <li style="--stage-delay:260ms"><span class="pipeline-node pipeline-node--gold">03</span><div><h3>Mathematical model</h3><p>The problem is expressed formally — sets, recurrences, bounds — so the shape of the solution is visible.</p></div></li>
+        <li style="--stage-delay:390ms"><span class="pipeline-node">04</span><div><h3>Algorithm</h3><p>A concrete procedure with a stated complexity, chosen against the constraints, not against a template.</p></div></li>
+        <li style="--stage-delay:520ms"><span class="pipeline-node pipeline-node--green">05</span><div><h3>Implementation</h3><p>Readable code that matches the reasoning above it, in the language you actually ship.</p></div></li>
+      </ol>
+
+      <p class="label-mono note reveal" style="--delay:120ms">
+        Pipeline is illustrative of how responses are structured — not a guarantee of output.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 03 MATHEMATICS ================= -->
+  <section id="mathematics" class="section" aria-labelledby="math-title">
+    <div class="wrap">
+      <div class="split split--45 split--sticky">
+        <header class="section-heading section-heading--sticky">
+          <div class="eyebrow reveal">
+            <span class="index-mono">03</span><i class="rule"></i><span class="label-mono">Mathematics</span>
+          </div>
+          <h2 id="math-title" class="reveal" style="--delay:80ms">
+            Taught mathematics, so the <span class="accent-gold">reasoning</span> holds before the code does.
+          </h2>
+          <p class="section-copy reveal" style="--delay:140ms">
+            ChatKode has been specifically taught mathematics to improve how it works with
+            mathematical problems and complex algorithms. In practice that means a problem is
+            turned into something you can argue about — bounds, monotonicity, recurrences —
+            before an implementation is proposed.
+          </p>
+        </header>
+
+        <div class="math-stack" data-reveal-group>
+          <div class="panel math-step reveal" style="--delay:0ms">
+            <div class="math-step-head"><span class="index-mono accent-gold">01</span><span class="label-mono">Problem</span></div>
+            <p class="math-step-body">Split an array into k parts, minimising the largest part sum.</p>
+            <span class="math-step-arrow" aria-hidden="true">↓</span>
+          </div>
+          <div class="panel math-step reveal" style="--delay:150ms">
+            <div class="math-step-head"><span class="index-mono accent-gold">02</span><span class="label-mono">Formalise</span></div>
+            <p class="math-step-body math-step-body--mono">minimise&nbsp; max₁≤j≤k&nbsp; Σ_{i∈Pⱼ} aᵢ&nbsp; subject to&nbsp; ⋃Pⱼ = A</p>
+            <span class="math-step-arrow" aria-hidden="true">↓</span>
+          </div>
+          <div class="panel math-step reveal" style="--delay:300ms">
+            <div class="math-step-head"><span class="index-mono accent-gold">03</span><span class="label-mono">Simplify</span></div>
+            <p class="math-step-body math-step-body--mono">feasible(x) is monotone in x → the answer space is sorted</p>
+            <span class="math-step-arrow" aria-hidden="true">↓</span>
+          </div>
+          <div class="panel math-step reveal" style="--delay:450ms">
+            <div class="math-step-head"><span class="index-mono accent-gold">04</span><span class="label-mono">Algorithmic form</span></div>
+            <p class="math-step-body math-step-body--mono">binary search x ∈ [max aᵢ, Σ aᵢ] · check feasible(x) greedily</p>
+          </div>
+
+          <div class="panel notation-panel reveal" style="--delay:120ms">
+            <p class="label-mono">Worked notation</p>
+            <div class="notation-grid">
+              <p>T(n) = 2·T(n/2) + O(n) ⇒ T(n) = O(n log n)</p>
+              <p>Σᵢ₌₁ⁿ i = n(n+1)/2</p>
+              <p>gcd(a, b) = gcd(b, a mod b)</p>
+              <p>|A ∪ B| = |A| + |B| − |A ∩ B|</p>
+            </div>
+            <figure class="mini-plot">
+              <svg viewBox="0 0 320 90" role="img" aria-label="Growth comparison of linear, n log n and quadratic curves">
+                <g stroke="currentColor" stroke-opacity="0.12">
+                  <line x1="0" x2="320" y1="0" y2="0"/><line x1="0" x2="320" y1="22.5" y2="22.5"/>
+                  <line x1="0" x2="320" y1="45" y2="45"/><line x1="0" x2="320" y1="67.5" y2="67.5"/>
+                  <line x1="0" x2="320" y1="90" y2="90"/>
+                </g>
+                <path d="M0 88 L320 44" fill="none" stroke="var(--color-muted-foreground)" stroke-width="1.2"/>
+                <path class="math-curve" d="M0 88 C110 78, 200 52, 320 16" fill="none" stroke="var(--color-logic)" stroke-width="1.6" stroke-dasharray="420" stroke-dashoffset="420"/>
+                <path d="M0 88 C150 86, 235 60, 300 2" fill="none" stroke="var(--color-primary)" stroke-width="1.2" stroke-dasharray="4 5"/>
+              </svg>
+              <figcaption>
+                <span>— O(n)</span><span class="accent-gold">— O(n log n)</span><span class="accent-blue">-- O(n²)</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer data-shared-footer></footer>
+  <!-- ================= 04 CODING ================= -->
+  <section id="coding" class="section section--raised" aria-labelledby="coding-title">
+    <div class="wrap">
+      <header class="section-heading">
+        <div class="eyebrow reveal">
+          <span class="index-mono">04</span><i class="rule"></i><span class="label-mono">Coding</span>
+        </div>
+        <h2 id="coding-title" class="reveal" style="--delay:80ms">
+          From a stated problem to an implementation you can <span class="accent-blue">read line by line</span>.
+        </h2>
+        <p class="section-copy reveal" style="--delay:140ms">
+          The same problem, carried across three panels: what was asked, how it was reasoned
+          about, and what it became. Language tabs are a demonstration of the surface, not a
+          claim about tooling.
+        </p>
+      </header>
 
-  <script src="Common.js" defer></script>
-  <script src="chatkode.js" defer></script>
+      <div class="coding-grid">
+        <article class="panel reveal">
+          <p class="label-mono">Problem</p>
+          <p class="coding-problem-text">
+            Packages must ship within <span class="mono accent-blue">d</span> days, in order.
+            Find the smallest daily capacity that still meets the deadline.
+          </p>
+          <dl class="coding-io">
+            <div><dt>input</dt><dd>weights[], d</dd></div>
+            <div><dt>output</dt><dd>min capacity</dd></div>
+            <div><dt>order</dt><dd>preserved</dd></div>
+          </dl>
+        </article>
+
+        <article class="panel reveal" style="--delay:150ms">
+          <p class="label-mono">Reasoning</p>
+          <ol class="reasoning-list">
+            <li><span class="reasoning-index">1.</span><span>Answer is monotone: if capacity x works, x+1 works.</span></li>
+            <li><span class="reasoning-index">2.</span><span>So search over the answer, not the partitions.</span></li>
+            <li><span class="reasoning-index">3.</span><span>Lower bound = max(weights); upper bound = sum(weights).</span></li>
+            <li><span class="reasoning-index">4.</span><span>feasible(x): sweep once, open a new day when the load exceeds x.</span></li>
+          </ol>
+          <p class="complexity-line">complexity: O(n log Σaᵢ)</p>
+        </article>
+
+        <div class="reveal" style="--delay:260ms">
+          <div class="panel code-panel" data-code-panel>
+            <div class="panel-bar">
+              <div class="panel-bar-left">
+                <span class="pulse-dot"></span>
+                <span class="panel-title">min_capacity</span>
+                <span class="panel-meta">implementation</span>
+              </div>
+              <button type="button" class="copy-btn" data-copy-btn>copy</button>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Language" data-lang-tabs>
+              <button role="tab" aria-selected="true" tabindex="0" data-lang="Python">Python</button>
+              <button role="tab" aria-selected="false" tabindex="-1" data-lang="C++">C++</button>
+              <button role="tab" aria-selected="false" tabindex="-1" data-lang="JavaScript">JavaScript</button>
+              <button role="tab" aria-selected="false" tabindex="-1" data-lang="TypeScript">TypeScript</button>
+              <button role="tab" aria-selected="false" tabindex="-1" data-lang="Rust">Rust</button>
+            </div>
+            <div class="code-scroll">
+              <pre><code data-code-body data-lang-body="Python"></code></pre>
+            </div>
+            <div class="panel-foot"><span>Illustrative code shown for demonstration.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="label-mono note reveal" style="--delay:100ms">Panels scroll horizontally on small screens.</p>
+    </div>
+  </section>
+
+  <!-- ================= 05 ALGORITHMS ================= -->
+  <section id="algorithms" class="section" aria-labelledby="algo-title">
+    <div class="wrap">
+      <header class="section-heading">
+        <div class="eyebrow reveal">
+          <span class="index-mono">05</span><i class="rule"></i><span class="label-mono">Algorithms</span>
+        </div>
+        <h2 id="algo-title" class="reveal" style="--delay:80ms">
+          An algorithm is a <span class="accent-blue">structure</span>, not a snippet.
+        </h2>
+        <p class="section-copy reveal" style="--delay:140ms">
+          Data enters, gets shaped, gets traversed, gets checked. ChatKode is oriented around
+          naming those stages explicitly so the result can be reviewed like any other engineering
+          artefact.
+        </p>
+      </header>
+
+      <div class="panel algo-diagram reveal" style="--delay:100ms">
+        <svg viewBox="0 0 640 200" role="img" aria-label="Diagram: input flows through normalise and order into a scan stage, producing verification and output" data-algo-svg>
+          <g class="algo-edges">
+            <path class="algo-edge" data-to="norm" d="M94 100 C140 100, 140 46, 186 46" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge" data-to="sort" d="M94 100 C140 100, 140 154, 186 154" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge" data-to="scan" d="M254 46 C305 46, 305 100, 356 100" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge" data-to="scan" d="M254 154 C305 154, 305 100, 356 100" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge" data-to="check" d="M424 100 C470 100, 470 46, 516 46" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge algo-edge--success" data-to="out" d="M424 100 C470 100, 470 154, 516 154" fill="none" stroke-width="1.25"/>
+          </g>
+          <g class="algo-nodes">
+            <g class="algo-node" data-node="in" tabindex="0" role="button" aria-label="input: raw sequence"><rect x="14" y="80" width="92" height="40" rx="4"/><text x="60" y="98">input</text><text class="sub" x="60" y="112">raw sequence</text></g>
+            <g class="algo-node" data-node="norm" tabindex="0" role="button" aria-label="normalise: bounds and types"><rect x="174" y="26" width="92" height="40" rx="4"/><text x="220" y="44">normalise</text><text class="sub" x="220" y="58">bounds &amp; types</text></g>
+            <g class="algo-node" data-node="sort" tabindex="0" role="button" aria-label="order: O(n log n)"><rect x="174" y="134" width="92" height="40" rx="4"/><text x="220" y="152">order</text><text class="sub" x="220" y="166">O(n log n)</text></g>
+            <g class="algo-node" data-node="scan" tabindex="0" role="button" aria-label="scan: single pass"><rect x="344" y="80" width="92" height="40" rx="4"/><text x="390" y="98">scan</text><text class="sub" x="390" y="112">single pass</text></g>
+            <g class="algo-node" data-node="check" tabindex="0" role="button" aria-label="verify: invariant holds"><rect x="504" y="26" width="92" height="40" rx="4"/><text x="550" y="44">verify</text><text class="sub" x="550" y="58">invariant holds</text></g>
+            <g class="algo-node" data-node="out" tabindex="0" role="button" aria-label="output: answer and proof"><rect x="504" y="134" width="92" height="40" rx="4"/><text x="550" y="152">output</text><text class="sub" x="550" y="166">answer + proof</text></g>
+          </g>
+        </svg>
+      </div>
+
+      <ul class="feature-grid feature-grid--3">
+        <li class="reveal"><p class="feature-title">Deterministic shape</p><p class="feature-body">Same stages, whatever the problem size.</p></li>
+        <li class="reveal" style="--delay:70ms"><p class="feature-title">Stated complexity</p><p class="feature-body">Cost named alongside the method.</p></li>
+        <li class="reveal" style="--delay:140ms"><p class="feature-title">Reviewable</p><p class="feature-body">Every stage can be challenged on its own.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= 06 DEVELOPERS ================= -->
+  <section id="developers" class="section section--raised" aria-labelledby="dev-title">
+    <div class="wrap">
+      <div class="split split--50-50">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="index-mono">06</span><i class="rule"></i><span class="label-mono">Developer experience</span>
+          </div>
+          <h2 id="dev-title" class="reveal" style="--delay:80ms">
+            Made for the hours between <span class="accent-blue">a hard problem</span> and a working build.
+          </h2>
+          <p class="section-copy reveal" style="--delay:140ms">
+            Technical vocabulary, precise output, no filler. ChatKode is designed to sit next to
+            the work you were already doing — reading code, sketching an approach, checking
+            whether an idea survives its own edge cases.
+          </p>
+          <ul class="feature-grid feature-grid--2 reveal" style="--delay:200ms">
+            <li><p class="feature-title">Precise register</p><p class="feature-body">Answers in complexity and invariants.</p></li>
+            <li><p class="feature-title">Edge-case pressure</p><p class="feature-body">Failure modes named, not skipped.</p></li>
+            <li><p class="feature-title">Multi-language</p><p class="feature-body">Reads and writes across common stacks.</p></li>
+            <li><p class="feature-title">Explain mode</p><p class="feature-body">Walks the reasoning, not only the result.</p></li>
+          </ul>
+        </div>
+
+        <div class="dev-panels reveal" style="--delay:160ms">
+          <div class="panel terminal-panel">
+            <div class="terminal-bar">
+              <span class="panel-title">chatkode — zsh</span>
+              <span class="label-mono">session</span>
+            </div>
+            <div class="terminal-body">
+              <div class="term-line"><span class="term-prompt accent-blue">$</span><span class="term-text">chatkode explain --file scheduler.rs --focus complexity</span></div>
+              <div class="term-line"><span class="term-prompt syn-com">&gt;</span><span class="term-text term-dim">reading scheduler.rs · 214 lines</span></div>
+              <div class="term-line"><span class="term-prompt syn-com">&gt;</span><span class="term-text term-dim">hot path: fn assign() — nested loop over tasks × workers</span></div>
+              <div class="term-line"><span class="term-prompt syn-com">&gt;</span><span class="term-text term-ok">current: O(t · w) · suggested: bucket by deadline → O(t log t)</span></div>
+              <div class="term-line"><span class="term-prompt accent-blue">$</span><span class="term-text">chatkode derive --from 'minimise max load' --target algorithm</span></div>
+              <div class="term-line"><span class="term-prompt syn-com">&gt;</span><span class="term-text term-ok">monotone predicate found · binary search on answer</span></div>
+              <div class="term-line"><span class="term-prompt accent-blue">$</span><span class="caret"></span></div>
+            </div>
+            <div class="panel-foot">
+              <span class="foot-primary">● ready</span><span>utf-8</span><span>ln 6, col 1</span>
+              <span class="hide-sm">interface shown for illustration</span>
+            </div>
+          </div>
+
+          <div class="panel code-panel" data-code-panel>
+            <div class="panel-bar">
+              <div class="panel-bar-left">
+                <span class="pulse-dot"></span>
+                <span class="panel-title">review.diff</span>
+                <span class="panel-meta">suggestion</span>
+              </div>
+              <button type="button" class="copy-btn" data-copy-btn>copy</button>
+            </div>
+            <div class="code-scroll">
+              <pre><code data-code-body>
+<span class="code-line" data-line><span class="ln">1</span><span class="lc"><span class="syn-com">- for w in workers { for t in tasks { assign(w, t) } }</span></span></span>
+<span class="code-line" data-line><span class="ln">2</span><span class="lc">+ <span class="syn-key">let</span> <span class="syn-key">mut</span> heap = BinaryHeap::<span class="syn-fn">new</span>();</span></span>
+<span class="code-line" data-line><span class="ln">3</span><span class="lc">+ <span class="syn-key">for</span> t <span class="syn-key">in</span> tasks.iter().sorted_by_key(|t| t.deadline) {</span></span>
+<span class="code-line" data-line><span class="ln">4</span><span class="lc">+     heap.push(Reverse(load));  <span class="syn-com">// O(t log t)</span></span></span>
+<span class="code-line" data-line><span class="ln">5</span><span class="lc">+ }</span></span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 07 APPROACH / COMPARISON ================= -->
+  <section id="approach" class="section" aria-labelledby="approach-title">
+    <div class="wrap">
+      <header class="section-heading">
+        <div class="eyebrow reveal">
+          <span class="index-mono">07</span><i class="rule"></i><span class="label-mono">Why ChatKode</span>
+        </div>
+        <h2 id="approach-title" class="reveal" style="--delay:80ms">
+          Two ways to answer a technical question. ChatKode is built around <span class="accent-blue">the second</span>.
+        </h2>
+        <p class="section-copy reveal" style="--delay:140ms">
+          A comparison of approaches, not of products. Both have their place — ChatKode is
+          deliberately shaped for the right-hand column.
+        </p>
+      </header>
+
+      <div class="comparison reveal" style="--delay:80ms">
+        <div class="comparison-head">
+          <p class="label-mono">Generic assistant</p>
+          <p class="label-mono accent-blue">Developer-focused AI</p>
+        </div>
+        <div class="comparison-row"><p>General conversation</p><p><span class="accent-blue" aria-hidden="true">›</span> Technical problem solving</p></div>
+        <div class="comparison-row"><p>Basic answers</p><p><span class="accent-blue" aria-hidden="true">›</span> Structured reasoning</p></div>
+        <div class="comparison-row"><p>Code generation</p><p><span class="accent-blue" aria-hidden="true">›</span> Algorithmic thinking</p></div>
+        <div class="comparison-row"><p>Restates the prompt</p><p><span class="accent-blue" aria-hidden="true">›</span> States constraints and complexity</p></div>
+        <div class="comparison-row comparison-row--last"><p>One shape for every task</p><p><span class="accent-blue" aria-hidden="true">›</span> Model first, then implement</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 08 KODE DEVELOPERS ================= -->
+  <section id="about" class="section section--raised" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="split split--50-50">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="index-mono">08</span><i class="rule"></i><span class="label-mono">The company</span>
+          </div>
+          <p class="company-title reveal" style="--delay:80ms">
+            ChatKode
+            <span class="company-sub">by <strong>Kode Developers</strong></span>
+          </p>
+        </div>
+        <div class="section-copy-col about-copy">
+          <h2 id="about-title" class="reveal" style="--delay:120ms">
+            A public-facing product from a team that builds software for a living.
+          </h2>
+          <p class="reveal" style="--delay:180ms">
+            Kode Developers created ChatKode as its developer-facing AI product. The intent is
+            narrow on purpose: serve people who write code, model problems and care about how a
+            solution was reached — and keep the product accountable to that audience.
+          </p>
+          <p class="label-mono reveal" style="--delay:240ms">Kode Developers · product: ChatKode</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 09 HUMAN FIRST ================= -->
+  <section id="human-first" class="section" aria-labelledby="human-first-title">
+    <div class="wrap">
+      <div class="split split--45 split--sticky">
+        <header class="section-heading section-heading--sticky">
+          <div class="eyebrow reveal">
+            <span class="index-mono">09</span><i class="rule"></i><span class="label-mono">Human-first AI</span>
+          </div>
+          <h2 id="human-first-title" class="reveal" style="--delay:80ms">
+            Not just a capable AI. An AI with <span class="accent-green">boundaries</span>.
+          </h2>
+          <p class="section-copy reveal" style="--delay:140ms">
+            We didn't just build ChatKode to know how to help. We built it around the judgment
+            that knowing how is not the same as deciding whether something should be done.
+          </p>
+        </header>
+
+        <div class="human-content">
+          <p class="reveal">
+            ChatKode is intended to help people build, learn, reason and solve problems. Its
+            capability remains in service of the person using it — within appropriate safety,
+            ethical and legal boundaries. It should assist human decisions, not become the
+            authority behind them.
+          </p>
+
+          <div class="panel human-system reveal" data-reveal-group>
+            <div class="grid-atmosphere panel-grid-bg" aria-hidden="true"></div>
+            <p class="label-mono">Human → AI → human</p>
+            <div class="human-flow">
+              <article class="human-node human-node--primary" data-human-node>
+                <p class="label-mono">Directs</p><p class="human-node-title">Human</p><p class="human-node-note">asks · sets intent</p>
+              </article>
+              <span class="human-signal-track" data-signal="forward"><span class="human-signal-line"></span><span class="human-signal-pulse"></span><span class="human-signal-label">legitimate goal</span></span>
+              <article class="human-node human-node--signal" data-human-node>
+                <p class="label-mono">Works with</p>
+                <span class="wordmark wordmark--sm"><svg class="wordmark-mark" width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="var(--color-surface-raised)" stroke="var(--color-border-strong)"/><path d="M11 10.5c-2.6 1.6-3.5 3.6-3.5 5.5s.9 3.9 3.5 5.5" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M21 10.5c2.6 1.6 3.5 3.6 3.5 5.5s-.9 3.9-3.5 5.5" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M18 9l-4 14" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/></svg><span class="wordmark-text">ChatKode</span></span>
+                <p class="human-node-note">helps · reasons · builds</p>
+              </article>
+              <span class="human-signal-track" data-signal="return"><span class="human-signal-line"></span><span class="human-signal-pulse"></span><span class="human-signal-label">assistance</span></span>
+              <article class="human-node human-node--success" data-human-node>
+                <p class="label-mono">Reviews</p><p class="human-node-title">Human decision</p><p class="human-node-note">checks · decides · uses</p>
+              </article>
+            </div>
+            <p class="human-system-note">The person remains responsible at both ends of the system.</p>
+          </div>
+
+          <ul class="feature-grid feature-grid--2">
+            <li class="reveal"><p class="feature-title"><span class="accent-blue">01</span> · Human first</p><p class="feature-body">AI should amplify human capability, not replace human agency.</p></li>
+            <li class="reveal" style="--delay:70ms"><p class="feature-title"><span class="accent-gold">02</span> · Know your limits</p><p class="feature-body">Being capable of something does not make every use appropriate.</p></li>
+            <li class="reveal" style="--delay:140ms"><p class="feature-title"><span class="accent-signal">03</span> · Help, don't control</p><p class="feature-body">ChatKode exists to assist the person using it, not to make itself the authority.</p></li>
+            <li class="reveal" style="--delay:210ms"><p class="feature-title"><span class="accent-green">04</span> · Use it responsibly</p><p class="feature-body">AI is a tool. How that tool is used still matters.</p></li>
+          </ul>
+
+          <div class="panel capability-compare reveal">
+            <div>
+              <p class="label-mono accent-signal">Capable of</p>
+              <p class="capability-list">generating · reasoning · explaining · transforming · assisting</p>
+            </div>
+            <span class="not-equal" aria-label="does not equal">≠</span>
+            <div>
+              <p class="label-mono accent-gold">Authority to</p>
+              <p class="capability-list">decide for people · control people · override human agency</p>
+            </div>
+          </div>
+
+          <div class="human-quote reveal">
+            <span class="wordmark wordmark--sm"><svg class="wordmark-mark" width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="var(--color-surface-raised)" stroke="var(--color-border-strong)"/><path d="M11 10.5c-2.6 1.6-3.5 3.6-3.5 5.5s.9 3.9 3.5 5.5" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M21 10.5c2.6 1.6 3.5 3.6 3.5 5.5s-.9 3.9-3.5 5.5" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M18 9l-4 14" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/></svg><span class="wordmark-text">ChatKode</span></span>
+            <p class="human-quote-main">Kode Developers builds the tool. People decide how they use it.</p>
+            <p class="human-quote-sub">AI can make mistakes, and important outputs deserve review. Build with it. Think with it. Verify when it matters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section id="try" class="cta-section" aria-labelledby="cta-title">
+    <div class="cta-atmosphere" aria-hidden="true">
+      <div class="grid-atmosphere cta-grid-bg"></div>
+      <div class="cta-field drift-slow"></div>
+      <span class="cta-path cta-path-left"></span>
+      <span class="cta-path cta-path-right"></span>
+    </div>
+    <div class="cta-inner">
+      <p class="label-mono accent-blue reveal">Start building</p>
+      <h2 id="cta-title" class="reveal" style="--delay:90ms">
+        Bring it a problem that <span class="text-gradient-signal">actually resists</span>.
+      </h2>
+      <p class="reveal" style="--delay:150ms">
+        Coding, mathematics, algorithms and reasoning — in one developer-focused product from
+        Kode Developers. Build boldly. Think responsibly.
+      </p>
+      <div class="cta-actions reveal" style="--delay:210ms">
+        <a href="#coding" class="button button--primary button--lg full-width-sm">See ChatKode work<span aria-hidden="true" class="btn-arrow">→</span></a>
+        <a href="#about" class="text-link">Learn more about Kode Developers<span aria-hidden="true" class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="wordmark"><svg class="wordmark-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="var(--color-surface-raised)" stroke="var(--color-border-strong)"/><path d="M11 10.5c-2.6 1.6-3.5 3.6-3.5 5.5s.9 3.9 3.5 5.5" stroke="var(--color-signal)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M21 10.5c2.6 1.6 3.5 3.6 3.5 5.5s-.9 3.9-3.5 5.5" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M18 9l-4 14" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/></svg><span class="wordmark-text">ChatKode</span></span>
+      <p>A developer-focused AI for code, mathematics and algorithms.</p>
+      <p class="label-mono">by Kode Developers</p>
+    </div>
+
+    <nav aria-label="Footer" class="footer-nav">
+      <div>
+        <h3 class="label-mono">Product</h3>
+        <ul>
+          <li><a href="#product">Overview</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#mathematics">Mathematics</a></li>
+          <li><a href="#coding">Coding</a></li>
+          <li><a href="#algorithms">Algorithms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="label-mono">Developers</h3>
+        <ul>
+          <li><a href="#developers">Developer experience</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#try">Try ChatKode</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="label-mono">Company</h3>
+        <ul>
+          <li><a href="#about">Kode Developers</a></li>
+          <li><a href="#about">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="label-mono">Legal</h3>
+        <ul>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Acceptable use</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© <span data-year>2026</span> Kode Developers. All rights reserved.</p>
+    <p>ChatKode — AI for code, mathematics &amp; algorithms</p>
+  </div>
+</footer>
+
+<script src="/root/chatkode.js"></script>
 </body>
 </html>
