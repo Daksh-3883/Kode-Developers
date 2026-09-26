@@ -549,14 +549,16 @@ h1, h2, h3, h4 {
 .code-scroll { overflow-x: auto; }
 .code-scroll pre {
   min-width: max-content;
-  padding: 1rem 0.75rem;
+  padding: 0.625rem 0.75rem;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  line-height: 1.75;
+  line-height: 1;
 }
-@media (min-width: 640px) { .code-scroll pre { padding: 1rem 1.25rem; font-size: 0.82rem; } }
+@media (min-width: 640px) { .code-scroll pre { padding: 0.625rem 1.25rem; font-size: 0.82rem; } }
 
 .code-line { display: grid; grid-template-columns: 2.25rem minmax(0,1fr); }
+[data-typewriter] .code-line { border-left: 1px solid transparent; }
+[data-typewriter] .code-line.current { border-left-color: var(--signal); background-color: var(--signal-soft); }
 .ln { padding-right: 1rem; text-align: right; color: var(--syn-com); user-select: none; }
 .lc { white-space: pre; color: var(--syn-var); }
 
@@ -729,15 +731,21 @@ h1, h2, h3, h4 {
 .algo-diagram { margin-top: 3.5rem; min-width: 0; max-width: 100%; overflow-x: auto; padding: 1rem; }
 @media (min-width: 640px) { .algo-diagram { padding: 2rem; } }
 .algo-diagram svg { height: auto; width: 100%; min-width: 560px; }
-.algo-edge { stroke: var(--signal); stroke-opacity: 0.55; stroke-linecap: round; transition: stroke 300ms, stroke-opacity 300ms; }
+.algo-edge { stroke: var(--signal); stroke-opacity: 0.55; stroke-linecap: round; fill: none; stroke-width: 1.25; stroke-dasharray: 300; stroke-dashoffset: 300; transition: stroke 300ms, stroke-opacity 300ms; }
+.algo-edge--signal { stroke: var(--signal); }
+.algo-edge--logic { stroke: var(--logic); }
 .algo-edge--success { stroke: var(--success); }
+.algo-diagram.in-view .algo-edge { animation: ck-dash 900ms ease-out forwards; animation-delay: calc(var(--i) * 130ms + 180ms); }
 .algo-edge.dim { stroke: var(--border-strong); stroke-opacity: 0.35; }
 .algo-node rect { fill: var(--surface-raised); stroke: var(--border-strong); stroke-width: 1; transition: stroke 300ms, filter 300ms; }
 .algo-node text { font-family: var(--font-mono); font-size: 11px; fill: var(--foreground); text-anchor: middle; }
 .algo-node text.sub { font-size: 8.5px; fill: var(--muted-foreground); }
-.algo-node { cursor: default; outline: none; opacity: 1; }
+.algo-node { cursor: default; outline: none; opacity: 1; transition: opacity 500ms ease-out, transform 500ms ease-out; }
 .algo-node.dim { opacity: 0.5; }
 .algo-node.active rect { stroke: var(--signal); }
+.algo-node[data-node="check"].active rect { stroke: var(--logic); }
+.algo-node[data-node="out"].active rect { stroke: var(--success); }
+@keyframes ck-dash { to { stroke-dashoffset: 0; } }
 
 .feature-grid { margin-top: 2rem; display: grid; gap: 1px; overflow: hidden; border: 1px solid var(--border); background: var(--border); }
 .feature-grid--3 { margin-top: 2rem; }

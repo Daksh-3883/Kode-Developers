@@ -108,7 +108,20 @@
   var heroCodeBody = document.querySelector("[data-typewriter] [data-code-body]");
   var heroLines = heroCodeBody ? heroCodeBody.querySelectorAll(".code-line") : [];
 
+  var heroCaret = document.createElement("span");
+  heroCaret.className = "caret";
+  heroCaret.setAttribute("aria-hidden", "true");
+
   function revealHeroStep(el) { el.classList.add("visible"); }
+
+  function setHeroCurrentLine(index) {
+    heroLines.forEach(function (line) { line.classList.remove("current"); });
+    if (index != null && heroLines[index]) {
+      heroLines[index].classList.add("current");
+      var lc = heroLines[index].querySelector(".lc");
+      if (lc) lc.appendChild(heroCaret);
+    }
+  }
 
   if (reducedMotion.matches) {
     heroSteps.forEach(revealHeroStep);
@@ -122,6 +135,7 @@
     });
 
     var lineIndex = 0;
+    setHeroCurrentLine(0);
     var typer = window.setInterval(function () {
       if (lineIndex >= heroLines.length) {
         window.clearInterval(typer);
@@ -129,13 +143,19 @@
       }
       heroLines[lineIndex].classList.add("shown");
       lineIndex++;
-      if (lineIndex >= heroLines.length) window.clearInterval(typer);
+      if (lineIndex >= heroLines.length) {
+        window.clearInterval(typer);
+        setHeroCurrentLine(null);
+        heroCaret.remove();
+      } else {
+        setHeroCurrentLine(lineIndex);
+      }
     }, 90);
   }
 
   /* Hero code lines start hidden, slide in as "typed" */
   heroLines.forEach(function (line) {
-    line.style.transition = "opacity 500ms, transform 500ms";
+    line.style.transition = "opacity 500ms, transform 500ms, background-color 400ms, border-color 400ms";
     line.style.transform = "translateX(0.5rem)";
     line.style.opacity = "0";
   });
@@ -296,8 +316,10 @@
 
   /* ---------------- Algorithm diagram hover/focus ---------------- */
   document.querySelectorAll("[data-algo-svg]").forEach(function (svg) {
+    var diagram = svg.closest(".algo-diagram");
     var nodes = svg.querySelectorAll(".algo-node");
     var edges = svg.querySelectorAll(".algo-edge");
+    var revealed = false;
 
     function setActive(id) {
       nodes.forEach(function (n) {
@@ -305,9 +327,29 @@
         n.classList.toggle("active", isThis && id !== null);
         n.classList.toggle("dim", id !== null && !isThis);
       });
+
       edges.forEach(function (edge) {
-        edge.classList.toggle("dim", false);
+        var isConnected = id !== null && (edge.getAttribute("data-from") === id || edge.getAttribute("data-to") === id);
+        edge.classList.toggle("dim", id !== null && !isConnected);
       });
+    }
+
+    if (diagram && typeof IntersectionObserver !== "undefined") {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !revealed) {
+            revealed = true;
+            diagram.classList.add("in-view");
+            edges.forEach(function (edge, i) {
+              edge.style.setProperty("--i", i);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(diagram);
+    } else if (diagram) {
+      diagram.classList.add("in-view");
     }
 
     nodes.forEach(function (node) {

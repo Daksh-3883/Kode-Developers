@@ -407,12 +407,12 @@
       <div class="panel algo-diagram reveal" style="--delay:100ms">
         <svg viewBox="0 0 640 200" role="img" aria-label="Diagram: input flows through normalise and order into a scan stage, producing verification and output" data-algo-svg>
           <g class="algo-edges">
-            <path class="algo-edge" data-to="norm" d="M94 100 C140 100, 140 46, 186 46" fill="none" stroke-width="1.25"/>
-            <path class="algo-edge" data-to="sort" d="M94 100 C140 100, 140 154, 186 154" fill="none" stroke-width="1.25"/>
-            <path class="algo-edge" data-to="scan" d="M254 46 C305 46, 305 100, 356 100" fill="none" stroke-width="1.25"/>
-            <path class="algo-edge" data-to="scan" d="M254 154 C305 154, 305 100, 356 100" fill="none" stroke-width="1.25"/>
-            <path class="algo-edge" data-to="check" d="M424 100 C470 100, 470 46, 516 46" fill="none" stroke-width="1.25"/>
-            <path class="algo-edge algo-edge--success" data-to="out" d="M424 100 C470 100, 470 154, 516 154" fill="none" stroke-width="1.25"/>
+            <path class="algo-edge algo-edge--signal" data-from="in" data-to="norm" d="M94 100 C140 100, 140 46, 186 46"/>
+            <path class="algo-edge algo-edge--signal" data-from="in" data-to="sort" d="M94 100 C140 100, 140 154, 186 154"/>
+            <path class="algo-edge algo-edge--signal" data-from="norm" data-to="scan" d="M254 46 C305 46, 305 100, 356 100"/>
+            <path class="algo-edge algo-edge--signal" data-from="sort" data-to="scan" d="M254 154 C305 154, 305 100, 356 100"/>
+            <path class="algo-edge algo-edge--logic" data-from="scan" data-to="check" d="M424 100 C470 100, 470 46, 516 46"/>
+            <path class="algo-edge algo-edge--success" data-from="scan" data-to="out" d="M424 100 C470 100, 470 154, 516 154"/>
           </g>
           <g class="algo-nodes">
             <g class="algo-node" data-node="in" tabindex="0" role="button" aria-label="input: raw sequence"><rect x="14" y="80" width="92" height="40" rx="4"/><text x="60" y="98">input</text><text class="sub" x="60" y="112">raw sequence</text></g>
