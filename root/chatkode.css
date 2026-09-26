@@ -552,7 +552,7 @@ h1, h2, h3, h4 {
   padding: 0.625rem 0.75rem;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  line-height: 1;
+  line-height: 0.85;
 }
 @media (min-width: 640px) { .code-scroll pre { padding: 0.625rem 1.25rem; font-size: 0.82rem; } }
 
@@ -566,7 +566,7 @@ h1, h2, h3, h4 {
 .syn-fn { color: var(--syn-fn); }
 .syn-str { color: var(--syn-str); }
 .syn-num { color: var(--syn-num); }
-.syn-com { color: var(--syn-com); font-style: italic; }
+.syn-com { color: var(--syn-com); font-style: normal; }
 
 .panel-foot {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1.25rem;
@@ -606,6 +606,16 @@ h1, h2, h3, h4 {
 
 .eyebrow.reveal, .eyebrow { display: flex; align-items: center; gap: 0.75rem; color: var(--muted-foreground); }
 .eyebrow .rule { display: inline-block; height: 1px; width: 1.5rem; background: var(--border-strong); }
+
+/* Section 01 – What is ChatKode heading size */
+#product .split h2 {
+  font-size: 2.25rem;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-top: 1.25rem;
+}
+@media (min-width: 640px) { #product .split h2 { font-size: 3rem; } }
+@media (min-width: 1024px) { #product .split h2 { font-size: 3.5rem; } }
 
 .section-copy-col { display: flex; flex-direction: column; gap: 1.75rem; align-self: center; }
 .section-copy-col p { font-size: 1rem; line-height: 1.7; color: var(--muted-foreground); }
